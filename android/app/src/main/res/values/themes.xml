@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- AppCompat base theme (§396): Material3 Compose cannot theme the Activity on API 21. -->
+    <style name="Theme.AfNews" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/afnews_primary</item>
+        <item name="colorPrimaryDark">@color/afnews_primary_dark</item>
+        <item name="colorAccent">@color/afnews_primary</item>
+        <item name="android:windowBackground">@color/afnews_background</item>
+        <item name="android:textDirection" tools:targetApi="17">locale</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+    </style>
+
+    <style name="Theme.AfNews.Splash" parent="Theme.AfNews">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+</resources>

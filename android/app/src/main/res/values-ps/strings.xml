@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">افغانستان خبرونه</string>
+    <string name="tab_home">کور</string>
+    <string name="tab_afghanistan">افغانستان</string>
+    <string name="tab_world">نړۍ</string>
+    <string name="tab_saved">خوندي شوي</string>
+    <string name="tab_more">نور</string>
+    <string name="state_loading">د بارولو په حال کې…</string>
+    <string name="state_empty">د ښودلو لپاره منځپانګه نشته</string>
+    <string name="state_error">بارول ناکام شول</string>
+    <string name="action_retry">بیا هڅه وکړئ</string>
+    <string name="action_save">خوندي کول</string>
+    <string name="action_saved">خوندي شو</string>
+    <string name="action_share">شریکول</string>
+    <string name="action_open_source">په اصلي سرچینه کې لوستل</string>
+    <string name="badge_breaking">بېړني</string>
+    <string name="offline_banner">آفلاین — وروستی خوندي شوی نسخه ښودل کیږي</string>
+    <string name="attribution_note">دا لنډیز د خپرونکي رسمي فید څخه اخیستل شوی؛ بشپړ متن د اصلي خپرونکي سره دی.</string>
+    <string name="no_login_note">د خبرونو لوستلو لپاره د کارن حساب ته اړتیا نشته.</string>
+</resources>

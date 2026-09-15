@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Afghanistan News — Editorial Console</title>
+<link rel="stylesheet" href="./styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f766e'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='sans-serif'>ا</text></svg>" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- Login view -->
+    <section id="view-login" class="login-view">
+      <form class="login-card" id="login-form" autocomplete="on">
+        <div class="brand">
+          <div class="brand-mark">ا</div>
+          <div>
+            <h1>Afghanistan News</h1>
+            <p class="muted">Editorial &amp; Ingestion Console</p>
+          </div>
+        </div>
+        <label class="field">
+          <span>Username</span>
+          <input id="login-username" name="username" value="admin" autocomplete="username" required />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="btn primary block" type="submit" id="login-submit">Sign in</button>
+        <p class="hint" id="login-hint">Development seed: <code>admin</code> / <code>afnews-admin</code></p>
+        <p class="error" id="login-error" hidden></p>
+      </form>
+    </section>
+
+    <!-- Console view -->
+    <section id="view-console" class="console-view" hidden>
+      <aside class="sidebar">
+        <div class="brand small">
+          <div class="brand-mark">ا</div>
+          <div>
+            <strong>Afghanistan News</strong>
+            <div class="muted tiny">Editorial console</div>
+          </div>
+        </div>
+        <nav id="nav">
+          <button data-view="dashboard" class="nav-item active"><span class="ico">▦</span>Dashboard</button>
+          <button data-view="articles" class="nav-item"><span class="ico">🗞</span>Articles</button>
+          <button data-view="feeds" class="nav-item"><span class="ico">📡</span>Feed registry</button>
+          <button data-view="imports" class="nav-item"><span class="ico">⇪</span>Feed-pack imports</button>
+          <button data-view="push" class="nav-item"><span class="ico">🔔</span>Push &amp; breaking</button>
+          <button data-view="activation" class="nav-item"><span class="ico">◑</span>Rollout waves</button>
+          <button data-view="audit" class="nav-item"><span class="ico">≡</span>Audit log</button>
+          <button data-view="reference" class="nav-item"><span class="ico">⌘</span>Reference data</button>
+        </nav>
+        <div class="sidebar-foot">
+          <div id="session-info" class="muted tiny"></div>
+          <button class="btn ghost block" id="logout">Sign out</button>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <h2 id="view-title">Dashboard</h2>
+          <div class="topbar-actions">
+            <span class="pill" id="env-pill">loading…</span>
+            <button class="btn ghost" id="refresh">Refresh</button>
+            <a class="btn ghost" href="/" target="_blank" rel="noreferrer">Landing ↗</a>
+            <a class="btn ghost" href="/app/" target="_blank" rel="noreferrer">Mobile preview ↗</a>
+            <a class="btn ghost" href="/metrics" target="_blank" rel="noreferrer">Metrics ↗</a>
+          </div>
+        </header>
+
+        <div id="toast" class="toast" hidden></div>
+
+        <!-- Dashboard -->
+        <section class="view" id="view-dashboard">
+          <div class="stat-grid" id="stat-grid"></div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Source health</h3>
+              <span class="muted tiny">feeds grouped by diagnosed health state</span>
+            </div>
+            <div id="health-bars" class="health-bars"></div>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>Top failing domains</h3><span class="muted tiny">last 24h</span></div>
+              <table class="table" id="failing-table">
+                <thead><tr><th>Domain</th><th class="num">Failures</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Runtime counters</h3><span class="muted tiny">process lifetime</span></div>
+              <table class="table" id="metrics-table">
+                <thead><tr><th>Metric</th><th class="num">Value</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>Recent feed-pack imports</h3></div>
+              <div id="recent-imports" class="list"></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Recent pushes</h3></div>
+              <div id="recent-pushes" class="list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Articles -->
+        <section class="view" id="view-articles" hidden>
+          <div class="toolbar">
+            <input id="art-q" class="input" placeholder="Search titles &amp; summaries…" />
+            <select id="art-status" class="input">
+              <option value="">status: any</option>
+              <option value="PUBLISHED" selected>published</option>
+              <option value="HIDDEN">hidden</option>
+              <option value="NEEDS_REVIEW">needs review</option>
+            </select>
+            <select id="art-category" class="input"><option value="">category: any</option></select>
+            <select id="art-source" class="input"><option value="">source: any</option></select>
+            <label class="check"><input type="checkbox" id="art-breaking" /> breaking only</label>
+            <button class="btn" id="art-search">Apply</button>
+          </div>
+          <div class="card">
+            <table class="table" id="articles-table">
+              <thead>
+                <tr>
+                  <th>Article</th><th>Source</th><th>Category</th><th>Published</th><th class="center">Breaking</th><th class="center">Status</th><th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="pager">
+              <button class="btn ghost" id="art-prev">← Newer</button>
+              <span class="muted tiny" id="art-page-info"></span>
+              <button class="btn ghost" id="art-next">Older →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Feeds -->
+        <section class="view" id="view-feeds" hidden>
+          <div class="toolbar">
+            <input id="feed-q" class="input" placeholder="Filter by URL, title or domain…" />
+            <select id="feed-health" class="input">
+              <option value="">health: any</option>
+              <option>HEALTHY</option><option>DEGRADED</option><option>UNSTABLE</option><option>STALE</option>
+              <option>EMPTY</option><option>PARSER_ERROR</option><option>HTTP_ERROR</option>
+              <option>RATE_LIMITED</option><option>QUARANTINED</option><option>DISABLED</option><option>UNKNOWN</option>
+            </select>
+            <select id="feed-type" class="input">
+              <option value="">type: any</option>
+              <option>VALIDATED_DIRECT</option><option>DIRECT_PUBLISHER</option><option>OFFICIAL_REALTIME</option>
+              <option>OFFICIAL_INSTITUTION</option><option>AGGREGATOR_TOPIC</option><option>AGGREGATOR_SEARCH</option>
+              <option>OPPORTUNITY_FEED</option><option>TENDER_FEED</option><option>UNKNOWN</option>
+            </select>
+            <select id="feed-enabled" class="input">
+              <option value="">state: any</option><option value="true">enabled</option><option value="false">disabled</option>
+            </select>
+            <button class="btn" id="feed-search">Apply</button>
+            <button class="btn ghost" id="feed-new">+ Register feed</button>
+          </div>
+          <div class="card">
+            <table class="table compact" id="feeds-table">
+              <thead>
+                <tr>
+                  <th>Feed</th><th>Type</th><th class="center">Pri</th><th class="center">Tier</th>
+                  <th class="center">Health</th><th class="center">Score</th><th class="center">Enabled</th><th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="pager">
+              <button class="btn ghost" id="feed-prev">← Prev</button>
+              <span class="muted tiny" id="feed-page-info"></span>
+              <button class="btn ghost" id="feed-next">Next →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Imports -->
+        <section class="view" id="view-imports" hidden>
+          <div class="card">
+            <div class="card-head">
+              <h3>Import feed pack (OPML 2.0)</h3>
+              <span class="muted tiny">dry-run is always the default; commit never overwrites runtime fields</span>
+            </div>
+            <div class="toolbar">
+              <input id="import-path" class="input grow" placeholder="path on server, e.g. resources/feedpacks/afghanistan-global-news-master-v0.2.opml" />
+              <button class="btn" id="import-dry">Dry run</button>
+              <button class="btn danger" id="import-commit">Commit</button>
+            </div>
+            <div id="import-result" class="import-result"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Import history</h3></div>
+            <table class="table" id="imports-table">
+              <thead><tr><th>Version</th><th>Mode</th><th class="num">Outlines</th><th class="num">New</th><th class="num">Changed</th><th class="num">Missing</th><th class="num">Invalid</th><th>By</th><th>When</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Push -->
+        <section class="view" id="view-push" hidden>
+          <div class="card">
+            <div class="card-head"><h3>Compose breaking push</h3><span class="muted tiny">throttled · deduplicated · audited</span></div>
+            <div class="form">
+              <label class="field"><span>Topic</span>
+                <select id="push-topic" class="input">
+                  <option value="breaking">breaking</option>
+                  <option value="world-breaking">world-breaking</option>
+                  <option value="afghanistan">afghanistan</option>
+                  <option value="province-kabul">province-kabul</option>
+                  <option value="jobs">jobs</option>
+                </select>
+              </label>
+              <label class="field"><span>Article ID (optional)</span><input id="push-article" class="input" placeholder="art_…" /></label>
+              <label class="field"><span>Title</span><input id="push-title" class="input" placeholder="Breaking headline" /></label>
+              <label class="field"><span>Body</span><textarea id="push-body" class="input" rows="3" placeholder="Short factual summary (no editorialising)"></textarea></label>
+              <div class="row">
+                <button class="btn" id="push-preview">Preview audience</button>
+                <button class="btn danger" id="push-send">Send push</button>
+              </div>
+              <div id="push-result" class="hint"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Push events</h3><span class="muted tiny">dry-run senders record events without delivering</span></div>
+            <table class="table" id="push-table">
+              <thead><tr><th>When</th><th>Topic</th><th>Title</th><th class="center">Status</th><th>Actor</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Activation -->
+        <section class="view" id="view-activation" hidden>
+          <div class="card">
+            <div class="card-head">
+              <h3>Rollout waves</h3>
+              <span class="muted tiny">broad catalog, selective polling — §268 / §310</span>
+            </div>
+            <div id="waves" class="waves"></div>
+          </div>
+        </section>
+
+        <!-- Audit -->
+        <section class="view" id="view-audit" hidden>
+          <div class="toolbar">
+            <select id="audit-entity" class="input">
+              <option value="">entity: any</option>
+              <option value="feed">feed</option><option value="article">article</option>
+              <option value="feed_pack">feed_pack</option><option value="admin_user">admin_user</option>
+              <option value="push">push</option>
+            </select>
+            <button class="btn" id="audit-refresh">Apply</button>
+          </div>
+          <div class="card">
+            <table class="table" id="audit-table">
+              <thead><tr><th>When</th><th>Actor</th><th>Action</th><th>Entity</th><th>Entity ID</th></tr></thead>
+              <tbody></tbody>
+            </table>
+            <div class="pager">
+              <button class="btn ghost" id="audit-prev">← Prev</button>
+              <span class="muted tiny" id="audit-page-info"></span>
+              <button class="btn ghost" id="audit-next">Next →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Reference -->
+        <section class="view" id="view-reference" hidden>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>Categories</h3><span class="muted tiny" id="categories-count"></span></div>
+              <table class="table" id="categories-table"><thead><tr><th>ID</th><th>English</th><th>دری</th><th>پښتو</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Provinces</h3><span class="muted tiny" id="provinces-count"></span></div>
+              <table class="table" id="provinces-table"><thead><tr><th>ID</th><th>English</th><th>دری</th><th class="num">Articles 24h</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <!-- Drawer for feed/article detail -->
+  <aside id="drawer" class="drawer" hidden>
+    <div class="drawer-head">
+      <h3 id="drawer-title">Detail</h3>
+      <button class="btn ghost" id="drawer-close">Close</button>
+    </div>
+    <div id="drawer-body" class="drawer-body"></div>
+  </aside>
+
+  <script src="./app.js"></script>
+</body>
+</html>

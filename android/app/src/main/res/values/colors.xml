@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="afnews_primary">#0F766E</color>
+    <color name="afnews_primary_dark">#0B5C56</color>
+    <color name="afnews_background">#F6F7F9</color>
+    <color name="afnews_breaking">#B42318</color>
+    <color name="afnews_on_primary">#FFFFFF</color>
+</resources>

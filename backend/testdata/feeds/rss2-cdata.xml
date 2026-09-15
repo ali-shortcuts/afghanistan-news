@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CDATA Publisher</title>
+    <link>https://cdata.example/</link>
+    <item>
+      <title><![CDATA[Breaking: <em>power</em> restored in Helmand]]></title>
+      <link><![CDATA[https://cdata.example/story/power-helmand]]></link>
+      <description><![CDATA[<div><p>Electricity was restored after repairs.</p><img src="https://cdn.cdata.example/power.jpg"></div>]]></description>
+      <content:encoded><![CDATA[<p>Long form content</p><style>body{color:red}</style>]]></content:encoded>
+      <pubDate>2026-09-14T04:15:00Z</pubDate>
+    </item>
+  </channel>
+</rss>

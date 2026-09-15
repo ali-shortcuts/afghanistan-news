@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: afnews
+          POSTGRES_PASSWORD: afnews
+          POSTGRES_DB: afnews_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U afnews" --health-interval 5s
+          --health-timeout 5s --health-retries 12
+    defaults: { run: { working-directory: backend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.23", cache-dependency-path: backend/go.sum }
+      - run: go build ./...
+      - run: go vet ./...
+      - run: go test ./... -race -count=1
+      - name: migration + postgres smoke
+        env:
+          DATABASE_URL: postgres://afnews:afnews@127.0.0.1:5432/afnews_test?sslmode=disable
+          DB_DRIVER: postgres
+        run: |
+          go run ./cmd/api &
+          for i in $(seq 1 30); do curl -fsS localhost:8080/health/ready && break; sleep 1; done
+          curl -fsS "localhost:8080/v1/articles?limit=1" >/dev/null
+          curl -fsS localhost:8080/v1/home >/dev/null
+
+  feedpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.23", cache-dependency-path: backend/go.sum }
+      - name: OPML packs must stay parseable and distinct
+        working-directory: backend
+        run: |
+          go test ./internal/feed/opml/ -run TestRealFeedPack -v
+          sha256sum resources/feedpacks/*.opml
+          diff -q resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
+                  ../feedpacks/afghanistan-global-news-master-v0.2.opml
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: "8.9" }
+      - name: Static reference checks (no SDK needed)
+        working-directory: android
+        run: python3 tools/check_sources.py
+      - name: Build + unit tests (API 21 gate)
+        working-directory: android
+        run: |
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          gradle wrapper --gradle-version 8.9      # the wrapper jar is generated, not committed
+          ./gradlew --no-daemon :app:assembleDebug :app:testDebugUnitTest
+      - name: Lint the compatibility gate
+        working-directory: android
+        run: ./gradlew --no-daemon :app:lintDebug

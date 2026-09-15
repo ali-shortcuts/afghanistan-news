@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Cleartext policy (§103, §155).
+
+  HTTPS is the default and is what a production deployment should use. Cleartext is nonetheless
+  permitted here, on purpose: this app can be pointed at a self-hosted server (see the "سرور خبر"
+  section in Settings), and a self-hosted server on a home network or an emulator host has no
+  certificate the device can trust. Blocking cleartext would make that configuration impossible
+  to reach — the request would fail before it left the phone, with an error the user cannot act on.
+
+  The trade-off is explicit: traffic to an http:// address is readable on the network. Users are
+  shown the address they configured, and the app recommends https in the field placeholder and
+  its helper text. To require HTTPS everywhere, set cleartextTrafficPermitted="false" in
+  base-config; only https:// addresses will then work.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- System CAs only: no bundled or user-added roots, so a proxy cannot MITM by
+                 installing its own certificate on the device. -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

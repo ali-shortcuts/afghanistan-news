@@ -1,0 +1,43 @@
+# --- secrets & local config -------------------------------------------------
+.env
+.env.local
+*.pem
+*.key
+keystore.properties
+android/local.properties
+android/app/google-services.json
+
+# --- build output -----------------------------------------------------------
+backend/data/
+backend/bin/
+android/build/
+android/app/build/
+android/.gradle/
+android/app/schemas/
+dist/
+*.apk
+*.aab
+
+# --- editor / OS ------------------------------------------------------------
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- local databases --------------------------------------------------------
+*.db
+*.db-journal
+*.sqlite
+
+# Phase B runtime artifacts (never committed)
+backups/
+logs/
+run/
+*.dump
+*.manifest
+
+# --- release signing material ------------------------------------------------
+android/keystore.properties
+*.jks
+*.keystore

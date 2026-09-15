@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  API 31+ equivalent of backup_rules.xml: only the reading list leaves the device, for both
+  cloud backup and device-to-device transfer. The cache, the push token and the settings
+  store are deliberately out of scope.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="database" path="afnews.db" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="database" path="afnews.db" />
+    </device-transfer>
+</data-extraction-rules>

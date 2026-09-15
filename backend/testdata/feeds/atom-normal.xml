@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ps">
+  <title>Atom Pashto News</title>
+  <link rel="alternate" href="https://atom.example/ps"/>
+  <subtitle>د افغانستان خبرونه</subtitle>
+  <updated>2026-09-14T06:00:00Z</updated>
+  <entry>
+    <id>tag:atom.example,2026:0001</id>
+    <title>د کندهار په ولایت کې نوی روغتون پرانیستل شو</title>
+    <link rel="alternate" href="https://atom.example/ps/health/kandahar-hospital"/>
+    <link rel="enclosure" type="image/jpeg" href="https://cdn.atom.example/hospital.jpg"/>
+    <summary>د کندهار ښار کې د روغتیا خدمتونو پراختیا.</summary>
+    <content type="html">&lt;p&gt;د روغتون پرانیستل&lt;/p&gt;</content>
+    <author><name>Pashto Desk</name></author>
+    <published>2026-09-14T03:20:00Z</published>
+    <updated>2026-09-14T03:45:00Z</updated>
+    <category term="Healthcare"/>
+  </entry>
+</feed>

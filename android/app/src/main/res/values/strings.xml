@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">خبر افغانستان</string>
+    <string name="tab_home">خانه</string>
+    <string name="tab_afghanistan">افغانستان</string>
+    <string name="tab_world">جهان</string>
+    <string name="tab_saved">ذخیره‌شده</string>
+    <string name="tab_more">بیشتر</string>
+    <string name="state_loading">در حال بارگیری…</string>
+    <string name="state_empty">محتوایی برای نمایش نیست</string>
+    <string name="state_error">بارگیری ناموفق بود</string>
+    <string name="action_retry">تلاش دوباره</string>
+    <string name="action_save">ذخیره</string>
+    <string name="action_saved">ذخیره شد</string>
+    <string name="action_share">اشتراک‌گذاری</string>
+    <string name="action_open_source">خواندن در منبع اصلی</string>
+    <string name="badge_breaking">فوری</string>
+    <string name="offline_banner">آفلاین — نمایش آخرین نسخهٔ ذخیره‌شده</string>
+    <string name="attribution_note">این خلاصه از فید رسمی ناشر دریافت شده است؛ متن کامل نزد ناشر اصلی است.</string>
+    <string name="no_login_note">برای مطالعهٔ اخبار نیازی به حساب کاربری نیست.</string>
+</resources>

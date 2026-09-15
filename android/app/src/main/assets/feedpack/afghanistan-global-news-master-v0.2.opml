@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  
+  
+  <head>
+    
+    
+    <title>Afghanistan + Global News Master v0.2</title>
+    
+    
+    <dateCreated>Mon, 14 Sep 2026 10:40:00 +0430</dateCreated>
+    
+    
+    <dateModified>Mon, 14 Sep 2026 10:40:00 +0430</dateModified>
+    
+    
+    <ownerName>Afghanistan News App</ownerName>
+    
+    
+    <docs>https://opml.org/spec2.opml</docs>
+    
+    
+    <description>Project feed-pack version v0.2. Technical file standard remains OPML 2.0. Expanded Android-ready RSS/Atom directory for Afghanistan and global news. Includes direct publisher feeds and categorized Google News RSS discovery feeds. Apps should poll on the server, deduplicate, preserve attribution, cache responsibly, and respect publisher terms and rate limits.</description>
+    
+  
+  </head>
+  
+  
+  <body>
+    
+    
+    <outline text="افغانستان | منابع خبری مستقیم" title="افغانستان | منابع خبری مستقیم" categoryKey="afghanistan-direct-news">
+      
+      
+      <outline text="آریانا نیوز — دری" title="آریانا نیوز — دری" type="rss" xmlUrl="https://www.ariananews.af/fa/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.ariananews.af/"/>
+      
+      
+      <outline text="آریانا نیوز — پشتو" title="آریانا نیوز — پشتو" type="rss" xmlUrl="https://www.ariananews.af/ps/feed/" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.ariananews.af/"/>
+      
+      
+      <outline text="آریانا نیوز — انگلیسی" title="آریانا نیوز — انگلیسی" type="rss" xmlUrl="https://www.ariananews.af/feed/" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.ariananews.af/"/>
+      
+      
+      <outline text="طلوع‌نیوز — خبر و برنامه؛ زبان مختلط" title="طلوع‌نیوز — خبر و برنامه؛ زبان مختلط" type="rss" xmlUrl="https://tolonews.com/rss.xml" language="mixed" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://tolonews.com/"/>
+      
+      
+      <outline text="افغانستان اینترنشنال — فارسی / دری" title="افغانستان اینترنشنال — فارسی / دری" type="rss" xmlUrl="https://www.afintl.com/feed" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.afintl.com/"/>
+      
+      
+      <outline text="اطلاعات روز — فارسی / دری" title="اطلاعات روز — فارسی / دری" type="rss" xmlUrl="https://www.etilaatroz.com/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.etilaatroz.com/"/>
+      
+      
+      <outline text="تلویزیون آمو — دری" title="تلویزیون آمو — دری" type="rss" xmlUrl="https://amu.tv/fa/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://amu.tv/"/>
+      
+      
+      <outline text="تلویزیون آمو — پشتو" title="تلویزیون آمو — پشتو" type="rss" xmlUrl="https://amu.tv/ps/feed/" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://amu.tv/"/>
+      
+      
+      <outline text="تلویزیون آمو — انگلیسی" title="تلویزیون آمو — انگلیسی" type="rss" xmlUrl="https://amu.tv/feed/" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://amu.tv/"/>
+      
+      
+      <outline text="خبرگزاری خامه‌پرس — فارسی / دری" title="خبرگزاری خامه‌پرس — فارسی / دری" type="rss" xmlUrl="https://www.khaama.com/persian/feed" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.khaama.com/"/>
+      
+      
+      <outline text="خبرگزاری خامه‌پرس — انگلیسی" title="خبرگزاری خامه‌پرس — انگلیسی" type="rss" xmlUrl="https://www.khaama.com/feed/" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.khaama.com/"/>
+      
+      
+      <outline text="سلام وطندار — دری" title="سلام وطندار — دری" type="rss" xmlUrl="https://swn.af/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://swn.af/"/>
+      
+      
+      <outline text="سلام وطندار — انگلیسی" title="سلام وطندار — انگلیسی" type="rss" xmlUrl="https://swn.af/en/feed/" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://swn.af/"/>
+      
+      
+      <outline text="کلید گروپ — دری" title="کلید گروپ — دری" type="rss" xmlUrl="https://tkg.af/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://tkg.af/"/>
+      
+      
+      <outline text="کلید گروپ — پشتو" title="کلید گروپ — پشتو" type="rss" xmlUrl="https://tkg.af/pashto/feed/" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://tkg.af/"/>
+      
+      
+      <outline text="رسانه رخشانه — دری" title="رسانه رخشانه — دری" type="rss" xmlUrl="https://rukhshana.com/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://rukhshana.com/"/>
+      
+      
+      <outline text="KabulNow — انگلیسی" title="KabulNow — انگلیسی" type="rss" xmlUrl="https://kabulnow.com/feed/" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://kabulnow.com/"/>
+      
+      
+      <outline text="خبرگزاری باختر — دری؛ همه خبرها" title="خبرگزاری باختر — دری؛ همه خبرها" type="rss" xmlUrl="https://www.bakhtarnews.af/dr/rss/latest-posts" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bakhtarnews.af/"/>
+      
+      
+      <outline text="خبرگزاری باختر — انگلیسی" title="خبرگزاری باختر — انگلیسی" type="rss" xmlUrl="https://www.bakhtarnews.af/en/rss/latest-posts" language="en" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bakhtarnews.af/"/>
+      
+      
+      <outline text="خبرگزاری باختر — اقتصاد؛ دری" title="خبرگزاری باختر — اقتصاد؛ دری" type="rss" xmlUrl="https://www.bakhtarnews.af/dr/rss/category/economy-fa" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bakhtarnews.af/"/>
+      
+      
+      <outline text="خبرگزاری باختر — آموزش؛ دری" title="خبرگزاری باختر — آموزش؛ دری" type="rss" xmlUrl="https://www.bakhtarnews.af/dr/rss/category/education-fa" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bakhtarnews.af/"/>
+      
+      
+      <outline text="صدای امریکا؛ دری — فقط افغانستان" title="صدای امریکا؛ دری — فقط افغانستان" type="rss" xmlUrl="https://www.darivoa.com/api/zp_gil-vomx-tpe_b-p" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.darivoa.com/"/>
+      
+      
+      <outline text="صدای امریکا؛ دری — خبرهای اصلی و جهان" title="صدای امریکا؛ دری — خبرهای اصلی و جهان" type="rss" xmlUrl="https://www.darivoa.com/api/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.darivoa.com/"/>
+      
+      
+      <outline text="امریکا غږ؛ پشتو — فقط افغانستان" title="امریکا غږ؛ پشتو — فقط افغانستان" type="rss" xmlUrl="https://www.pashtovoa.com/api/zpktvl-vomx-tpe_pgr" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.pashtovoa.com/"/>
+      
+      
+      <outline text="امریکا غږ؛ پشتو — خبرهای اصلی و جهان" title="امریکا غږ؛ پشتو — خبرهای اصلی و جهان" type="rss" xmlUrl="https://www.pashtovoa.com/api/" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.pashtovoa.com/"/>
+      
+      
+      <outline text="رادیو آزادی — خبر افغانستان؛ دری" title="رادیو آزادی — خبر افغانستان؛ دری" type="rss" xmlUrl="https://da.azadiradio.com/api/zr-vil-vomx-tpeoykp" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://da.azadiradio.com/"/>
+      
+      
+      <outline text="رادیو آزادی — عمومی؛ دری" title="رادیو آزادی — عمومی؛ دری" type="rss" xmlUrl="https://da.azadiradio.com/api/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://da.azadiradio.com/"/>
+      
+      
+      <outline text="رادیو آزادی — عمومی؛ پشتو" title="رادیو آزادی — عمومی؛ پشتو" type="rss" xmlUrl="https://pa.azadiradio.com/api/" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://da.azadiradio.com/"/>
+      
+      
+      <outline text="BBC فارسی و پشتو — فارسی؛ افغانستان و جهان" title="BBC فارسی و پشتو — فارسی؛ افغانستان و جهان" type="rss" xmlUrl="https://feeds.bbci.co.uk/persian/rss.xml" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bbc.com/persian"/>
+      
+      
+      <outline text="BBC فارسی و پشتو — پشتو؛ افغانستان و جهان" title="BBC فارسی و پشتو — پشتو؛ افغانستان و جهان" type="rss" xmlUrl="https://feeds.bbci.co.uk/pashto/rss.xml" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.bbc.com/persian"/>
+      
+      
+      <outline text="خبرگزاری دید — فارسی / دری" title="خبرگزاری دید — فارسی / دری" type="rss" xmlUrl="https://didpress.com/feed/" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://didpress.com/"/>
+      
+      
+      <outline text="خبرگزاری صدای افغان / آوا — آخرین عنوان‌ها؛ دری" title="خبرگزاری صدای افغان / آوا — آخرین عنوان‌ها؛ دری" type="rss" xmlUrl="https://www.avapress.com/rssb5.-er48r6--4qhfle2m.puirug.r.xml" language="fa" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://www.avapress.com/"/>
+      
+      
+      <outline text="تاند / Taand — پشتو" title="تاند / Taand — پشتو" type="rss" xmlUrl="https://taand.net/?feed=rss2" language="ps" sourceType="validated-direct" priority="high" scope="afghanistan" htmlUrl="https://taand.net/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="افغانستان | وظایف، فرصت‌ها، داوطلبی و تحلیل" title="افغانستان | وظایف، فرصت‌ها، داوطلبی و تحلیل" categoryKey="afghanistan-opportunities-analysis">
+      
+      
+      <outline text="ReliefWeb / ریلیف‌وب — وظایف افغانستان" title="ReliefWeb / ریلیف‌وب — وظایف افغانستان" type="rss" xmlUrl="https://reliefweb.int/jobs/rss.xml?advanced-search=%28C13%29" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://reliefweb.int/jobs?advanced-search=%28C13%29"/>
+      
+      
+      <outline text="ReliefWeb / ریلیف‌وب — گزارش‌های مرتبط با افغانستان" title="ReliefWeb / ریلیف‌وب — گزارش‌های مرتبط با افغانستان" type="rss" xmlUrl="https://reliefweb.int/updates/rss.xml?advanced-search=%28C13%29" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://reliefweb.int/jobs?advanced-search=%28C13%29"/>
+      
+      
+      <outline text="UNDP / برنامه انکشافی ملل متحد — داوطلبی‌های UNDP افغانستان" title="UNDP / برنامه انکشافی ملل متحد — داوطلبی‌های UNDP افغانستان" type="rss" xmlUrl="https://procurement-notices.undp.org/rss_feeds/AFG.xml" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://www.undp.org/afghanistan/jobs"/>
+      
+      
+      <outline text="Scholarships.af — فرصت‌ها و بورسیه‌ها" title="Scholarships.af — فرصت‌ها و بورسیه‌ها" type="rss" xmlUrl="https://scholarships.af/feed/?post_type=job" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://scholarships.af/"/>
+      
+      
+      <outline text="Scholarships.af — وبلاگ؛ نه همه فرصت‌ها" title="Scholarships.af — وبلاگ؛ نه همه فرصت‌ها" type="rss" xmlUrl="https://scholarships.af/feed/" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://scholarships.af/"/>
+      
+      
+      <outline text="O4AF / فرصت‌ها برای افغانستان — فرصت‌ها، بورسیه و کارآموزی" title="O4AF / فرصت‌ها برای افغانستان — فرصت‌ها، بورسیه و کارآموزی" type="rss" xmlUrl="https://o4af.com/feed/?post_type=job" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://o4af.com/opportunities/"/>
+      
+      
+      <outline text="O4AF / فرصت‌ها برای افغانستان — وبلاگ؛ نه همه فرصت‌ها" title="O4AF / فرصت‌ها برای افغانستان — وبلاگ؛ نه همه فرصت‌ها" type="rss" xmlUrl="https://o4af.com/feed/" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://o4af.com/opportunities/"/>
+      
+      
+      <outline text="شبکه تحلیلگران افغانستان / AAN — تحلیل انگلیسی" title="شبکه تحلیلگران افغانستان / AAN — تحلیل انگلیسی" type="rss" xmlUrl="https://www.afghanistan-analysts.org/en/feed/" language="en" sourceType="validated-direct" priority="normal" scope="afghanistan" htmlUrl="https://www.afghanistan-analysts.org/en/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="افغانستان | پوشش موضوعی گسترده" title="افغانستان | پوشش موضوعی گسترده" categoryKey="afghanistan-topic-discovery">
+      
+      
+      <outline text="افغانستان — خبر فوری 24 ساعت" title="افغانستان — خبر فوری 24 ساعت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کابل — خبر فوری 24 ساعت" title="کابل — خبر فوری 24 ساعت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Kabul+Afghanistan+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="سیاست و حکومت افغانستان" title="سیاست و حکومت افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+politics+government+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="امنیت، درگیری و صلح افغانستان" title="امنیت، درگیری و صلح افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+security+conflict+peace+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="اقتصاد و تجارت افغانستان" title="اقتصاد و تجارت افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+economy+business+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بانک، افغانی، دلار و نرخ ارز افغانستان" title="بانک، افغانی، دلار و نرخ ارز افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+afghani+dollar+banking+exchange+rate+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="مالیات، بودجه و مالیه افغانستان" title="مالیات، بودجه و مالیه افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+tax+budget+finance+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="سرمایه‌گذاری و شرکت‌ها در افغانستان" title="سرمایه‌گذاری و شرکت‌ها در افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+investment+companies+business+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کار و بازار کار افغانستان" title="کار و بازار کار افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+jobs+employment+labor+market+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بورسیه، دانشگاه و فرصت‌های آموزشی افغان‌ها" title="بورسیه، دانشگاه و فرصت‌های آموزشی افغان‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+scholarship+university+students+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="آموزش، مکتب و دانشگاه افغانستان" title="آموزش، مکتب و دانشگاه افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+education+schools+universities+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="صحت و شفاخانه‌های افغانستان" title="صحت و شفاخانه‌های افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+health+hospitals+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کمک‌های بشردوستانه و بحران انسانی" title="کمک‌های بشردوستانه و بحران انسانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+humanitarian+aid+crisis+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="مهاجرت، اخراج و پناهندگان افغان" title="مهاجرت، اخراج و پناهندگان افغان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+refugees+migrants+deportation+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="زنان، دختران و حقوق بشر افغانستان" title="زنان، دختران و حقوق بشر افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+women+girls+human+rights+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="ورزش و کریکت افغانستان" title="ورزش و کریکت افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+cricket+sports+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="زراعت و امنیت غذایی افغانستان" title="زراعت و امنیت غذایی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+agriculture+food+security+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="معادن، انرژی و پروژه‌های زیربنایی افغانستان" title="معادن، انرژی و پروژه‌های زیربنایی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+mining+minerals+energy+infrastructure+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="اینترنت، مخابرات و فناوری افغانستان" title="اینترنت، مخابرات و فناوری افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+technology+telecom+internet+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="اقلیم، خشکسالی، سیلاب و زلزله افغانستان" title="اقلیم، خشکسالی، سیلاب و زلزله افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+climate+drought+flood+earthquake+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="روابط خارجی و دیپلماسی افغانستان" title="روابط خارجی و دیپلماسی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+foreign+relations+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="تحریم‌ها و سازمان ملل درباره افغانستان" title="تحریم‌ها و سازمان ملل درباره افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+sanctions+United+Nations+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="high" scope="afghanistan" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="جهان | خبر فوری و بین‌المللی" title="جهان | خبر فوری و بین‌المللی" categoryKey="world-breaking">
+      
+      
+      <outline text="BBC News — Top Stories" title="BBC News — Top Stories" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/rss.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.bbc.com/news"/>
+      
+      
+      <outline text="BBC News — World" title="BBC News — World" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/world/rss.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.bbc.com/news/world"/>
+      
+      
+      <outline text="BBC News — Asia" title="BBC News — Asia" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/world/asia/rss.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.bbc.com/news/world/asia"/>
+      
+      
+      <outline text="Al Jazeera — All News" title="Al Jazeera — All News" type="rss" xmlUrl="https://www.aljazeera.com/xml/rss/all.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.aljazeera.com/"/>
+      
+      
+      <outline text="The Guardian — World" title="The Guardian — World" type="rss" xmlUrl="https://www.theguardian.com/world/rss" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.theguardian.com/world"/>
+      
+      
+      <outline text="The Guardian — Afghanistan" title="The Guardian — Afghanistan" type="rss" xmlUrl="https://www.theguardian.com/world/afghanistan/rss" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.theguardian.com/world/afghanistan"/>
+      
+      
+      <outline text="The Guardian — Asia" title="The Guardian — Asia" type="rss" xmlUrl="https://www.theguardian.com/world/asia/rss" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.theguardian.com/world/asia"/>
+      
+      
+      <outline text="The Guardian — Middle East" title="The Guardian — Middle East" type="rss" xmlUrl="https://www.theguardian.com/world/middleeast/rss" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.theguardian.com/world/middleeast"/>
+      
+      
+      <outline text="NPR — Top Stories" title="NPR — Top Stories" type="rss" xmlUrl="https://feeds.npr.org/1001/rss.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.npr.org/"/>
+      
+      
+      <outline text="ABC News — International" title="ABC News — International" type="rss" xmlUrl="https://abcnews.go.com/abcnews/internationalheadlines" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://abcnews.go.com/International"/>
+      
+      
+      <outline text="ABC News — Top Stories" title="ABC News — Top Stories" type="rss" xmlUrl="https://abcnews.go.com/abcnews/topstories" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://abcnews.go.com/"/>
+      
+      
+      <outline text="NBC News — Top Stories" title="NBC News — Top Stories" type="rss" xmlUrl="https://feeds.nbcnews.com/nbcnews/public/news" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.nbcnews.com/"/>
+      
+      
+      <outline text="France 24 — English" title="France 24 — English" type="rss" xmlUrl="https://www.france24.com/en/rss" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.france24.com/en/"/>
+      
+      
+      <outline text="New York Times — World" title="New York Times — World" type="rss" xmlUrl="https://rss.nytimes.com/services/xml/rss/nyt/World.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.nytimes.com/section/world"/>
+      
+      
+      <outline text="New York Times — Home Page" title="New York Times — Home Page" type="rss" xmlUrl="https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml" language="en" sourceType="direct" priority="high" scope="global" htmlUrl="https://www.nytimes.com/"/>
+      
+      
+      <outline text="Google News — Top" title="Google News — Top" type="rss" xmlUrl="https://news.google.com/rss?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="high" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="Google News — World" title="Google News — World" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="high" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="اقتصاد، تجارت، پول و ارز" title="اقتصاد، تجارت، پول و ارز" categoryKey="economy-finance-currency">
+      
+      
+      <outline text="BBC — Business" title="BBC — Business" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/business/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/business"/>
+      
+      
+      <outline text="The Guardian — Business" title="The Guardian — Business" type="rss" xmlUrl="https://www.theguardian.com/business/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/business"/>
+      
+      
+      <outline text="The Guardian — Money" title="The Guardian — Money" type="rss" xmlUrl="https://www.theguardian.com/money/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/money"/>
+      
+      
+      <outline text="New York Times — Business" title="New York Times — Business" type="rss" xmlUrl="https://rss.nytimes.com/services/xml/rss/nyt/Business.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.nytimes.com/section/business"/>
+      
+      
+      <outline text="Federal Reserve — All Press Releases" title="Federal Reserve — All Press Releases" type="rss" xmlUrl="https://www.federalreserve.gov/feeds/press_all.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.federalreserve.gov/newsevents/pressreleases.htm"/>
+      
+      
+      <outline text="Federal Reserve — Monetary Policy" title="Federal Reserve — Monetary Policy" type="rss" xmlUrl="https://www.federalreserve.gov/feeds/press_monetary.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.federalreserve.gov/monetarypolicy.htm"/>
+      
+      
+      <outline text="SEC — Press Releases" title="SEC — Press Releases" type="rss" xmlUrl="https://www.sec.gov/news/pressreleases.rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.sec.gov/newsroom/press-releases"/>
+      
+      
+      <outline text="Google News — Business" title="Google News — Business" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="اقتصاد جهانی و تورم" title="اقتصاد جهانی و تورم" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+economy+inflation+interest+rates+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="دلار و بازار ارز" title="دلار و بازار ارز" type="rss" xmlUrl="https://news.google.com/rss/search?q=US+dollar+forex+exchange+rates+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="طلا و کالاها" title="طلا و کالاها" type="rss" xmlUrl="https://news.google.com/rss/search?q=gold+commodities+prices+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="نفت، گاز و انرژی" title="نفت، گاز و انرژی" type="rss" xmlUrl="https://news.google.com/rss/search?q=oil+gas+energy+prices+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بانک‌های مرکزی و نرخ بهره" title="بانک‌های مرکزی و نرخ بهره" type="rss" xmlUrl="https://news.google.com/rss/search?q=central+banks+interest+rates+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بازار کار و اشتغال جهانی" title="بازار کار و اشتغال جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=jobs+employment+labor+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="تجارت جهانی و تعرفه‌ها" title="تجارت جهانی و تعرفه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+trade+tariffs+exports+imports+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="فناوری، هوش مصنوعی و استارتاپ" title="فناوری، هوش مصنوعی و استارتاپ" categoryKey="technology-ai">
+      
+      
+      <outline text="BBC — Technology" title="BBC — Technology" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/technology/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/innovation/technology"/>
+      
+      
+      <outline text="The Guardian — Technology" title="The Guardian — Technology" type="rss" xmlUrl="https://www.theguardian.com/technology/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/technology"/>
+      
+      
+      <outline text="TechCrunch — All" title="TechCrunch — All" type="rss" xmlUrl="https://techcrunch.com/feed/" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://techcrunch.com/"/>
+      
+      
+      <outline text="TechCrunch — Startups" title="TechCrunch — Startups" type="rss" xmlUrl="https://techcrunch.com/startups/feed/" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://techcrunch.com/startups/"/>
+      
+      
+      <outline text="The Verge — Main" title="The Verge — Main" type="rss" xmlUrl="https://www.theverge.com/rss/index.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theverge.com/"/>
+      
+      
+      <outline text="Ars Technica — All News" title="Ars Technica — All News" type="rss" xmlUrl="https://feeds.arstechnica.com/arstechnica/index" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://arstechnica.com/"/>
+      
+      
+      <outline text="WIRED — Main" title="WIRED — Main" type="rss" xmlUrl="https://www.wired.com/feed/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.wired.com/"/>
+      
+      
+      <outline text="WIRED — Business" title="WIRED — Business" type="rss" xmlUrl="https://www.wired.com/feed/category/business/latest/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.wired.com/category/business/"/>
+      
+      
+      <outline text="Google News — Technology" title="Google News — Technology" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="هوش مصنوعی" title="هوش مصنوعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=artificial+intelligence+AI+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="استارتاپ و سرمایه‌گذاری فناوری" title="استارتاپ و سرمایه‌گذاری فناوری" type="rss" xmlUrl="https://news.google.com/rss/search?q=technology+startups+venture+capital+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="موبایل و اندروید" title="موبایل و اندروید" type="rss" xmlUrl="https://news.google.com/rss/search?q=Android+mobile+technology+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="اینترنت و مخابرات" title="اینترنت و مخابرات" type="rss" xmlUrl="https://news.google.com/rss/search?q=internet+telecom+technology+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="رمزارز و دارایی دیجیتال" title="رمزارز و دارایی دیجیتال" categoryKey="crypto-digital-assets">
+      
+      
+      <outline text="CoinDesk — Latest" title="CoinDesk — Latest" type="rss" xmlUrl="https://www.coindesk.com/arc/outboundfeeds/rss/" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.coindesk.com/"/>
+      
+      
+      <outline text="Cointelegraph — Latest" title="Cointelegraph — Latest" type="rss" xmlUrl="https://cointelegraph.com/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://cointelegraph.com/"/>
+      
+      
+      <outline text="Decrypt — Latest" title="Decrypt — Latest" type="rss" xmlUrl="https://decrypt.co/feed" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://decrypt.co/"/>
+      
+      
+      <outline text="The Block — Latest" title="The Block — Latest" type="rss" xmlUrl="https://www.theblock.co/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theblock.co/"/>
+      
+      
+      <outline text="رمزارز — خبرهای مهم" title="رمزارز — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=cryptocurrency+digital+assets+regulation+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بیت‌کوین و اتریوم" title="بیت‌کوین و اتریوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=Bitcoin+Ethereum+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="استیبل‌کوین و مقررات کریپتو" title="استیبل‌کوین و مقررات کریپتو" type="rss" xmlUrl="https://news.google.com/rss/search?q=stablecoin+crypto+regulation+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="ورزش و کریکت" title="ورزش و کریکت" categoryKey="sports-cricket">
+      
+      
+      <outline text="BBC Sport — All" title="BBC Sport — All" type="rss" xmlUrl="https://feeds.bbci.co.uk/sport/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/sport"/>
+      
+      
+      <outline text="BBC Sport — Cricket" title="BBC Sport — Cricket" type="rss" xmlUrl="https://feeds.bbci.co.uk/sport/cricket/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/sport/cricket"/>
+      
+      
+      <outline text="The Guardian — Sport" title="The Guardian — Sport" type="rss" xmlUrl="https://www.theguardian.com/sport/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/sport"/>
+      
+      
+      <outline text="The Guardian — Football" title="The Guardian — Football" type="rss" xmlUrl="https://www.theguardian.com/football/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/football"/>
+      
+      
+      <outline text="Google News — Sports" title="Google News — Sports" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کریکت جهان" title="کریکت جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+cricket+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="فوتبال جهان" title="فوتبال جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=football+soccer+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="صحت، بشردوستانه و جامعه" title="صحت، بشردوستانه و جامعه" categoryKey="health-humanitarian">
+      
+      
+      <outline text="BBC — Health" title="BBC — Health" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/health/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/innovation/health"/>
+      
+      
+      <outline text="The Guardian — Health" title="The Guardian — Health" type="rss" xmlUrl="https://www.theguardian.com/society/health/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/society/health"/>
+      
+      
+      <outline text="The Verge — Health" title="The Verge — Health" type="rss" xmlUrl="https://www.theverge.com/rss/health/index.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theverge.com/health"/>
+      
+      
+      <outline text="Google News — Health" title="Google News — Health" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="سلامت جهانی و بیماری‌ها" title="سلامت جهانی و بیماری‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+health+disease+outbreak+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کمک‌های بشردوستانه جهانی" title="کمک‌های بشردوستانه جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=humanitarian+aid+crisis+United+Nations+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="فقر و امنیت غذایی" title="فقر و امنیت غذایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=food+security+poverty+humanitarian+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="علم، فضا، محیط زیست و اقلیم" title="علم، فضا، محیط زیست و اقلیم" categoryKey="science-space-climate">
+      
+      
+      <outline text="BBC — Science &amp; Environment" title="BBC — Science &amp; Environment" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/science_and_environment/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/innovation/science"/>
+      
+      
+      <outline text="The Guardian — Science" title="The Guardian — Science" type="rss" xmlUrl="https://www.theguardian.com/science/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/science"/>
+      
+      
+      <outline text="The Guardian — Environment" title="The Guardian — Environment" type="rss" xmlUrl="https://www.theguardian.com/environment/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/environment"/>
+      
+      
+      <outline text="The Guardian — Space" title="The Guardian — Space" type="rss" xmlUrl="https://www.theguardian.com/science/space/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/science/space"/>
+      
+      
+      <outline text="WIRED — Science" title="WIRED — Science" type="rss" xmlUrl="https://www.wired.com/feed/category/science/latest/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.wired.com/category/science/"/>
+      
+      
+      <outline text="NASA — Recently Published" title="NASA — Recently Published" type="rss" xmlUrl="https://www.nasa.gov/feed/" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.nasa.gov/"/>
+      
+      
+      <outline text="NASA — Breaking News" title="NASA — Breaking News" type="rss" xmlUrl="https://www.nasa.gov/rss/dyn/breaking_news.rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.nasa.gov/news/"/>
+      
+      
+      <outline text="Google News — Science" title="Google News — Science" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="تغییر اقلیم و هوای شدید" title="تغییر اقلیم و هوای شدید" type="rss" xmlUrl="https://news.google.com/rss/search?q=climate+change+extreme+weather+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="زلزله، سیلاب و بلایای طبیعی" title="زلزله، سیلاب و بلایای طبیعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=earthquake+flood+natural+disaster+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="فضا و نجوم" title="فضا و نجوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=space+astronomy+NASA+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="پژوهش و کشفیات علمی" title="پژوهش و کشفیات علمی" type="rss" xmlUrl="https://news.google.com/rss/search?q=science+research+discovery+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="آموزش، کار و فرصت‌ها" title="آموزش، کار و فرصت‌ها" categoryKey="education-jobs">
+      
+      
+      <outline text="The Guardian — Education" title="The Guardian — Education" type="rss" xmlUrl="https://www.theguardian.com/education/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/education"/>
+      
+      
+      <outline text="آموزش و دانشگاه‌های جهان" title="آموزش و دانشگاه‌های جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=education+universities+students+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="بورسیه و فرصت آموزشی" title="بورسیه و فرصت آموزشی" type="rss" xmlUrl="https://news.google.com/rss/search?q=scholarships+international+students+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کار، استخدام و بازار کار" title="کار، استخدام و بازار کار" type="rss" xmlUrl="https://news.google.com/rss/search?q=employment+hiring+jobs+labor+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="مهارت، کارآموزی و آموزش حرفه‌ای" title="مهارت، کارآموزی و آموزش حرفه‌ای" type="rss" xmlUrl="https://news.google.com/rss/search?q=internships+vocational+training+skills+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="فرهنگ، رسانه و سرگرمی" title="فرهنگ، رسانه و سرگرمی" categoryKey="culture-entertainment">
+      
+      
+      <outline text="BBC — Entertainment &amp; Arts" title="BBC — Entertainment &amp; Arts" type="rss" xmlUrl="https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.bbc.com/culture"/>
+      
+      
+      <outline text="The Guardian — Culture" title="The Guardian — Culture" type="rss" xmlUrl="https://www.theguardian.com/culture/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/culture"/>
+      
+      
+      <outline text="The Verge — Entertainment" title="The Verge — Entertainment" type="rss" xmlUrl="https://www.theverge.com/rss/entertainment/index.xml" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theverge.com/entertainment"/>
+      
+      
+      <outline text="Google News — Entertainment" title="Google News — Entertainment" type="rss" xmlUrl="https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-topic" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="مهاجرت، پناهندگان، حقوق بشر و توسعه" title="مهاجرت، پناهندگان، حقوق بشر و توسعه" categoryKey="migration-rights-development">
+      
+      
+      <outline text="The Guardian — Global Development" title="The Guardian — Global Development" type="rss" xmlUrl="https://www.theguardian.com/global-development/rss" language="en" sourceType="direct" priority="normal" scope="global" htmlUrl="https://www.theguardian.com/global-development"/>
+      
+      
+      <outline text="مهاجرت و پناهندگان جهان" title="مهاجرت و پناهندگان جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=migration+refugees+asylum+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="حقوق بشر جهان" title="حقوق بشر جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=human+rights+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="زنان و آموزش دختران جهان" title="زنان و آموزش دختران جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=women+girls+education+rights+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="کمک و توسعه بین‌المللی" title="کمک و توسعه بین‌المللی" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+development+aid+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="global" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+    
+    <outline text="منطقه | خبرهای مرتبط با افغانستان" title="منطقه | خبرهای مرتبط با افغانستان" categoryKey="afghanistan-regional">
+      
+      
+      <outline text="افغانستان و پاکستان" title="افغانستان و پاکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Pakistan+relations+border+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و ایران" title="افغانستان و ایران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Iran+relations+migrants+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و هند" title="افغانستان و هند" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+India+relations+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و چین" title="افغانستان و چین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+China+relations+investment+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و آسیای مرکزی" title="افغانستان و آسیای مرکزی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Central+Asia+Uzbekistan+Tajikistan+Turkmenistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و روسیه" title="افغانستان و روسیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Russia+relations+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و امریکا" title="افغانستان و امریکا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+United+States+relations+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و اروپا" title="افغانستان و اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Europe+European+Union+relations+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+      
+      <outline text="افغانستان و سازمان ملل" title="افغانستان و سازمان ملل" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+United+Nations+UN+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" sourceType="aggregator-search" priority="normal" scope="afghanistan-related" htmlUrl="https://news.google.com/"/>
+      
+    
+    </outline>
+    
+  
+    <outline text="افغانستان | ۳۴ ولایت" title="افغانستان | ۳۴ ولایت" categoryKey="afghanistan-provinces">
+      <outline text="Badakhshan — اخبار ولایت" title="Badakhshan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Badakhshan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Badghis — اخبار ولایت" title="Badghis — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Badghis%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Baghlan — اخبار ولایت" title="Baghlan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Baghlan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Balkh — اخبار ولایت" title="Balkh — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Balkh%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Bamyan — اخبار ولایت" title="Bamyan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Bamyan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Daykundi — اخبار ولایت" title="Daykundi — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Daykundi%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Farah — اخبار ولایت" title="Farah — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Farah%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Faryab — اخبار ولایت" title="Faryab — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Faryab%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Ghazni — اخبار ولایت" title="Ghazni — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Ghazni%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Ghor — اخبار ولایت" title="Ghor — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Ghor%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Helmand — اخبار ولایت" title="Helmand — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Helmand%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Herat — اخبار ولایت" title="Herat — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Herat%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Jowzjan — اخبار ولایت" title="Jowzjan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Jowzjan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Kabul — اخبار ولایت" title="Kabul — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kabul%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Kandahar — اخبار ولایت" title="Kandahar — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kandahar%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Kapisa — اخبار ولایت" title="Kapisa — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kapisa%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Khost — اخبار ولایت" title="Khost — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Khost%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Kunar — اخبار ولایت" title="Kunar — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kunar%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Kunduz — اخبار ولایت" title="Kunduz — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kunduz%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Laghman — اخبار ولایت" title="Laghman — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Laghman%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Logar — اخبار ولایت" title="Logar — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Logar%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Nangarhar — اخبار ولایت" title="Nangarhar — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Nangarhar%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Nimroz — اخبار ولایت" title="Nimroz — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Nimroz%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Nuristan — اخبار ولایت" title="Nuristan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Nuristan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Paktia — اخبار ولایت" title="Paktia — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Paktia%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Paktika — اخبار ولایت" title="Paktika — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Paktika%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Panjshir — اخبار ولایت" title="Panjshir — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Panjshir%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Parwan — اخبار ولایت" title="Parwan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Parwan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Samangan — اخبار ولایت" title="Samangan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Samangan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Sar-e Pol — اخبار ولایت" title="Sar-e Pol — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Sar-e+Pol%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Takhar — اخبار ولایت" title="Takhar — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Takhar%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Urozgan — اخبار ولایت" title="Urozgan — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Urozgan%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Wardak — اخبار ولایت" title="Wardak — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Wardak%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Zabul — اخبار ولایت" title="Zabul — اخبار ولایت" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Zabul%22+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-province" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | حکومت، اداره و خدمات عمومی" title="افغانستان | حکومت، اداره و خدمات عمومی" categoryKey="afghanistan-government">
+      <outline text="ریاست‌الوزرا و کابینه" title="ریاست‌الوزرا و کابینه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+cabinet+prime+minister+government+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت مالیه" title="وزارت مالیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Finance+tax+customs+budget+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک مرکزی افغانستان" title="بانک مرکزی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Da+Afghanistan+Bank+central+bank+afghani+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت اقتصاد" title="وزارت اقتصاد" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Economy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت صنعت و تجارت" title="وزارت صنعت و تجارت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Industry+Commerce+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت معادن و پترولیم" title="وزارت معادن و پترولیم" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Mines+Petroleum+mining+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت انرژی و آب" title="وزارت انرژی و آب" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Energy+Water+electricity+dam+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت مخابرات و تکنالوژی" title="وزارت مخابرات و تکنالوژی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Communications+IT+telecom+internet+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت فواید عامه" title="وزارت فواید عامه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Public+Works+roads+infrastructure+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت ترانسپورت و هوانوردی" title="وزارت ترانسپورت و هوانوردی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+transport+aviation+airport+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت زراعت" title="وزارت زراعت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Agriculture+irrigation+livestock+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت صحت عامه" title="وزارت صحت عامه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Public+Health+healthcare+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت معارف" title="وزارت معارف" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Education+schools+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت تحصیلات عالی" title="وزارت تحصیلات عالی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Higher+Education+universities+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت کار و امور اجتماعی" title="وزارت کار و امور اجتماعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Labor+Social+Affairs+jobs+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت مهاجرین" title="وزارت مهاجرین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Refugees+Repatriation+migrants+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت داخله" title="وزارت داخله" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Interior+public+security+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت خارجه" title="وزارت خارجه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Foreign+Ministry+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وزارت عدلیه و قوانین" title="وزارت عدلیه و قوانین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Ministry+Justice+law+regulation+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="شاروالی کابل" title="شاروالی کابل" type="rss" xmlUrl="https://news.google.com/rss/search?q=Kabul+municipality+urban+services+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="پاسپورت و ویزا" title="پاسپورت و ویزا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+passport+visa+travel+documents+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="گمرک و تعرفه" title="گمرک و تعرفه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+customs+tariff+border+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تدارکات و قراردادهای دولتی" title="تدارکات و قراردادهای دولتی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+government+procurement+tender+contract+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بودجه ملی" title="بودجه ملی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+national+budget+revenue+expenditure+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | اقتصاد، پول، بازار و تجارت" title="افغانستان | اقتصاد، پول، بازار و تجارت" categoryKey="afghanistan-economy">
+      <outline text="افغانی و نرخ ارز" title="افغانی و نرخ ارز" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+afghani+exchange+rate+dollar+USD+AFN+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="دلار در افغانستان" title="دلار در افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=US+dollar+Afghanistan+exchange+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="طلا در افغانستان" title="طلا در افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=gold+price+Afghanistan+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تورم و قیمت مواد غذایی" title="تورم و قیمت مواد غذایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+inflation+food+prices+cost+of+living+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک‌ها و بانکداری" title="بانک‌ها و بانکداری" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+banks+banking+finance+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="پرداخت دیجیتال و فین‌تک" title="پرداخت دیجیتال و فین‌تک" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+digital+payment+fintech+banking+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="مالیات" title="مالیات" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+tax+taxation+revenue+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="گمرک" title="گمرک" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+customs+revenue+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="صادرات" title="صادرات" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+exports+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="واردات" title="واردات" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+imports+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تجارت با پاکستان" title="تجارت با پاکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Pakistan+trade+transit+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تجارت با ایران" title="تجارت با ایران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Iran+trade+transit+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تجارت با آسیای مرکزی" title="تجارت با آسیای مرکزی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Central+Asia+trade+transit+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="دهلیزهای تجارتی" title="دهلیزهای تجارتی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+trade+corridor+railway+transit+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سرمایه‌گذاری خارجی" title="سرمایه‌گذاری خارجی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+foreign+investment+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="کسب‌وکار و شرکت‌ها" title="کسب‌وکار و شرکت‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+business+companies+private+sector+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بازار املاک و مسکن" title="بازار املاک و مسکن" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+housing+real+estate+property+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="برق و انرژی" title="برق و انرژی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+electricity+energy+power+imports+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نفت و گاز" title="نفت و گاز" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+oil+gas+fuel+prices+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="معادن" title="معادن" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+mining+minerals+lithium+copper+iron+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="زراعت" title="زراعت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+agriculture+crops+farming+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="زعفران" title="زعفران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+saffron+export+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="میوه خشک و محصولات صادراتی" title="میوه خشک و محصولات صادراتی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+dried+fruit+exports+agriculture+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بیکاری" title="بیکاری" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+unemployment+labor+market+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="فقر" title="فقر" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+poverty+household+economy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="کمک‌های اقتصادی بین‌المللی" title="کمک‌های اقتصادی بین‌المللی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+economic+aid+World+Bank+IMF+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | جامعه، آموزش، صحت و زندگی" title="افغانستان | جامعه، آموزش، صحت و زندگی" categoryKey="afghanistan-society">
+      <outline text="مکاتب و آموزش" title="مکاتب و آموزش" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+schools+education+students+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="دانشگاه‌ها" title="دانشگاه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+universities+higher+education+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه‌ها" title="بورسیه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+students+scholarships+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کانکور و پذیرش دانشگاه" title="کانکور و پذیرش دانشگاه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+university+admission+Kankor+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آموزش دختران" title="آموزش دختران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+girls+education+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="صحت عمومی" title="صحت عمومی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+public+health+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="شفاخانه‌ها" title="شفاخانه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+hospitals+healthcare+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="واکسین و بیماری‌ها" title="واکسین و بیماری‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+vaccine+disease+outbreak+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="پولیو" title="پولیو" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+polio+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="توبرکلوز" title="توبرکلوز" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+tuberculosis+TB+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سرطان" title="سرطان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+cancer+treatment+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="غذا و سوءتغذیه" title="غذا و سوءتغذیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+malnutrition+nutrition+children+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آب آشامیدنی" title="آب آشامیدنی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+drinking+water+sanitation+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="حقوق بشر" title="حقوق بشر" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+human+rights+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="زنان" title="زنان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+women+rights+work+education+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کودکان" title="کودکان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+children+UNICEF+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="معلولیت" title="معلولیت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+disability+persons+with+disabilities+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="رسانه و خبرنگاران" title="رسانه و خبرنگاران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+media+journalists+press+freedom+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فرهنگ و هنر" title="فرهنگ و هنر" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+culture+art+literature+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="موسیقی و سینما" title="موسیقی و سینما" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+music+film+cinema+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آثار تاریخی" title="آثار تاریخی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+heritage+archaeology+historical+sites+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="مساجد و امور دینی" title="مساجد و امور دینی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+religious+affairs+mosques+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | وظایف، بورسیه، قرارداد و فرصت" title="افغانستان | وظایف، بورسیه، قرارداد و فرصت" categoryKey="afghanistan-jobs-opportunities">
+      <outline text="وظایف امروز افغانستان" title="وظایف امروز افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+jobs+vacancies+hiring+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف سازمان ملل در افغانستان" title="وظایف سازمان ملل در افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+UN+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف NGO در افغانستان" title="وظایف NGO در افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+NGO+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف بانکی" title="وظایف بانکی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+bank+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف مخابرات" title="وظایف مخابرات" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+telecom+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف صحی" title="وظایف صحی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+health+medical+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف آموزشی" title="وظایف آموزشی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+teacher+education+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف انجنیری" title="وظایف انجنیری" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+engineering+jobs+vacancy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف IT و تکنالوژی" title="وظایف IT و تکنالوژی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+IT+software+technology+jobs+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="وظایف مالی و حسابداری" title="وظایف مالی و حسابداری" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+finance+accounting+jobs+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="کارآموزی" title="کارآموزی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+internship+opportunity+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه کارشناسی" title="بورسیه کارشناسی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+students+undergraduate+scholarship+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه ماستری" title="بورسیه ماستری" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+students+masters+scholarship+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه دکترا" title="بورسیه دکترا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+students+PhD+scholarship+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="فلوشیپ و برنامه تبادله" title="فلوشیپ و برنامه تبادله" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+fellowship+exchange+program+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="داوطلبی و تندر" title="داوطلبی و تندر" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+tender+procurement+RFQ+RFP+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="قرارداد ساختمانی" title="قرارداد ساختمانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+construction+tender+contract+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="قرارداد NGO و UN" title="قرارداد NGO و UN" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+UN+NGO+procurement+tender+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="گرنت و کمک مالی" title="گرنت و کمک مالی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+grant+funding+opportunity+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | مهاجرت، ویزا و سفر" title="افغانستان | مهاجرت، ویزا و سفر" categoryKey="afghanistan-migration">
+      <outline text="اخراج افغان‌ها از پاکستان" title="اخراج افغان‌ها از پاکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+deportation+Pakistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اخراج افغان‌ها از ایران" title="اخراج افغان‌ها از ایران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+deportation+Iran+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="پناهندگان افغان" title="پناهندگان افغان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+refugees+UNHCR+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="مهاجرت افغان‌ها به اروپا" title="مهاجرت افغان‌ها به اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+migration+Europe+asylum+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغان‌ها در امریکا" title="افغان‌ها در امریکا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghans+United+States+immigration+visa+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغان‌ها در کانادا" title="افغان‌ها در کانادا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghans+Canada+immigration+resettlement+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغان‌ها در بریتانیا" title="افغان‌ها در بریتانیا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghans+UK+immigration+resettlement+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="ویزای بشردوستانه" title="ویزای بشردوستانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+humanitarian+visa+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اسکان مجدد" title="اسکان مجدد" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghan+resettlement+program+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="پروازها و میدان‌های هوایی افغانستان" title="پروازها و میدان‌های هوایی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+flights+airport+aviation+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="مرزها و گذرگاه‌ها" title="مرزها و گذرگاه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+border+crossing+Torkham+Spin+Boldak+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="افغانستان | امنیت، دیپلماسی و بشردوستانه" title="افغانستان | امنیت، دیپلماسی و بشردوستانه" categoryKey="afghanistan-security-diplomacy">
+      <outline text="خبرهای امنیتی افغانستان" title="خبرهای امنیتی افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+security+incidents+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="صلح و گفت‌وگو" title="صلح و گفت‌وگو" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+peace+talks+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="داعش خراسان" title="داعش خراسان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+ISIS+Khorasan+news+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="القاعده و گزارش‌های بین‌المللی" title="القاعده و گزارش‌های بین‌المللی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+al+Qaeda+UN+report+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سازمان ملل و افغانستان" title="سازمان ملل و افغانستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+United+Nations+Security+Council+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="یوناما" title="یوناما" type="rss" xmlUrl="https://news.google.com/rss/search?q=UNAMA+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تحریم‌ها" title="تحریم‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+sanctions+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="کمک‌های بشردوستانه" title="کمک‌های بشردوستانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+humanitarian+aid+OCHA+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="امنیت غذایی" title="امنیت غذایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+food+security+IPC+WFP+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="خشکسالی" title="خشکسالی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+drought+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سیلاب" title="سیلاب" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+flood+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="زلزله" title="زلزله" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+earthquake+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="آوارگان داخلی" title="آوارگان داخلی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+internally+displaced+IDP+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="منطقه | افغانستان و همسایه‌ها" title="منطقه | افغانستان و همسایه‌ها" categoryKey="afghanistan-neighbors">
+      <outline text="افغانستان–پاکستان" title="افغانستان–پاکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Pakistan+relations+border+trade+security+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–ایران" title="افغانستان–ایران" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Iran+relations+trade+refugees+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–چین" title="افغانستان–چین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+China+investment+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–هند" title="افغانستان–هند" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+India+trade+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–روسیه" title="افغانستان–روسیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Russia+diplomacy+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–ازبکستان" title="افغانستان–ازبکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Uzbekistan+trade+railway+energy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–تاجیکستان" title="افغانستان–تاجیکستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Tajikistan+relations+border+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–ترکمنستان" title="افغانستان–ترکمنستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Turkmenistan+TAPI+energy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–قزاقستان" title="افغانستان–قزاقستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Kazakhstan+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–قطر" title="افغانستان–قطر" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Qatar+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–امارات" title="افغانستان–امارات" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+UAE+trade+aviation+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–عربستان سعودی" title="افغانستان–عربستان سعودی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Saudi+Arabia+relations+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–ترکیه" title="افغانستان–ترکیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+Turkey+relations+trade+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–اتحادیه اروپا" title="افغانستان–اتحادیه اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+European+Union+aid+diplomacy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="افغانستان–امریکا" title="افغانستان–امریکا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Afghanistan+United+States+diplomacy+sanctions+aid+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="afghanistan-related" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | مناطق و ژئوپولیتیک" title="جهان | مناطق و ژئوپولیتیک" categoryKey="world-regions">
+      <outline text="خبر فوری جهان" title="خبر فوری جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=world+breaking+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="آسیای جنوبی" title="آسیای جنوبی" type="rss" xmlUrl="https://news.google.com/rss/search?q=South+Asia+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="آسیای مرکزی" title="آسیای مرکزی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Central+Asia+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="خاورمیانه" title="خاورمیانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Middle+East+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="آسیای شرقی" title="آسیای شرقی" type="rss" xmlUrl="https://news.google.com/rss/search?q=East+Asia+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="جنوب شرق آسیا" title="جنوب شرق آسیا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Southeast+Asia+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اروپا" title="اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Europe+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="آفریقا" title="آفریقا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Africa+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="امریکای شمالی" title="امریکای شمالی" type="rss" xmlUrl="https://news.google.com/rss/search?q=North+America+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="امریکای لاتین" title="امریکای لاتین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Latin+America+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اقیانوسیه" title="اقیانوسیه" type="rss" xmlUrl="https://news.google.com/rss/search?q=Australia+New+Zealand+Pacific+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سازمان ملل" title="سازمان ملل" type="rss" xmlUrl="https://news.google.com/rss/search?q=United+Nations+global+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="ناتو" title="ناتو" type="rss" xmlUrl="https://news.google.com/rss/search?q=NATO+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اتحادیه اروپا" title="اتحادیه اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=European+Union+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="G7" title="G7" type="rss" xmlUrl="https://news.google.com/rss/search?q=G7+news+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="G20" title="G20" type="rss" xmlUrl="https://news.google.com/rss/search?q=G20+news+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="BRICS" title="BRICS" type="rss" xmlUrl="https://news.google.com/rss/search?q=BRICS+news+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سازمان همکاری شانگهای" title="سازمان همکاری شانگهای" type="rss" xmlUrl="https://news.google.com/rss/search?q=Shanghai+Cooperation+Organisation+SCO+news+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | کشورها" title="جهان | کشورها" categoryKey="world-countries">
+      <outline text="United States — خبرهای مهم" title="United States — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22United+States%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Canada — خبرهای مهم" title="Canada — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Canada%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="United Kingdom — خبرهای مهم" title="United Kingdom — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22United+Kingdom%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="France — خبرهای مهم" title="France — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22France%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Germany — خبرهای مهم" title="Germany — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Germany%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Italy — خبرهای مهم" title="Italy — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Italy%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Spain — خبرهای مهم" title="Spain — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Spain%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Netherlands — خبرهای مهم" title="Netherlands — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Netherlands%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Belgium — خبرهای مهم" title="Belgium — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Belgium%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Switzerland — خبرهای مهم" title="Switzerland — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Switzerland%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Austria — خبرهای مهم" title="Austria — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Austria%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Sweden — خبرهای مهم" title="Sweden — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Sweden%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Norway — خبرهای مهم" title="Norway — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Norway%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Denmark — خبرهای مهم" title="Denmark — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Denmark%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Finland — خبرهای مهم" title="Finland — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Finland%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Poland — خبرهای مهم" title="Poland — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Poland%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Ukraine — خبرهای مهم" title="Ukraine — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Ukraine%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Russia — خبرهای مهم" title="Russia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Russia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Turkey — خبرهای مهم" title="Turkey — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Turkey%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Saudi Arabia — خبرهای مهم" title="Saudi Arabia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Saudi+Arabia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="United Arab Emirates — خبرهای مهم" title="United Arab Emirates — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22United+Arab+Emirates%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Qatar — خبرهای مهم" title="Qatar — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Qatar%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Iran — خبرهای مهم" title="Iran — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Iran%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Iraq — خبرهای مهم" title="Iraq — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Iraq%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Israel — خبرهای مهم" title="Israel — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Israel%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Jordan — خبرهای مهم" title="Jordan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Jordan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Egypt — خبرهای مهم" title="Egypt — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Egypt%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Pakistan — خبرهای مهم" title="Pakistan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Pakistan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="India — خبرهای مهم" title="India — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22India%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Bangladesh — خبرهای مهم" title="Bangladesh — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Bangladesh%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Sri Lanka — خبرهای مهم" title="Sri Lanka — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Sri+Lanka%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Nepal — خبرهای مهم" title="Nepal — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Nepal%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="China — خبرهای مهم" title="China — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22China%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Japan — خبرهای مهم" title="Japan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Japan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="South Korea — خبرهای مهم" title="South Korea — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22South+Korea%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Indonesia — خبرهای مهم" title="Indonesia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Indonesia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Malaysia — خبرهای مهم" title="Malaysia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Malaysia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Singapore — خبرهای مهم" title="Singapore — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Singapore%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Thailand — خبرهای مهم" title="Thailand — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Thailand%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Vietnam — خبرهای مهم" title="Vietnam — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Vietnam%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Philippines — خبرهای مهم" title="Philippines — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Philippines%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Australia — خبرهای مهم" title="Australia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Australia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="New Zealand — خبرهای مهم" title="New Zealand — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22New+Zealand%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Kazakhstan — خبرهای مهم" title="Kazakhstan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kazakhstan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Uzbekistan — خبرهای مهم" title="Uzbekistan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Uzbekistan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Tajikistan — خبرهای مهم" title="Tajikistan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Tajikistan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Turkmenistan — خبرهای مهم" title="Turkmenistan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Turkmenistan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Kyrgyzstan — خبرهای مهم" title="Kyrgyzstan — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kyrgyzstan%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Brazil — خبرهای مهم" title="Brazil — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Brazil%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Mexico — خبرهای مهم" title="Mexico — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Mexico%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Argentina — خبرهای مهم" title="Argentina — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Argentina%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="South Africa — خبرهای مهم" title="South Africa — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22South+Africa%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Nigeria — خبرهای مهم" title="Nigeria — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Nigeria%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Ethiopia — خبرهای مهم" title="Ethiopia — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Ethiopia%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Kenya — خبرهای مهم" title="Kenya — خبرهای مهم" type="rss" xmlUrl="https://news.google.com/rss/search?q=%22Kenya%22+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="country" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | اقتصاد، بازارهای مالی و کالاها" title="جهان | اقتصاد، بازارهای مالی و کالاها" categoryKey="global-economy-markets">
+      <outline text="اقتصاد جهانی" title="اقتصاد جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+economy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تورم جهانی" title="تورم جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+inflation+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نرخ بهره" title="نرخ بهره" type="rss" xmlUrl="https://news.google.com/rss/search?q=interest+rates+central+banks+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="فدرال رزرو" title="فدرال رزرو" type="rss" xmlUrl="https://news.google.com/rss/search?q=Federal+Reserve+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک مرکزی اروپا" title="بانک مرکزی اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=European+Central+Bank+ECB+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک انگلستان" title="بانک انگلستان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Bank+of+England+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک جاپان" title="بانک جاپان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Bank+of+Japan+monetary+policy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="صندوق بین‌المللی پول" title="صندوق بین‌المللی پول" type="rss" xmlUrl="https://news.google.com/rss/search?q=IMF+economy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بانک جهانی" title="بانک جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=World+Bank+economy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بورس امریکا" title="بورس امریکا" type="rss" xmlUrl="https://news.google.com/rss/search?q=US+stock+market+Wall+Street+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="S&amp;P 500" title="S&amp;P 500" type="rss" xmlUrl="https://news.google.com/rss/search?q=S%26P+500+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Nasdaq" title="Nasdaq" type="rss" xmlUrl="https://news.google.com/rss/search?q=Nasdaq+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Dow Jones" title="Dow Jones" type="rss" xmlUrl="https://news.google.com/rss/search?q=Dow+Jones+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بازارهای اروپا" title="بازارهای اروپا" type="rss" xmlUrl="https://news.google.com/rss/search?q=European+stock+markets+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بازارهای آسیا" title="بازارهای آسیا" type="rss" xmlUrl="https://news.google.com/rss/search?q=Asian+stock+markets+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="دلار امریکا" title="دلار امریکا" type="rss" xmlUrl="https://news.google.com/rss/search?q=US+dollar+DXY+forex+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="یورو" title="یورو" type="rss" xmlUrl="https://news.google.com/rss/search?q=euro+EUR+forex+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="پوند" title="پوند" type="rss" xmlUrl="https://news.google.com/rss/search?q=British+pound+GBP+forex+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="ین جاپان" title="ین جاپان" type="rss" xmlUrl="https://news.google.com/rss/search?q=Japanese+yen+JPY+forex+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="یوان چین" title="یوان چین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Chinese+yuan+CNY+forex+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="طلا" title="طلا" type="rss" xmlUrl="https://news.google.com/rss/search?q=gold+price+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نقره" title="نقره" type="rss" xmlUrl="https://news.google.com/rss/search?q=silver+price+market+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نفت برنت" title="نفت برنت" type="rss" xmlUrl="https://news.google.com/rss/search?q=Brent+crude+oil+price+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نفت WTI" title="نفت WTI" type="rss" xmlUrl="https://news.google.com/rss/search?q=WTI+crude+oil+price+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="گاز طبیعی" title="گاز طبیعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=natural+gas+price+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="مس" title="مس" type="rss" xmlUrl="https://news.google.com/rss/search?q=copper+price+commodities+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="لیتیوم" title="لیتیوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=lithium+price+mining+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="گندم" title="گندم" type="rss" xmlUrl="https://news.google.com/rss/search?q=wheat+price+commodities+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="برنج" title="برنج" type="rss" xmlUrl="https://news.google.com/rss/search?q=rice+price+commodities+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="قهوه" title="قهوه" type="rss" xmlUrl="https://news.google.com/rss/search?q=coffee+price+commodities+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تجارت جهانی" title="تجارت جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+trade+tariffs+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="زنجیره تامین" title="زنجیره تامین" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+supply+chain+shipping+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="حمل‌ونقل دریایی" title="حمل‌ونقل دریایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=shipping+freight+rates+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="مالیات جهانی" title="مالیات جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+tax+policy+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بدهی دولت‌ها" title="بدهی دولت‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=sovereign+debt+government+debt+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | کریپتو، فین‌تک و پرداخت" title="جهان | کریپتو، فین‌تک و پرداخت" categoryKey="crypto-fintech-expanded">
+      <outline text="کریپتو — خبر فوری" title="کریپتو — خبر فوری" type="rss" xmlUrl="https://news.google.com/rss/search?q=cryptocurrency+crypto+breaking+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بیت‌کوین" title="بیت‌کوین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Bitcoin+BTC+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="اتریوم" title="اتریوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=Ethereum+ETH+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="استیبل‌کوین" title="استیبل‌کوین" type="rss" xmlUrl="https://news.google.com/rss/search?q=stablecoin+USDT+USDC+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="ETF بیت‌کوین" title="ETF بیت‌کوین" type="rss" xmlUrl="https://news.google.com/rss/search?q=Bitcoin+ETF+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="ETF اتریوم" title="ETF اتریوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=Ethereum+ETF+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="قوانین کریپتو" title="قوانین کریپتو" type="rss" xmlUrl="https://news.google.com/rss/search?q=crypto+regulation+law+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="صرافی‌های کریپتو" title="صرافی‌های کریپتو" type="rss" xmlUrl="https://news.google.com/rss/search?q=crypto+exchange+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بلاکچین" title="بلاکچین" type="rss" xmlUrl="https://news.google.com/rss/search?q=blockchain+technology+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="DeFi" title="DeFi" type="rss" xmlUrl="https://news.google.com/rss/search?q=DeFi+decentralized+finance+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="توکن‌سازی دارایی" title="توکن‌سازی دارایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=asset+tokenization+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="CBDC" title="CBDC" type="rss" xmlUrl="https://news.google.com/rss/search?q=central+bank+digital+currency+CBDC+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فین‌تک" title="فین‌تک" type="rss" xmlUrl="https://news.google.com/rss/search?q=fintech+payments+banking+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="پرداخت دیجیتال" title="پرداخت دیجیتال" type="rss" xmlUrl="https://news.google.com/rss/search?q=digital+payments+mobile+money+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | فناوری، AI، نرم‌افزار و امنیت سایبری" title="جهان | فناوری، AI، نرم‌افزار و امنیت سایبری" categoryKey="technology-ai-expanded">
+      <outline text="مدل‌های زبانی" title="مدل‌های زبانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=large+language+models+LLM+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="عامل‌های هوش مصنوعی" title="عامل‌های هوش مصنوعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=AI+agents+agentic+AI+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="OpenAI" title="OpenAI" type="rss" xmlUrl="https://news.google.com/rss/search?q=OpenAI+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Google AI" title="Google AI" type="rss" xmlUrl="https://news.google.com/rss/search?q=Google+AI+Gemini+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Anthropic" title="Anthropic" type="rss" xmlUrl="https://news.google.com/rss/search?q=Anthropic+Claude+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Microsoft AI" title="Microsoft AI" type="rss" xmlUrl="https://news.google.com/rss/search?q=Microsoft+AI+Copilot+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Meta AI" title="Meta AI" type="rss" xmlUrl="https://news.google.com/rss/search?q=Meta+AI+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="NVIDIA" title="NVIDIA" type="rss" xmlUrl="https://news.google.com/rss/search?q=NVIDIA+AI+chips+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="AMD" title="AMD" type="rss" xmlUrl="https://news.google.com/rss/search?q=AMD+chips+AI+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Apple" title="Apple" type="rss" xmlUrl="https://news.google.com/rss/search?q=Apple+technology+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Android" title="Android" type="rss" xmlUrl="https://news.google.com/rss/search?q=Android+Google+mobile+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Windows" title="Windows" type="rss" xmlUrl="https://news.google.com/rss/search?q=Microsoft+Windows+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="Linux" title="Linux" type="rss" xmlUrl="https://news.google.com/rss/search?q=Linux+open+source+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="برنامه‌نویسی" title="برنامه‌نویسی" type="rss" xmlUrl="https://news.google.com/rss/search?q=software+development+programming+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="GitHub" title="GitHub" type="rss" xmlUrl="https://news.google.com/rss/search?q=GitHub+developers+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="رایانش ابری" title="رایانش ابری" type="rss" xmlUrl="https://news.google.com/rss/search?q=cloud+computing+AWS+Azure+Google+Cloud+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="دیتاسنتر" title="دیتاسنتر" type="rss" xmlUrl="https://news.google.com/rss/search?q=data+center+cloud+infrastructure+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="تراشه و نیمه‌هادی" title="تراشه و نیمه‌هادی" type="rss" xmlUrl="https://news.google.com/rss/search?q=semiconductor+chips+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="رباتیک" title="رباتیک" type="rss" xmlUrl="https://news.google.com/rss/search?q=robotics+technology+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="محاسبات کوانتومی" title="محاسبات کوانتومی" type="rss" xmlUrl="https://news.google.com/rss/search?q=quantum+computing+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="اینترنت ماهواره‌ای" title="اینترنت ماهواره‌ای" type="rss" xmlUrl="https://news.google.com/rss/search?q=satellite+internet+Starlink+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="5G و 6G" title="5G و 6G" type="rss" xmlUrl="https://news.google.com/rss/search?q=5G+6G+telecom+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="امنیت سایبری" title="امنیت سایبری" type="rss" xmlUrl="https://news.google.com/rss/search?q=cybersecurity+cyber+attack+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="نقض داده" title="نقض داده" type="rss" xmlUrl="https://news.google.com/rss/search?q=data+breach+cybersecurity+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="بدافزار و باج‌افزار" title="بدافزار و باج‌افزار" type="rss" xmlUrl="https://news.google.com/rss/search?q=malware+ransomware+cybersecurity+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="حریم خصوصی" title="حریم خصوصی" type="rss" xmlUrl="https://news.google.com/rss/search?q=digital+privacy+data+protection+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="شبکه‌های اجتماعی" title="شبکه‌های اجتماعی" type="rss" xmlUrl="https://news.google.com/rss/search?q=social+media+platforms+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="استارتاپ‌ها" title="استارتاپ‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=technology+startups+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="سرمایه خطرپذیر" title="سرمایه خطرپذیر" type="rss" xmlUrl="https://news.google.com/rss/search?q=venture+capital+funding+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | صحت و پزشکی" title="جهان | صحت و پزشکی" categoryKey="global-health-expanded">
+      <outline text="خبرهای سلامت جهان" title="خبرهای سلامت جهان" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+health+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="WHO" title="WHO" type="rss" xmlUrl="https://news.google.com/rss/search?q=World+Health+Organization+WHO+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بیماری‌های عفونی" title="بیماری‌های عفونی" type="rss" xmlUrl="https://news.google.com/rss/search?q=infectious+disease+outbreak+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آنفلوانزا" title="آنفلوانزا" type="rss" xmlUrl="https://news.google.com/rss/search?q=influenza+flu+outbreak+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کرونا" title="کرونا" type="rss" xmlUrl="https://news.google.com/rss/search?q=COVID+coronavirus+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سرطان" title="سرطان" type="rss" xmlUrl="https://news.google.com/rss/search?q=cancer+research+treatment+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="قلب" title="قلب" type="rss" xmlUrl="https://news.google.com/rss/search?q=cardiovascular+heart+disease+research+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="دیابت" title="دیابت" type="rss" xmlUrl="https://news.google.com/rss/search?q=diabetes+research+treatment+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سلامت مادر و کودک" title="سلامت مادر و کودک" type="rss" xmlUrl="https://news.google.com/rss/search?q=maternal+child+health+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="واکسین" title="واکسین" type="rss" xmlUrl="https://news.google.com/rss/search?q=vaccines+immunization+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="دارو" title="دارو" type="rss" xmlUrl="https://news.google.com/rss/search?q=medicine+drug+approvals+health+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="پژوهش پزشکی" title="پژوهش پزشکی" type="rss" xmlUrl="https://news.google.com/rss/search?q=medical+research+clinical+trial+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سلامت عمومی" title="سلامت عمومی" type="rss" xmlUrl="https://news.google.com/rss/search?q=public+health+policy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سیستم‌های صحی" title="سیستم‌های صحی" type="rss" xmlUrl="https://news.google.com/rss/search?q=healthcare+systems+hospitals+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | علم، اقلیم و حوادث طبیعی" title="جهان | علم، اقلیم و حوادث طبیعی" categoryKey="science-climate-disasters-expanded">
+      <outline text="علم — خبرهای تازه" title="علم — خبرهای تازه" type="rss" xmlUrl="https://news.google.com/rss/search?q=science+discovery+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فضا" title="فضا" type="rss" xmlUrl="https://news.google.com/rss/search?q=space+exploration+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="NASA" title="NASA" type="rss" xmlUrl="https://news.google.com/rss/search?q=NASA+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="SpaceX" title="SpaceX" type="rss" xmlUrl="https://news.google.com/rss/search?q=SpaceX+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="نجوم" title="نجوم" type="rss" xmlUrl="https://news.google.com/rss/search?q=astronomy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="اقلیم" title="اقلیم" type="rss" xmlUrl="https://news.google.com/rss/search?q=climate+change+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="گرمایش جهانی" title="گرمایش جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+warming+climate+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="هوای شدید" title="هوای شدید" type="rss" xmlUrl="https://news.google.com/rss/search?q=extreme+weather+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="زلزله" title="زلزله" type="rss" xmlUrl="https://news.google.com/rss/search?q=earthquake+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سیلاب" title="سیلاب" type="rss" xmlUrl="https://news.google.com/rss/search?q=flood+disaster+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="طوفان" title="طوفان" type="rss" xmlUrl="https://news.google.com/rss/search?q=hurricane+cyclone+typhoon+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آتش‌سوزی جنگلی" title="آتش‌سوزی جنگلی" type="rss" xmlUrl="https://news.google.com/rss/search?q=wildfire+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="خشکسالی" title="خشکسالی" type="rss" xmlUrl="https://news.google.com/rss/search?q=drought+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="محیط زیست" title="محیط زیست" type="rss" xmlUrl="https://news.google.com/rss/search?q=environment+biodiversity+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آلودگی هوا" title="آلودگی هوا" type="rss" xmlUrl="https://news.google.com/rss/search?q=air+pollution+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="آب و منابع آبی" title="آب و منابع آبی" type="rss" xmlUrl="https://news.google.com/rss/search?q=water+scarcity+water+resources+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="انرژی تجدیدپذیر" title="انرژی تجدیدپذیر" type="rss" xmlUrl="https://news.google.com/rss/search?q=renewable+energy+solar+wind+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="انرژی هسته‌ای" title="انرژی هسته‌ای" type="rss" xmlUrl="https://news.google.com/rss/search?q=nuclear+energy+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="USGS — همه زلزله‌ها در ساعت گذشته" title="USGS — همه زلزله‌ها در ساعت گذشته" type="atom" xmlUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom" language="en" scope="global" sourceType="official-realtime" priority="high" htmlUrl="https://earthquake.usgs.gov/earthquakes/feed/"/>
+      <outline text="USGS — همه زلزله‌ها در روز گذشته" title="USGS — همه زلزله‌ها در روز گذشته" type="atom" xmlUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom" language="en" scope="global" sourceType="official-realtime" priority="high" htmlUrl="https://earthquake.usgs.gov/earthquakes/feed/"/>
+      <outline text="USGS — زلزله‌های M2.5+ روز گذشته" title="USGS — زلزله‌های M2.5+ روز گذشته" type="atom" xmlUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom" language="en" scope="global" sourceType="official-realtime" priority="high" htmlUrl="https://earthquake.usgs.gov/earthquakes/feed/"/>
+      <outline text="USGS — زلزله‌های M4.5+ روز گذشته" title="USGS — زلزله‌های M4.5+ روز گذشته" type="atom" xmlUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom" language="en" scope="global" sourceType="official-realtime" priority="high" htmlUrl="https://earthquake.usgs.gov/earthquakes/feed/"/>
+      <outline text="USGS — زلزله‌های مهم روز گذشته" title="USGS — زلزله‌های مهم روز گذشته" type="atom" xmlUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.atom" language="en" scope="global" sourceType="official-realtime" priority="high" htmlUrl="https://earthquake.usgs.gov/earthquakes/feed/"/>
+    </outline>
+    <outline text="جهان | آموزش، دانشگاه، کار و پژوهش" title="جهان | آموزش، دانشگاه، کار و پژوهش" categoryKey="education-careers-research">
+      <outline text="دانشگاه‌ها" title="دانشگاه‌ها" type="rss" xmlUrl="https://news.google.com/rss/search?q=universities+higher+education+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه‌های بین‌المللی" title="بورسیه‌های بین‌المللی" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+scholarships+students+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه کارشناسی" title="بورسیه کارشناسی" type="rss" xmlUrl="https://news.google.com/rss/search?q=undergraduate+scholarships+international+students+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه ماستری" title="بورسیه ماستری" type="rss" xmlUrl="https://news.google.com/rss/search?q=masters+scholarships+international+students+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بورسیه دکترا" title="بورسیه دکترا" type="rss" xmlUrl="https://news.google.com/rss/search?q=PhD+scholarships+international+students+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فلوشیپ" title="فلوشیپ" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+fellowship+research+opportunity+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کارآموزی" title="کارآموزی" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+internship+opportunity+when%3A30d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بازار کار جهانی" title="بازار کار جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+jobs+labor+market+hiring+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کار از راه دور" title="کار از راه دور" type="rss" xmlUrl="https://news.google.com/rss/search?q=remote+work+jobs+employment+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="مهارت‌های دیجیتال" title="مهارت‌های دیجیتال" type="rss" xmlUrl="https://news.google.com/rss/search?q=digital+skills+training+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="تحقیقات دانشگاهی" title="تحقیقات دانشگاهی" type="rss" xmlUrl="https://news.google.com/rss/search?q=academic+research+universities+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="انتشارات علمی" title="انتشارات علمی" type="rss" xmlUrl="https://news.google.com/rss/search?q=scientific+publications+research+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | ورزش" title="جهان | ورزش" categoryKey="sports-expanded">
+      <outline text="ورزش — خبر فوری" title="ورزش — خبر فوری" type="rss" xmlUrl="https://news.google.com/rss/search?q=sports+breaking+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کریکت" title="کریکت" type="rss" xmlUrl="https://news.google.com/rss/search?q=cricket+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="ICC" title="ICC" type="rss" xmlUrl="https://news.google.com/rss/search?q=ICC+cricket+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="FIFA" title="FIFA" type="rss" xmlUrl="https://news.google.com/rss/search?q=FIFA+football+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="UEFA" title="UEFA" type="rss" xmlUrl="https://news.google.com/rss/search?q=UEFA+football+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Premier League" title="Premier League" type="rss" xmlUrl="https://news.google.com/rss/search?q=Premier+League+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="Champions League" title="Champions League" type="rss" xmlUrl="https://news.google.com/rss/search?q=Champions+League+football+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="La Liga" title="La Liga" type="rss" xmlUrl="https://news.google.com/rss/search?q=La+Liga+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="NBA" title="NBA" type="rss" xmlUrl="https://news.google.com/rss/search?q=NBA+basketball+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="تنیس" title="تنیس" type="rss" xmlUrl="https://news.google.com/rss/search?q=tennis+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فرمول یک" title="فرمول یک" type="rss" xmlUrl="https://news.google.com/rss/search?q=Formula+1+F1+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="المپیک" title="المپیک" type="rss" xmlUrl="https://news.google.com/rss/search?q=Olympics+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="ورزش‌های رزمی" title="ورزش‌های رزمی" type="rss" xmlUrl="https://news.google.com/rss/search?q=combat+sports+boxing+MMA+news+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | فرهنگ، رسانه و سرگرمی" title="جهان | فرهنگ، رسانه و سرگرمی" categoryKey="culture-media-expanded">
+      <outline text="سینما" title="سینما" type="rss" xmlUrl="https://news.google.com/rss/search?q=movies+cinema+film+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="تلویزیون و سریال" title="تلویزیون و سریال" type="rss" xmlUrl="https://news.google.com/rss/search?q=television+streaming+series+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="موسیقی" title="موسیقی" type="rss" xmlUrl="https://news.google.com/rss/search?q=music+industry+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="کتاب و ادبیات" title="کتاب و ادبیات" type="rss" xmlUrl="https://news.google.com/rss/search?q=books+literature+publishing+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="هنر" title="هنر" type="rss" xmlUrl="https://news.google.com/rss/search?q=art+culture+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="رسانه" title="رسانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=media+journalism+news+industry+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="شبکه‌های اجتماعی و ترندها" title="شبکه‌های اجتماعی و ترندها" type="rss" xmlUrl="https://news.google.com/rss/search?q=social+media+trends+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="بازی‌های ویدیویی" title="بازی‌های ویدیویی" type="rss" xmlUrl="https://news.google.com/rss/search?q=video+games+gaming+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="نتفلیکس" title="نتفلیکس" type="rss" xmlUrl="https://news.google.com/rss/search?q=Netflix+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+      <outline text="دیزنی" title="دیزنی" type="rss" xmlUrl="https://news.google.com/rss/search?q=Disney+entertainment+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="low" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="جهان | مهاجرت، توسعه، حقوق و بشردوستانه" title="جهان | مهاجرت، توسعه، حقوق و بشردوستانه" categoryKey="development-migration-rights-expanded">
+      <outline text="مهاجرت جهانی" title="مهاجرت جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+migration+immigration+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="پناهندگان" title="پناهندگان" type="rss" xmlUrl="https://news.google.com/rss/search?q=refugees+asylum+UNHCR+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="بحران بشردوستانه" title="بحران بشردوستانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=humanitarian+crisis+OCHA+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="کمک‌های بین‌المللی" title="کمک‌های بین‌المللی" type="rss" xmlUrl="https://news.google.com/rss/search?q=international+aid+humanitarian+funding+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="امنیت غذایی" title="امنیت غذایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=food+security+WFP+FAO+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="فقر جهانی" title="فقر جهانی" type="rss" xmlUrl="https://news.google.com/rss/search?q=global+poverty+development+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="حقوق زنان" title="حقوق زنان" type="rss" xmlUrl="https://news.google.com/rss/search?q=women+rights+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="حقوق کودکان" title="حقوق کودکان" type="rss" xmlUrl="https://news.google.com/rss/search?q=children+rights+UNICEF+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="توسعه پایدار" title="توسعه پایدار" type="rss" xmlUrl="https://news.google.com/rss/search?q=sustainable+development+SDGs+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+      <outline text="سازمان‌های غیردولتی" title="سازمان‌های غیردولتی" type="rss" xmlUrl="https://news.google.com/rss/search?q=NGO+humanitarian+development+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="global" sourceType="aggregator-search" priority="normal" htmlUrl="https://news.google.com/"/>
+    </outline>
+    <outline text="منابع رسمی | اقتصاد و نهادهای بین‌المللی" title="منابع رسمی | اقتصاد و نهادهای بین‌المللی" categoryKey="official-institutions">
+      <outline text="IMF — خبر و تحلیل" title="IMF — خبر و تحلیل" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Aimf.org+economy+finance+IMF+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="World Bank — خبر و گزارش" title="World Bank — خبر و گزارش" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Aworldbank.org+global+economy+development+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="United Nations — خبر" title="United Nations — خبر" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Anews.un.org+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="WHO — خبر" title="WHO — خبر" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Awho.int+health+when%3A1d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="UNHCR — پناهندگان" title="UNHCR — پناهندگان" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Aunhcr.org+refugees+Afghanistan+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="UNICEF — کودکان" title="UNICEF — کودکان" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Aunicef.org+Afghanistan+children+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="WFP — امنیت غذایی" title="WFP — امنیت غذایی" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Awfp.org+Afghanistan+food+security+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="FAO — زراعت و غذا" title="FAO — زراعت و غذا" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Afao.org+Afghanistan+agriculture+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+      <outline text="OCHA — بشردوستانه" title="OCHA — بشردوستانه" type="rss" xmlUrl="https://news.google.com/rss/search?q=site%3Aunocha.org+Afghanistan+humanitarian+when%3A7d&amp;hl=en-US&amp;gl=US&amp;ceid=US:en" language="en" scope="official-discovery" sourceType="aggregator-search" priority="high" htmlUrl="https://news.google.com/"/>
+    </outline>
+  </body>
+  
+
+</opml>

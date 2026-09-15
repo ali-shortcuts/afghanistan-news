@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Example Afghan Publisher</title>
+    <link>https://publisher.example/</link>
+    <description>Latest news</description>
+    <language>fa</language>
+    <item>
+      <title>Economic delegation meets officials in Kabul</title>
+      <link>https://publisher.example/economy/delegation-kabul?utm_source=rss&amp;utm_medium=feed</link>
+      <guid isPermaLink="false">urn:example:1001</guid>
+      <pubDate>Mon, 14 Sep 2026 06:30:00 +0430</pubDate>
+      <description><![CDATA[<p>A delegation discussed <b>trade</b> and banking.</p>]]></description>
+      <content:encoded><![CDATA[<p>Full text with a <a href="https://publisher.example/ref">reference link</a>.</p><script>alert('xss')</script>]]></content:encoded>
+      <dc:creator>Newsroom</dc:creator>
+      <category>Economy</category>
+      <media:thumbnail url="https://cdn.publisher.example/img/1.jpg" medium="image"/>
+    </item>
+    <item>
+      <title>Kabul province announces new school term</title>
+      <link>https://publisher.example/education/kabul-school-term</link>
+      <guid>urn:example:1002</guid>
+      <pubDate>Mon, 14 Sep 2026 05:00:00 +0430</pubDate>
+      <description>Schools in Kabul reopen for the new term.</description>
+    </item>
+  </channel>
+</rss>

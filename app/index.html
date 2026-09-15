@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0f766e" />
+<title>خبر — افغانستان</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<div class="phone">
+  <div class="device">
+    <!-- status bar -->
+    <div class="statusbar">
+      <span id="clock">۹:۴۱</span>
+      <span class="sb-right"><span id="net-badge" class="net ok">آنلاین</span><span>▮▮▮</span><span>⌁</span><span id="battery">۸۷٪</span></span>
+    </div>
+
+    <!-- app bar -->
+    <header class="appbar">
+      <div class="appbar-title">
+        <button class="icon-btn" id="back-btn" hidden aria-label="بازگشت">→</button>
+        <h1 id="screen-title">خانه</h1>
+      </div>
+      <div class="appbar-actions">
+        <button class="icon-btn" id="search-btn" aria-label="جستجو">⌕</button>
+        <button class="icon-btn" id="refresh-btn" aria-label="تازه‌سازی">⟳</button>
+      </div>
+    </header>
+
+    <main id="content" class="content" aria-live="polite">
+      <div class="skeleton-wrap" id="initial-skeleton">
+        <div class="skel card-skel"></div><div class="skel line"></div><div class="skel line short"></div>
+        <div class="skel card-skel"></div><div class="skel line"></div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-btn active" data-tab="home"><span class="nav-ico">⌂</span><span>خانه</span></button>
+      <button class="nav-btn" data-tab="afghanistan"><span class="nav-ico">🇦🇫</span><span>افغانستان</span></button>
+      <button class="nav-btn" data-tab="world"><span class="nav-ico">🌍</span><span>جهان</span></button>
+      <button class="nav-btn" data-tab="saved"><span class="nav-ico">🔖</span><span>ذخیره‌شده</span></button>
+      <button class="nav-btn" data-tab="more"><span class="nav-ico">⋯</span><span>بیشتر</span></button>
+    </nav>
+
+    <div class="snackbar" id="snackbar" hidden></div>
+  </div>
+</div>
+
+<aside class="side-panel">
+  <h2>پیش‌نمای کلاینت موبایل</h2>
+  <p class="lede">این صفحه همان قرارداد API را مصرف می‌کند که اپ اندروید (Kotlin + Compose + Room) استفاده می‌کند:
+    <code>/v1/home</code>، <code>/v1/articles</code>، <code>/v1/search</code>، <code>/v1/provinces</code>، <code>/v1/sources</code>.</p>
+  <ul class="facts">
+    <li><strong>آفلاین‌محور:</strong> آخرین مقالات در LocalStorage ذخیره می‌شوند؛ در قطع شبکه همان داده نمایش داده می‌شود.</li>
+    <li><strong>انتساب منبع:</strong> نام و نوع منبع در هر کارت و در جزئیات خبر همیشه نمایان است.</li>
+    <li><strong>بدون ورود اجباری:</strong> نسخه v1 هیچ حسابی لازم ندارد.</li>
+    <li><strong>متن کامل بازنشر نمی‌شود:</strong> خلاصهٔ فید + پیوند به منبع اصلی.</li>
+  </ul>
+  <div class="panel-actions">
+    <a class="btn" href="/admin/" target="_blank" rel="noreferrer">کنسول اداری ↗</a>
+    <a class="btn" href="/" target="_blank" rel="noreferrer">صفحهٔ اصلی سرویس ↗</a>
+    <a class="btn" href="/metrics" target="_blank" rel="noreferrer">معیارها ↗</a>
+  </div>
+  <div id="panel-meta" class="panel-meta"></div>
+</aside>
+
+<script src="./app.js"></script>
+</body>
+</html>

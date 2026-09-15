@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>No Date Feed</title>
+    <link>https://nodate.example/</link>
+    <item>
+      <title>Story without a publication date</title>
+      <link>https://nodate.example/story/1</link>
+      <description>Publisher omitted the date element.</description>
+    </item>
+  </channel>
+</rss>

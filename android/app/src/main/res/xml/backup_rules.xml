@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  API 21-30 backup policy (§security).
+
+  Exactly one thing is worth restoring on a new device: the saved-articles list, which lives
+  in the Room database. Everything else stays on the device — the article cache (same file,
+  transient), the push token, and the preferences store. Note that the push registration id
+  and the UI preferences share one DataStore file, so preferences are not backed up either;
+  splitting that file is the follow-up that would let us restore language/theme safely.
+-->
+<full-backup-content>
+    <include domain="database" path="afnews.db" />
+</full-backup-content>

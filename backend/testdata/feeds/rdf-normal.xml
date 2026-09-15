@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel rdf:about="https://rdf.example/">
+    <title>RDF Publisher</title>
+    <link>https://rdf.example/</link>
+    <description>RSS 1.0 sample</description>
+  </channel>
+  <item rdf:about="https://rdf.example/story/level-1">
+    <title>Trade volume rises between neighbors</title>
+    <link>https://rdf.example/story/trade-volume</link>
+    <description>Cross-border trade increased this quarter.</description>
+    <dc:date>2026-09-13T18:00:00+00:00</dc:date>
+    <dc:creator>Economics Desk</dc:creator>
+  </item>
+</rdf:RDF>

@@ -1,0 +1,140 @@
+# Production-shaped stack (§Phase B): PostgreSQL 17 + public API + standalone worker.
+#
+# The web surfaces (admin/, app/) are static bundles served by the API process, exactly as in
+# development, so what runs here is what the acceptance suite exercises.
+#
+#   cp .env.example .env      # set ADMIN_SESSION_KEY, FCM_* if you have them
+#   docker compose up -d --build
+#   docker compose exec api /app/api --version || true
+#   scripts/smoke.sh          # against the api on :8080
+#
+# The worker is a *separate* process with the same image but a different entrypoint: feed
+# polling, parsing, dedup and push generation must never share a process with public traffic
+# (§66, §113).
+
+x-backend-env: &backend-env
+  ENV: ${ENV:-production}
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  DB_DRIVER: postgres
+  DATABASE_URL: postgres://${DB_USER:-afnews}:${DB_PASS:-afnews}@db:5432/${DB_NAME:-afnews}?sslmode=disable
+  FEED_PACK_PATH: /app/resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+  FEED_ACTIVATION_WAVE: ${FEED_ACTIVATION_WAVE:-1}
+  PUSH_DRY_RUN: ${PUSH_DRY_RUN:-true}
+  ALLOW_PRIVATE_FETCH: "false"          # SSRF guard (§103) — never loosen this in production
+  RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-240}
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-afnews}
+      POSTGRES_PASSWORD: ${DB_PASS:-afnews}
+      POSTGRES_DB: ${DB_NAME:-afnews}
+      # Feed ordering and text search must not depend on the container's locale.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    command:
+      - postgres
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - work_mem=8MB
+      - -c
+      - max_connections=100
+      - -c
+      - log_min_duration_statement=500
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-afnews} -d ${DB_NAME:-afnews}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    ports: ["127.0.0.1:5432:5432"]      # bound to loopback: only the host's psql needs it
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: afnews-backend:latest
+    restart: unless-stopped
+    environment:
+      <<: *backend-env
+      HTTP_ADDR: 0.0.0.0:8080
+      # Feeds are polled by the worker, not by the request path.
+      WORKER_ENABLED: "false"
+      ADMIN_STATIC_DIR: /app/admin
+      APP_STATIC_DIR: /app/app
+      ADMIN_SESSION_KEY: ${ADMIN_SESSION_KEY:?set ADMIN_SESSION_KEY in .env (32+ bytes)}
+      FCM_PROJECT_ID: ${FCM_PROJECT_ID:-}
+      FCM_CREDENTIALS_FILE: ${FCM_CREDENTIALS_FILE:-/run/secrets/fcm.json}
+    ports: ["8080:8080"]
+    volumes:
+      - ./admin:/app/admin:ro
+      - ./app:/app/app:ro
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health/ready >/dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+
+  worker:
+    image: afnews-backend:latest
+    restart: unless-stopped
+    entrypoint: ["/app/worker"]
+    environment:
+      <<: *backend-env
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-8}
+      DOMAIN_CONCURRENCY: ${DOMAIN_CONCURRENCY:-2}
+      FCM_PROJECT_ID: ${FCM_PROJECT_ID:-}
+      FCM_CREDENTIALS_FILE: ${FCM_CREDENTIALS_FILE:-/run/secrets/fcm.json}
+    volumes:
+      - ./backups:/backups
+    depends_on:
+      db: { condition: service_healthy }
+    # No HTTP port: the worker exposes nothing to the network.
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f /app/worker >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  # One-shot: apply migrations and print the resulting content counts, so `up` is observable.
+  migrate:
+    image: afnews-backend:latest
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >
+        echo "schema is applied by the api/worker on boot; this task only reports state:" &&
+        wget -qO- http://api:8080/health/ready
+    environment:
+      <<: *backend-env
+    depends_on:
+      api: { condition: service_healthy }
+    profiles: ["tools"]
+    restart: "no"
+
+  backup:
+    image: postgres:17-alpine
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >
+        pg_dump --dbname="$$DATABASE_URL" --format=custom --compress=9 --no-owner
+        --file=/backups/afnews-$$(date -u +%Y%m%dT%H%M%SZ).dump &&
+        echo "backup written to ./backups (host)"
+    environment:
+      DATABASE_URL: postgres://${DB_USER:-afnews}:${DB_PASS:-afnews}@db:5432/${DB_NAME:-afnews}?sslmode=disable
+    volumes: ["./backups:/backups"]
+    depends_on:
+      db: { condition: service_healthy }
+    profiles: ["tools"]
+    restart: "no"
+
+volumes:
+  pgdata:
+    driver: local

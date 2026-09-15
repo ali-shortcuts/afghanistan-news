@@ -1,0 +1,427 @@
+openapi: 3.0.3
+info:
+  title: Afghanistan News — Public News API
+  version: "1.0.0"
+  description: |
+    Read-only news API consumed by the Android client and the web preview, plus the push
+    registration surface. No authentication is required for v1 (§1, §5 of the architecture).
+
+    Conventions:
+      * JSON UTF-8, timestamps RFC 3339 UTC, opaque string IDs.
+      * Cursor pagination: `items` + `nextCursor` (default page size 30, maximum 100).
+      * Errors use one envelope: `{ "error": { code, message, requestId, details } }`.
+servers:
+  - url: https://api.afghanistan.news
+    description: production
+  - url: http://localhost:8080
+    description: local development
+tags:
+  - name: feed
+  - name: reference
+  - name: push
+
+paths:
+  /v1/home:
+    get:
+      tags: [feed]
+      summary: Preassembled home payload
+      description: breaking (≤3), topStories (5), latestAfghanistan (8), followedProvincePreview (5), economy (5), jobs (5), world (5), personalizedSections.
+      parameters:
+        - name: provinceId
+          in: query
+          schema: { type: string }
+        - name: language
+          in: query
+          schema: { type: string, enum: [fa, ps, en] }
+      responses:
+        "200":
+          description: Home payload
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/HomeResponse" }
+        "4XX": { $ref: "#/components/responses/Error" }
+
+  /v1/articles:
+    get:
+      tags: [feed]
+      summary: Cursor-paginated article list
+      parameters:
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 30, maximum: 100 } }
+        - { name: categoryId, in: query, schema: { type: string } }
+        - { name: provinceId, in: query, schema: { type: string } }
+        - { name: sourceId, in: query, schema: { type: string } }
+        - { name: sort, in: query, schema: { type: string, enum: [latest, top], default: latest } }
+        - { name: language, in: query, schema: { type: string } }
+        - { name: since, in: query, schema: { type: string, format: date-time } }
+      responses:
+        "200":
+          description: Page of articles
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ArticlePage" }
+        "4XX": { $ref: "#/components/responses/Error" }
+
+  /v1/articles/{id}:
+    get:
+      tags: [feed]
+      summary: Single article with attribution, category, province and cluster coverage
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Article
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Article" }
+        "404": { $ref: "#/components/responses/Error" }
+
+  /v1/search:
+    get:
+      tags: [feed]
+      summary: Full-text search over title and summary
+      parameters:
+        - { name: q, in: query, required: true, schema: { type: string, minLength: 2 } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 30, maximum: 100 } }
+      responses:
+        "200":
+          description: Page of matching articles
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ArticlePage" }
+        "4XX": { $ref: "#/components/responses/Error" }
+
+  /v1/categories:
+    get:
+      tags: [reference]
+      responses:
+        "200":
+          description: Category list
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CategoryPage" }
+
+  /v1/provinces:
+    get:
+      tags: [reference]
+      summary: 34 provinces with recent story counts
+      responses:
+        "200":
+          description: Province list
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ProvincePage" }
+
+  /v1/provinces/{id}/articles:
+    get:
+      tags: [feed]
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 30, maximum: 100 } }
+      responses:
+        "200":
+          description: Page of provincial articles
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ArticlePage" }
+
+  /v1/sources:
+    get:
+      tags: [reference]
+      summary: Publisher registry with transparency labels and trust weights
+      parameters:
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 50, maximum: 100 } }
+      responses:
+        "200":
+          description: Source list
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SourcePage" }
+
+  /v1/sources/{id}:
+    get:
+      tags: [reference]
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Source
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Source" }
+        "404": { $ref: "#/components/responses/Error" }
+
+  /v1/clusters/{id}:
+    get:
+      tags: [feed]
+      summary: All articles reporting the same story
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Cluster coverage
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ArticlePage" }
+
+  /v1/notifications:
+    get:
+      tags: [push]
+      summary: Recent breaking notifications (in-app inbox)
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, default: 50, maximum: 200 } }
+      responses:
+        "200":
+          description: Notification list
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/NotificationPage" }
+
+  /v1/feed-pack/version:
+    get:
+      tags: [reference]
+      summary: Feed-pack version and enabled feed count
+      responses:
+        "200":
+          description: Version info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  feedPackVersion: { type: string, nullable: true, example: v0.2 }
+                  enabledFeeds: { type: integer, example: 99 }
+
+  /v1/config:
+    get:
+      tags: [reference]
+      summary: Feature flags and minimum supported app version
+      responses:
+        "200":
+          description: Client config
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ServerConfig" }
+
+  /v1/push/register:
+    post:
+      tags: [push]
+      summary: Register an anonymous device token with topics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/PushRegisterRequest" }
+      responses:
+        "200":
+          description: Registration accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  registrationId: { type: string }
+                  token: { type: string }
+                  topics: { type: array, items: { type: string } }
+        "429":
+          description: Too many registrations from this address
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+
+  /v1/push/registrations/{registrationId}:
+    delete:
+      tags: [push]
+      summary: Unregister a device (used when the user disables notifications)
+      parameters:
+        - { name: registrationId, in: path, required: true, schema: { type: string } }
+      responses:
+        "204": { description: Deleted }
+
+  /health/live:
+    get:
+      summary: Liveness probe
+      responses:
+        "200": { description: Process is alive }
+  /health/ready:
+    get:
+      summary: Readiness probe (database + migrations)
+      responses:
+        "200": { description: Ready }
+        "503": { description: Not ready }
+  /metrics:
+    get:
+      summary: Prometheus metrics
+      responses:
+        "200": { description: Text exposition format }
+
+components:
+  responses:
+    Error:
+      description: Structured error
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+
+  schemas:
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum: [INVALID_ARGUMENT, NOT_FOUND, RATE_LIMITED, UNAVAILABLE, INTERNAL, UNSUPPORTED_VERSION]
+            message: { type: string }
+            requestId: { type: string }
+            details: { type: object, additionalProperties: true }
+
+    ArticlePage:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Article" } }
+        nextCursor: { type: string, nullable: true }
+
+    SourcePage:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Source" } }
+        nextCursor: { type: string, nullable: true }
+
+    CategoryPage:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Category" } }
+
+    ProvincePage:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Province" } }
+
+    NotificationPage:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Notification" } }
+
+    Article:
+      type: object
+      required: [id, title, originalUrl, source]
+      properties:
+        id: { type: string, example: art_5f2c9d1a8b3e4f70 }
+        title: { type: string }
+        summary: { type: string, nullable: true }
+        feedContent: { type: string, nullable: true, description: Sanitised feed-provided HTML; never a full publisher article }
+        imageUrl: { type: string, nullable: true }
+        originalUrl: { type: string }
+        publishedAt: { type: string, format: date-time, nullable: true }
+        updatedAt: { type: string, format: date-time, nullable: true }
+        discoveredAt: { type: string, format: date-time }
+        language: { type: string, nullable: true }
+        isBreaking: { type: boolean }
+        source: { $ref: "#/components/schemas/Source" }
+        category: { $ref: "#/components/schemas/Category" }
+        province: { $ref: "#/components/schemas/Province" }
+        cluster:
+          type: object
+          nullable: true
+          properties:
+            id: { type: string }
+            coverageCount: { type: integer }
+
+    Source:
+      type: object
+      properties:
+        id: { type: string, example: src_9ab12cd34ef5 }
+        name: { type: string }
+        websiteUrl: { type: string, nullable: true }
+        type:
+          type: string
+          enum: [VALIDATED_DIRECT, DIRECT_PUBLISHER, OFFICIAL_REALTIME, OFFICIAL_INSTITUTION, AGGREGATOR_TOPIC, AGGREGATOR_SEARCH, OPPORTUNITY_FEED, TENDER_FEED, UNKNOWN]
+        trustWeight: { type: integer, minimum: 1, maximum: 5 }
+        transparencyLabel:
+          type: string
+          description: Human-readable attribution ("Official institution", "ناشر اصلی", …)
+        enabled: { type: boolean }
+
+    Category:
+      type: object
+      properties:
+        id: { type: string, example: economy }
+        name: { type: string }
+        displayNames:
+          type: object
+          additionalProperties: { type: string }
+          example: { en: Economy, fa: اقتصاد, ps: اقتصاد }
+
+    Province:
+      type: object
+      properties:
+        id: { type: string, example: kabul }
+        name: { type: string }
+        displayNames: { type: object, additionalProperties: { type: string } }
+        recentStoryCount: { type: integer }
+        newestAt: { type: string, format: date-time, nullable: true }
+
+    Notification:
+      type: object
+      properties:
+        id: { type: string }
+        articleId: { type: string, nullable: true }
+        topic: { type: string }
+        title: { type: string }
+        body: { type: string, nullable: true }
+        status: { type: string, enum: [QUEUED, SENT, FAILED, DRY_RUN] }
+        createdAt: { type: string, format: date-time }
+
+    HomeResponse:
+      type: object
+      properties:
+        generatedAt: { type: string, format: date-time }
+        breaking: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 3 }
+        topStories: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 5 }
+        latestAfghanistan: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 8 }
+        followedProvincePreview: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 5 }
+        followedProvinceName: { type: string, nullable: true }
+        economy: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 5 }
+        jobs: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 5 }
+        world: { type: array, items: { $ref: "#/components/schemas/Article" }, maxItems: 5 }
+        personalizedSections:
+          type: array
+          items:
+            type: object
+            properties:
+              title: { type: string }
+              kind: { type: string }
+              items: { type: array, items: { $ref: "#/components/schemas/Article" } }
+
+    ServerConfig:
+      type: object
+      properties:
+        apiVersion: { type: integer }
+        feedPackVersion: { type: string, nullable: true }
+        features:
+          type: object
+          additionalProperties: { type: boolean }
+          example: { push: true, jobs: true, tenders: true, storyClusters: true, offlineDownload: true, search: true }
+        android:
+          type: object
+          properties:
+            minimumSupportedVersionCode: { type: integer }
+            latestVersionCode: { type: integer }
+
+    PushRegisterRequest:
+      type: object
+      required: [token]
+      properties:
+        token: { type: string }
+        platform: { type: string, enum: [ANDROID, IOS, WEB_PREVIEW] }
+        appVersion: { type: string }
+        language: { type: string }
+        topics:
+          type: array
+          items: { type: string }
+          example: [breaking, afghanistan, province-kabul]
