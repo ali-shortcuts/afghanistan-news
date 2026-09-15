@@ -319,9 +319,21 @@ func TestNextPollDelayBackoff(t *testing.T) {
 	if withFailures <= base {
 		t.Fatalf("backoff did not grow: %s vs %s", withFailures, base)
 	}
-	capped := st.NextPollDelay(model.TierSlow, 20, 0, true)
-	if capped > 7*time.Hour {
-		t.Fatalf("backoff exceeded the cap: %s", capped)
+	// The cap must hold whatever the jitter draw is, not just this one.
+	for i := 0; i < 500; i++ {
+		capped := st.NextPollDelay(model.TierSlow, 20, 0, true)
+		if capped > maxPollDelay {
+			t.Fatalf("backoff exceeded the cap: %s > %s", capped, maxPollDelay)
+		}
+		if capped < minPollDelay {
+			t.Fatalf("backoff fell below the floor: %s < %s", capped, minPollDelay)
+		}
+	}
+	// A healthy, quiet feed is allowed to stretch out, but never past the same ceiling.
+	for i := 0; i < 200; i++ {
+		if d := st.NextPollDelay(model.TierSlow, 0, 0, true); d > maxPollDelay {
+			t.Fatalf("adaptive interval exceeded the cap: %s", d)
+		}
 	}
 }
 

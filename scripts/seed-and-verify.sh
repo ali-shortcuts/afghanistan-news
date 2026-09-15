@@ -60,14 +60,20 @@ DATABASE_URL="${DSN}" go run ./cmd/seed-fixtures -driver postgres \
   -fixtures testdata/feeds -wave 1 -synth 8
 
 say "3/4 boot the API against the seeded database (port ${PORT})"
-setsid --fork env \
-  DATABASE_URL="${DSN}" DB_DRIVER=postgres HTTP_ADDR="0.0.0.0:${PORT}" \
-  WORKER_ENABLED=false ENV=test PUSH_DRY_RUN=true \
-  ADMIN_SESSION_KEY=seed-and-verify-session-key-32-bytes \
-  ADMIN_STATIC_DIR="${ROOT}/admin" APP_STATIC_DIR="${ROOT}/app" \
-  RATE_LIMIT_PER_MINUTE=600 \
-  "${ROOT}/bin/afnews-api" </dev/null >"${LOG_DIR}/verify-api.log" 2>&1 &
-echo $! >"${RUN_DIR}/verify.pid"
+# Anything still holding the verify port is a previous run of this script: reap it, so the
+# suite never talks to a stale process from an older build.
+STALE="$(ss -ltnpH "sport = :${PORT}" 2>/dev/null | grep -o 'pid=[0-9]*' | head -1 | cut -d= -f2 || true)"
+if [ -n "${STALE}" ]; then kill "${STALE}" 2>/dev/null || true; sleep 1; fi
+
+# The pid is written by the child itself: `setsid` may fork, so $! would be the wrong process
+# and the trap would leave a live server behind (it did).
+setsid bash -c "echo \$\$ > '${RUN_DIR}/verify.pid'
+  exec env DATABASE_URL='${DSN}' DB_DRIVER=postgres HTTP_ADDR='0.0.0.0:${PORT}' \
+    WORKER_ENABLED=false ENV=test PUSH_DRY_RUN=true \
+    ADMIN_SESSION_KEY=seed-and-verify-session-key-32-bytes \
+    ADMIN_STATIC_DIR='${ROOT}/admin' APP_STATIC_DIR='${ROOT}/app' RATE_LIMIT_PER_MINUTE=600 \
+    '${ROOT}/bin/afnews-api'" </dev/null >"${LOG_DIR}/verify-api.log" 2>&1 &
+sleep 1
 
 ready=false
 for _ in $(seq 1 30); do

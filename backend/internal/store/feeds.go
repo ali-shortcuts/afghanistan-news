@@ -506,10 +506,22 @@ func (s *Store) NextPollDelay(tier model.PollTier, failures int, recentItems int
 		mult := 1 << min(failures, 6) // 2,4,8,...64
 		base = base * time.Duration(mult)
 	}
-	if base > 6*time.Hour {
-		base = 6 * time.Hour
+	// jitter: +-20% to avoid thundering herds, applied *before* the ceiling. Clamping first
+	// and jittering second let a "6 hour cap" hand out 7.2 hours, which is what a CI run
+	// caught (7h8m): a cap that the code can exceed is not a cap.
+	jittered := time.Duration(int64(float64(base) * (0.8 + 0.4*float64(time.Now().UnixNano()%1000)/1000.0)))
+	if jittered > maxPollDelay {
+		return maxPollDelay
 	}
-	// jitter: +-20% to avoid thundering herds.
-	jitter := time.Duration(int64(float64(base) * (0.8 + 0.4*float64(time.Now().UnixNano()%1000)/1000.0)))
-	return jitter
+	if jittered < minPollDelay {
+		return minPollDelay
+	}
+	return jittered
 }
+
+// Polling bounds (§149). A feed is never polled faster than [minPollDelay] and never
+// scheduled further out than [maxPollDelay], whatever the jitter draw says.
+const (
+	minPollDelay = 2 * time.Minute
+	maxPollDelay = 6 * time.Hour
+)
