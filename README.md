@@ -60,9 +60,15 @@ Releases, copy it to the phone, tap it, and allow installation from unknown sour
 | SHA-256 | `057dd96cacc40b6c3decb23c4dda075392f101d8fc519f8341ecbc5404abbd51` |
 | Permissions | INTERNET, ACCESS_NETWORK_STATE, POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED |
 
-Two files are attached to the release: `afghanistan-news-1.0.0-signed.apk` (the project keystore —
-install this one) and `afghanistan-news-1.0.0-debug-key.apk` (the same commit built by GitHub
-Actions, which has no keystore; useful for checking the pipeline, not for upgrading).
+| Release asset | Size | Signature | Use |
+|---|---|---|---|
+| `afghanistan-news-1.0.0-minified-signed.apk` | **3.1 MB** | project keystore | **recommended** — R8-shrunk for slow connections |
+| `afghanistan-news-1.0.0-signed.apk` | 11.7 MB | project keystore | the same code unshrunk; the conservative choice |
+| `afghanistan-news-1.0.0-minified-debug-key.apk` | 3.1 MB | debug key (CI) | pipeline provenance; not for daily use |
+
+Only the two `signed` files can upgrade over each other — they share one signing identity. The
+CI-built one cannot, because GitHub Actions has no keystore: that is exactly why
+`scripts/resign-apk.sh` exists.
 
 **First run.** The app opens on a short onboarding screen (§7.1 of the architecture document): it
 reads the OPML pack that shipped inside the APK and shows what it found — 570 sources in 34 groups
