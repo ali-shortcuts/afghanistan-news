@@ -4,6 +4,9 @@ on:
   push: { branches: [main] }
   pull_request:
 
+env:
+  PG_URL: postgres://afnews:afnews@127.0.0.1:5432/afnews_test?sslmode=disable
+
 jobs:
   backend:
     runs-on: ubuntu-latest
@@ -22,51 +25,113 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with: { go-version: "1.23", cache-dependency-path: backend/go.sum }
+        with: { go-version: "1.25", cache-dependency-path: backend/go.sum }
+
+      - name: format
+        run: |
+          gofmt -l . | tee /tmp/fmt.txt
+          test ! -s /tmp/fmt.txt
       - run: go build ./...
       - run: go vet ./...
-      - run: go test ./... -race -count=1
-      - name: migration + postgres smoke
+
+      - name: tests on SQLite (default dialect)
+        run: go test ./... -race -count=1
+
+      - name: the same tests on PostgreSQL (production dialect)
         env:
-          DATABASE_URL: postgres://afnews:afnews@127.0.0.1:5432/afnews_test?sslmode=disable
-          DB_DRIVER: postgres
+          TEST_DB_DRIVER: postgres
+          DATABASE_URL: ${{ env.PG_URL }}
+        run: go test ./... -count=1
+
+      - name: start the API (no embedded worker) and check the surfaces
+        env:
+          DATABASE_URL: ${{ env.PG_URL }}
+          HTTP_ADDR: 0.0.0.0:8080
+          WORKER_ENABLED: "false"
+          ADMIN_SESSION_KEY: ci-session-key-32-bytes-minimum
         run: |
           go run ./cmd/api &
           for i in $(seq 1 30); do curl -fsS localhost:8080/health/ready && break; sleep 1; done
-          curl -fsS "localhost:8080/v1/articles?limit=1" >/dev/null
-          curl -fsS localhost:8080/v1/home >/dev/null
+          for path in /v1/home "/v1/articles?limit=3" /v1/sources /v1/config "/v1/search?q=kabul" /metrics; do
+            printf '%-28s %s\n' "$path" "$(curl -s -o /dev/null -w '%{http_code}' "localhost:8080$path")"
+          done
+
+      - name: full acceptance suite (48 checks)
+        env:
+          API_BASE: http://127.0.0.1:8080
+          RATE_LIMIT_PER_MINUTE: "600"
+        run: |
+          cd ..
+          scripts/acceptance.sh
 
   feedpack:
     runs-on: ubuntu-latest
+    defaults: { run: { working-directory: backend } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with: { go-version: "1.23", cache-dependency-path: backend/go.sum }
-      - name: OPML packs must stay parseable and distinct
-        working-directory: backend
+        with: { go-version: "1.25", cache-dependency-path: backend/go.sum }
+      - name: OPML packs must stay parseable, identical and versioned
         run: |
           go test ./internal/feed/opml/ -run TestRealFeedPack -v
           sha256sum resources/feedpacks/*.opml
+          # three copies exist on purpose (worker bootstrap, repo pack, Android asset):
+          # they must never drift apart.
           diff -q resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
                   ../feedpacks/afghanistan-global-news-master-v0.2.opml
+          diff -q ../feedpacks/afghanistan-global-news-master-v0.2.opml \
+                  ../android/app/src/main/assets/feedpack/afghanistan-global-news-master-v0.2.opml
 
   android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: "17" }
+        with: { distribution: temurin, java-version: "21" }
       - uses: gradle/actions/setup-gradle@v4
-        with: { gradle-version: "8.9" }
-      - name: Static reference checks (no SDK needed)
+
+      # The runner image already ships the Android SDK, so the setup-android action is not used
+      # (it installs the long-removed 'tools' package and fails). sdkmanager is not on PATH
+      # either, so it is located explicitly, and this step is best-effort: whatever the image
+      # already has is enough to build.
+      - name: Install SDK components
+        run: |
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          echo "SDK root: $SDK_ROOT"
+          SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -name sdkmanager -type f 2>/dev/null | sort | tail -1)"
+          if [ -z "$SDKMANAGER" ]; then
+            echo "::warning::sdkmanager not found; using the components already in the image"
+            exit 0
+          fi
+          echo "sdkmanager: $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null 2>&1 || true
+          "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0" "platform-tools" \
+            || echo "::warning::component install failed; continuing with what the image provides"
+
+      - name: Dependency gate — every artifact must still declare minSdk 21
+        working-directory: android
+        run: python3 tools/check_deps_api21.py
+
+      - name: Source reference checks (fast, no SDK needed)
         working-directory: android
         run: python3 tools/check_sources.py
-      - name: Build + unit tests (API 21 gate)
+
+      - name: Build both ABIs + unit tests + lint (the API 21 gate)
+        working-directory: android
+        run: ./gradlew --no-daemon :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+
+      - name: Verify the produced APK against the compatibility gate
         working-directory: android
         run: |
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
-          gradle wrapper --gradle-version 8.9      # the wrapper jar is generated, not committed
-          ./gradlew --no-daemon :app:assembleDebug :app:testDebugUnitTest
-      - name: Lint the compatibility gate
-        working-directory: android
-        run: ./gradlew --no-daemon :app:lintDebug
+          AAPT="$ANDROID_HOME/build-tools/36.0.0/aapt2"
+          APK=app/build/outputs/apk/debug/app-debug.apk
+          "$AAPT" dump badging "$APK" | tee /tmp/badging.txt
+          grep -q "minSdkVersion:'21'" /tmp/badging.txt
+          grep -q "targetSdkVersion:'36'" /tmp/badging.txt
+          grep -q "native-code: 'arm64-v8a' 'armeabi-v7a'" /tmp/badging.txt
+          unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.2.opml"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: afnews-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
