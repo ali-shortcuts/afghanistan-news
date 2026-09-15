@@ -53,17 +53,28 @@ Releases, copy it to the phone, tap it, and allow installation from unknown sour
 |---|---|
 | Package | `com.afghanistan.news` |
 | Version | 1.0.0 (versionCode 1) |
-| Size | ~12 MB, one APK for both ABIs |
-| Architectures | `arm64-v8a` (64-bit) **and** `armeabi-v7a` (32-bit) |
+| Size | 11.7 MB, one APK for both ABIs |
+| Architectures | `arm64-v8a` (64-bit) **and** `armeabi-v7a` (32-bit) — installs on old and new phones |
 | Android | 5.0 (API 21) through 16 (API 36) |
-| Signature | v1 + v2 schemes, so it installs on old devices *and* passes modern verification |
+| Signature | v1 + v2 + v3 schemes, so it installs on old devices *and* passes modern verification |
+| SHA-256 | `057dd96cacc40b6c3decb23c4dda075392f101d8fc519f8341ecbc5404abbd51` |
 | Permissions | INTERNET, ACCESS_NETWORK_STATE, POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED |
 
-**First run: enter your server address.** The app ships with a placeholder API address
-(`https://api.afghanistan.news/`), because the address of the news API is a deployment decision,
-not something that can be baked into a public build. Open **بیشتر → تنظیمات → سرور خبر**, type the
-address of your running backend, tap **تست اتصال** (test connection) and then **ذخیره و بارگیری
-دوباره** (save and reload). Accepted forms:
+Two files are attached to the release: `afghanistan-news-1.0.0-signed.apk` (the project keystore —
+install this one) and `afghanistan-news-1.0.0-debug-key.apk` (the same commit built by GitHub
+Actions, which has no keystore; useful for checking the pipeline, not for upgrading).
+
+**First run.** The app opens on a short onboarding screen (§7.1 of the architecture document): it
+reads the OPML pack that shipped inside the APK and shows what it found — 570 sources in 34 groups
+— so you can see reading works before anything is configured; it offers the three languages; and it
+treats the server address as an optional step you can skip. Nothing there is required, and no
+account is ever needed. The bundled pack means the source directory is populated with no server and
+no network.
+
+**Pointing it at your own server** (onboarding, or later from **بیشتر → تنظیمات → سرور خبر**):
+type the address of your running backend, tap **تست اتصال** (test connection) and then **ذخیره و
+بارگیری دوباره** (save and reload). The placeholder default (`https://api.afghanistan.news/`) is a
+deployment decision, not something that can be baked into a public build. Accepted forms:
 
 ```
 news.example.com              → https://news.example.com/

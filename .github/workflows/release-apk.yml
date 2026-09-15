@@ -112,13 +112,17 @@ jobs:
           unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.2.opml"
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$APK" | head -5
 
-      - name: Name the artifact after the version
+      - name: Name the artifact after the version and the build it actually is
         working-directory: android
         run: |
           VERSION=$(grep -m1 'versionName' app/build.gradle.kts | sed 's/.*"\(.*\)".*/\1/')
-          # Named "minified" on purpose: a hand-built APK from a small machine is the same code
-          # without R8, and the two must be tellable apart in the release assets.
-          cp app/build/outputs/apk/release/app-release.apk "afghanistan-news-${VERSION}-minified.apk"
+          # The suffix has to describe this build. It used to say "-minified" even for
+          # -PminifyRelease=false, which made the release asset list lie about its contents.
+          MINIFY=${{ github.event.inputs.minify || 'true' }}
+          if [ "$MINIFY" = "true" ]; then SHAPE=minified; else SHAPE=unminified; fi
+          if [ "${{ steps.keystore.outputs.signed }}" = "true" ]; then KEY=project-key; else KEY=debug-key; fi
+          cp app/build/outputs/apk/release/app-release.apk \
+             "afghanistan-news-${VERSION}-${SHAPE}-${KEY}.apk"
           ls -la afghanistan-news-*.apk
 
       - uses: actions/upload-artifact@v4
@@ -133,4 +137,6 @@ jobs:
         run: |
           gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || \
             gh release create "$GITHUB_REF_NAME" --title "Afghanistan News $GITHUB_REF_NAME" --generate-notes
-          gh release upload "$GITHUB_REF_NAME" android/afghanistan-news-*.apk --clobber
+          # Never --clobber a differently-signed APK over the shipping one: the asset name says
+          # which key signed it, so both can coexist and the release page stays truthful.
+          gh release upload "$GITHUB_REF_NAME" android/afghanistan-news-*.apk
