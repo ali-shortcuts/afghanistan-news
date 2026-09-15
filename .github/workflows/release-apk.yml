@@ -42,13 +42,23 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      # The runner image already ships the Android SDK; the setup-android action is not used
-      # because it installs the long-removed 'tools' package and fails on current images.
+      # The runner image already ships the Android SDK, so the setup-android action is not used
+      # (it installs the long-removed 'tools' package and fails). sdkmanager is not on PATH
+      # either, so it is located explicitly, and this step is best-effort: whatever the image
+      # already has is enough to build.
       - name: Install SDK components
         run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          echo "SDK root: $SDK_ROOT"
+          SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -name sdkmanager -type f 2>/dev/null | sort | tail -1)"
+          if [ -z "$SDKMANAGER" ]; then
+            echo "::warning::sdkmanager not found; using the components already in the image"
+            exit 0
+          fi
+          echo "sdkmanager: $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null 2>&1 || true
+          "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0" "platform-tools" \
+            || echo "::warning::component install failed; continuing with what the image provides"
 
       - name: Restore the release keystore (if configured)
         id: keystore
