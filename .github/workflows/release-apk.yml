@@ -120,7 +120,8 @@ jobs:
           # -PminifyRelease=false, which made the release asset list lie about its contents.
           MINIFY=${{ github.event.inputs.minify || 'true' }}
           if [ "$MINIFY" = "true" ]; then SHAPE=minified; else SHAPE=unminified; fi
-          if [ "${{ steps.keystore.outputs.signed }}" = "true" ]; then KEY=project-key; else KEY=debug-key; fi
+          # the keystore step reports project-keystore or debug-key, so pass it through as-is
+          KEY=${{ steps.keystore.outputs.signed }}
           cp app/build/outputs/apk/release/app-release.apk \
              "afghanistan-news-${VERSION}-${SHAPE}-${KEY}.apk"
           ls -la afghanistan-news-*.apk
