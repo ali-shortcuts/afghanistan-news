@@ -17,7 +17,7 @@ One APK for 32-bit and 64-bit on purpose: a split-per-ABI release would halve th
 double the "which file do I send my cousin" problem, and the Afghan market still has a large
 32-bit share.
 
-## Three ways to build it
+## Four ways to build it
 
 ```bash
 # 1. Local, small machine (this container: 2 GB RAM) — signed, unshrunk
@@ -28,7 +28,28 @@ cd android && ./gradlew :app:assembleRelease
 
 # 3. CI — shrunk, verified and attached to a release (7 GB runner)
 git tag -a v1.0.1 -m "…" && git push origin v1.0.1
+
+# 4. CI builds the APK, this machine only signs it (used when dexing dies locally)
+gh workflow run release-apk.yml -f minify=false     # or: workflow_dispatch in the UI
+# …download the artifact, then:
+bash scripts/resign-apk.sh app-release.apk release-apk/afghanistan-news-1.0.1-signed.apk
 ```
+
+### When the local release build dies instead of failing
+
+On a 2 GB container `:app:mergeDexRelease` can take the whole build with it — the symptom is
+
+```
+Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+```
+
+and it is the **kernel**, not Gradle: raising `-Xmx` makes it worse because the container has
+2 GB in total. Route 4 is the answer. Dexing happens on the runner; `scripts/resign-apk.sh`
+does the only part that needs the keystore, and it needs no memory to speak of. It removes the
+old signature with `zip -d` (never by unzipping and re-zipping, which would re-compress
+`resources.arsc` and produce an APK that Android 11+ refuses to install), then signs with
+`apksigner` using the same identity as the Gradle build, and fails loudly if alignment or the
+`resources.arsc` entry is wrong.
 
 R8 needs roughly 1.5 GB of heap for this dependency graph (Compose + Firebase + Room + Retrofit).
 On a 2 GB box it is killed mid-run, so `-PminifyRelease=false` exists to produce a **working,
@@ -92,9 +113,15 @@ Only then is the APK uploaded as an artifact and attached to the tag's release �
 
 ## First run on a device
 
-The app ships with a placeholder API address, so the first launch must be told where the news
-comes from: **More → Settings → News server** (`بیشتر → تنظیمات → سرور خبر`), then *Test
-connection* and *Save and reload*. Bring a server up with `scripts/preview.sh all`.
+A fresh install opens on **onboarding** (§7.1): the app name, the three languages, and the
+counts it read out of the OPML pack that shipped inside the APK — proof that reading works
+before anything is configured. Nothing on that screen is required. It can be dismissed with one
+tap and is never shown again; the server step is explicitly optional.
+
+To point the app at a newsroom later — or from onboarding — go to
+**More → Settings → News server** (`بیشتر → تنظیمات → سرور خبر`), then *Test connection* and
+*Save and reload*. Bring a server up with `scripts/preview.sh all`. The bundled pack means the
+source directory is populated even with no server and no network.
 
 Accepted forms — `news.example.com`, `https://host/api`, `10.0.2.2:8080` (emulator),
 `192.168.1.5:8080` (phone on the same Wi-Fi). Addresses without a scheme default to `https`,
