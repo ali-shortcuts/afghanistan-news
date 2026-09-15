@@ -102,7 +102,9 @@ jobs:
         working-directory: android
         run: |
           VERSION=$(grep -m1 'versionName' app/build.gradle.kts | sed 's/.*"\(.*\)".*/\1/')
-          cp app/build/outputs/apk/release/app-release.apk "afghanistan-news-${VERSION}.apk"
+          # Named "minified" on purpose: a hand-built APK from a small machine is the same code
+          # without R8, and the two must be tellable apart in the release assets.
+          cp app/build/outputs/apk/release/app-release.apk "afghanistan-news-${VERSION}-minified.apk"
           ls -la afghanistan-news-*.apk
 
       - uses: actions/upload-artifact@v4

@@ -41,3 +41,12 @@ run/
 android/keystore.properties
 *.jks
 *.keystore
+
+# --- compiled binaries ------------------------------------------------------
+# Built by scripts/preview.sh and run_production_stack.sh; a clone builds them, git does not.
+/bin/
+/backend/migrate-data
+/backend/afnews-api
+/backend/afnews-worker
+/backend/api
+/backend/worker
