@@ -40,11 +40,15 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "21" }
 
-      - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
 
+      # The runner image already ships the Android SDK; the setup-android action is not used
+      # because it installs the long-removed 'tools' package and fails on current images.
       - name: Install SDK components
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
       - name: Restore the release keystore (if configured)
         id: keystore
