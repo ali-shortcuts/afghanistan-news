@@ -30,6 +30,7 @@ import com.afghanistan.news.ui.more.MoreScreen
 import com.afghanistan.news.ui.navigation.BottomDestination
 import com.afghanistan.news.ui.navigation.DeepLink
 import com.afghanistan.news.ui.navigation.Routes
+import com.afghanistan.news.ui.onboarding.OnboardingScreen
 import com.afghanistan.news.ui.saved.SavedScreen
 import com.afghanistan.news.ui.search.SearchScreen
 import com.afghanistan.news.ui.theme.AfNewsTheme
@@ -51,6 +52,7 @@ fun AfNewsApp(
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
         val deepLinks by mainViewModel.deepLinks.collectAsStateWithLifecycle(initialValue = null)
+        val onboardingRequired by mainViewModel.onboardingRequired.collectAsStateWithLifecycle()
 
         // Deep links arriving while the process is alive (onNewIntent) are re-routed here.
         LaunchedEffect(deepLinks, ready) {
@@ -61,6 +63,14 @@ fun AfNewsApp(
                 is DeepLink.ProvinceLink -> navController.navigate(Routes.province(link.provinceId))
                 is DeepLink.SearchLink -> navController.navigate(Routes.SEARCH)
             }
+        }
+
+        // §7.1: the bootstrap routes to onboarding or Home. The app is already usable at this
+        // point (the bundled feed pack is unpacked and reference data is local), so onboarding
+        // never waits on the network and can always be dismissed.
+        if (ready && onboardingRequired) {
+            OnboardingScreen(onDone = { mainViewModel.completeOnboarding() })
+            return@AfNewsTheme
         }
 
         Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxSize()) {

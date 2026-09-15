@@ -94,6 +94,9 @@ class MoreViewModel @Inject constructor(
     private val _serverUrl = MutableStateFlow(SettingsStore.DEFAULT_SERVER_URL)
     val serverUrl: StateFlow<String> = _serverUrl.asStateFlow()
 
+    private val _currentLanguage = MutableStateFlow(SettingsStore.DEFAULT_LANGUAGE)
+    val currentLanguage: StateFlow<String> = _currentLanguage.asStateFlow()
+
     private val _serverTest = MutableStateFlow<ServerTestState>(ServerTestState.Idle)
     val serverTest: StateFlow<ServerTestState> = _serverTest.asStateFlow()
 
@@ -125,6 +128,7 @@ class MoreViewModel @Inject constructor(
         viewModelScope.launch { settings.pushTopics.collect { _pushTopics.value = it } }
         viewModelScope.launch { settings.textScale.collect { _textScale.value = it } }
         viewModelScope.launch { settings.serverUrl.collect { _serverUrl.value = it } }
+        viewModelScope.launch { settings.language.collect { _currentLanguage.value = it } }
     }
 
     fun followProvince(province: Province?) {
@@ -137,6 +141,11 @@ class MoreViewModel @Inject constructor(
 
     fun setTextScale(scale: Float) {
         viewModelScope.launch { settings.setTextScale(scale) }
+    }
+
+    /** Language is observed by MainActivity, so this re-renders the whole app immediately. */
+    fun setLanguage(code: String) {
+        viewModelScope.launch { settings.setLanguage(code) }
     }
 
     /** Accepts the field content as typed; the answer comes back through [serverUrl]. */
@@ -356,6 +365,7 @@ fun SourcesScreen(
 fun SettingsScreen(viewModel: MoreViewModel = hiltViewModel()) {
     val topics by viewModel.pushTopics.collectAsStateWithLifecycle()
     val textScale by viewModel.textScale.collectAsStateWithLifecycle()
+    val currentLanguage by viewModel.currentLanguage.collectAsStateWithLifecycle()
     val serverUrl by viewModel.serverUrl.collectAsStateWithLifecycle()
     val serverTest by viewModel.serverTest.collectAsStateWithLifecycle()
     var serverField by remember(serverUrl) { mutableStateOf(serverUrl) }
@@ -363,13 +373,21 @@ fun SettingsScreen(viewModel: MoreViewModel = hiltViewModel()) {
     Scaffold(topBar = { TopAppBar(title = { Text("تنظیمات") }) }) { padding ->
         LazyColumn(Modifier.fillMaxSize().padding(padding)) {
             item { SettingsSectionTitle("زبان و نمایش") }
+            // The rows used to render a static "فعال" for every language and could not be
+            // tapped, so the app's language could never actually be changed after install.
             items(Language.entries.toList()) { language ->
+                val selected = language.code == currentLanguage
                 Row(
-                    Modifier.fillMaxWidth().padding(horizontal = AfNewsSpacing.lg, vertical = AfNewsSpacing.sm),
+                    Modifier
+                        .fillMaxWidth()
+                        .clickable { viewModel.setLanguage(language.code) }
+                        .padding(horizontal = AfNewsSpacing.lg, vertical = AfNewsSpacing.sm),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Text(language.label, style = MaterialTheme.typography.bodyLarge)
-                    Text("فعال", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+                    if (selected) {
+                        Text("فعال", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+                    }
                 }
             }
             item {
