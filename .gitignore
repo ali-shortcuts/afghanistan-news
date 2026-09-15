@@ -52,3 +52,5 @@ android/keystore.properties
 /backend/afnews-seed-fixtures
 /backend/api
 /backend/worker
+/android/.kotlin/
+android/.kotlin/
