@@ -148,6 +148,12 @@ func (s *Store) FindDuplicateArticle(ctx context.Context, feedID, guid, normaliz
 // It returns OutcomeDuplicate (instead of failing) when another worker inserted the
 // same story first, which keeps concurrent ingestion idempotent.
 func (s *Store) InsertArticle(ctx context.Context, in ArticleInput) (InsertResult, error) {
+	// Never persist an identifier-less article: the public API exposes articles/{id} and
+	// an empty id makes the story impossible to open in any client. Callers that do not
+	// pass an id (seeds, backfills) get the same stable derivation the ingest pipeline uses.
+	if in.ID == "" {
+		in.ID = StableID("art", in.CanonicalURL+in.FeedID)
+	}
 	existing, level, err := s.FindDuplicateArticle(ctx, in.FeedID, in.ExternalGUID, in.NormalizedURL,
 		in.CanonicalURL, in.ContentHash, in.TitleFingerprint, in.DiscoveredAt.Add(-48*time.Hour))
 	if err != nil {

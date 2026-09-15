@@ -336,3 +336,61 @@ func TestHealthScore(t *testing.T) {
 		t.Error("parser failure and staleness must both cost points")
 	}
 }
+
+// Regression: a caller that omits ArticleInput.ID (a seeder, a backfill, an import) must not
+// be able to persist a row that no client can open. The public API addresses stories as
+// /v1/articles/{id}; a stored empty id surfaces as `"id": ""` in every feed and list payload,
+// which is exactly the failure the acceptance suite's "article detail" check caught.
+func TestInsertArticleMintsMissingID(t *testing.T) {
+	ctx := context.Background()
+	st := testStore(t)
+	seedSourceAndFeed(t, st)
+
+	res, err := st.InsertArticle(ctx, ArticleInput{
+		// ID deliberately omitted — the store is responsible for it.
+		SourceID:        "src_test",
+		FeedID:          "feed_test",
+		ExternalGUID:    "id-less-guid",
+		CanonicalURL:    "https://test.example/no-id",
+		OriginalURL:     "https://test.example/no-id",
+		NormalizedURL:   "https://test.example/no-id",
+		Title:           "خبر پرته له پېژندګلو",
+		NormalizedTitle: "خبر پرته له پېژندګلو",
+		Summary:         "summary",
+		DiscoveredAt:    time.Now().UTC(),
+		Language:        "ps",
+		ContentHash:     "hash-no-id",
+	})
+	if err != nil {
+		t.Fatalf("insert without id: %v", err)
+	}
+	if res.Outcome != OutcomeInserted {
+		t.Fatalf("outcome = %v, want inserted", res.Outcome)
+	}
+	if res.ArticleID == "" {
+		t.Fatal("store returned an empty article id — the story would be unopenable in every client")
+	}
+
+	// The minted id must be the one that addresses the stored row.
+	article, err := st.ArticleByID(ctx, res.ArticleID)
+	if err != nil {
+		t.Fatalf("fetch by minted id %q: %v", res.ArticleID, err)
+	}
+	if article == nil || article.ID != res.ArticleID {
+		t.Fatalf("article by minted id = %+v", article)
+	}
+
+	// And re-inserting the same story must still dedup rather than mint a second row.
+	again, err := st.InsertArticle(ctx, ArticleInput{
+		SourceID: "src_test", FeedID: "feed_test", ExternalGUID: "id-less-guid",
+		CanonicalURL: "https://test.example/no-id", NormalizedURL: "https://test.example/no-id",
+		Title: "خبر پرته له پېژندګلو", NormalizedTitle: "خبر پرته له پېژندګلو",
+		DiscoveredAt: time.Now().UTC(), Language: "ps", ContentHash: "hash-no-id",
+	})
+	if err != nil {
+		t.Fatalf("re-insert: %v", err)
+	}
+	if again.Outcome != OutcomeDuplicate || again.ArticleID != res.ArticleID {
+		t.Fatalf("re-insert = %+v, want duplicate of %s", again, res.ArticleID)
+	}
+}

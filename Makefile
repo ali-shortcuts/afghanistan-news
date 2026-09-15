@@ -30,6 +30,12 @@ bootstrap: ## first-run: dry-run + commit the bundled feed pack, activate wave 1
 acceptance: ## full end-to-end check of every surface against $(API_BASE)
 	./scripts/acceptance.sh
 
+seed: ## load repository fixtures: reference data, feed pack, articles, push device
+	cd backend && go run ./cmd/seed-fixtures -driver "$(DB_DRIVER)" -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+
+seed-test: ## seed a scratch PostgreSQL database, then run the acceptance suite against it
+	./scripts/seed-and-verify.sh
+
 # ---------------------------------------------------------------- production shape (§Phase B)
 preview-up: ## cold machine → PostgreSQL + content + api + worker, one command
 	./scripts/preview.sh all

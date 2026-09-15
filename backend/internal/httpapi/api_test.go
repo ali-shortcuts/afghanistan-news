@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"sort"
 	"strings"
 	"testing"
 	"time"
@@ -499,3 +500,76 @@ func TestStaticBundlesAndLanding(t *testing.T) {
 
 var _ = os.Getenv
 var _ = slog.LevelInfo
+
+// Regression: the Admin console renders feed rows straight from this payload, so every field it
+// reads must exist on every row in every state. model.Feed tags optional pointers `omitempty`,
+// which silently dropped `lastCheckedAt` for a feed that had never been polled — the console
+// then showed `undefined` and the acceptance suite's "feed row contract" check failed.
+func TestAdminFeedRowContractIsStable(t *testing.T) {
+	srv, st := newTestServer(t)
+	if err := st.UpsertSource(context.Background(), model.Source{
+		ID: "src_contract", Name: "Contract Publisher", WebsiteURL: "https://contract.example",
+		SourceType: model.SourceDirectPublisher, DefaultLanguage: "fa", TrustWeight: 4,
+		Enabled: true, CreatedAt: time.Now().UTC(), UpdatedAt: time.Now().UTC(),
+	}); err != nil {
+		t.Fatal(err)
+	}
+	// Never polled: no lastCheckedAt, no health history — the worst case for the contract.
+	if _, _, err := st.UpsertFeedFromImport(context.Background(), model.Feed{
+		ID: "feed_contract", SourceID: "src_contract", Title: "Never polled feed",
+		XMLURL: "https://contract.example/rss", NormalizedXMLURL: "https://contract.example/rss",
+		Language: "fa", Scope: "afghanistan", CategoryKey: "afghanistan-direct-news",
+		SourceType: model.SourceDirectPublisher, Priority: 4, PollTier: model.TierNormal,
+		Enabled: true, HealthStatus: model.HealthUnknown,
+	}, "v0.2"); err != nil {
+		t.Fatal(err)
+	}
+
+	rec := do(t, srv, "POST", "/admin/api/login", `{"username":"admin","password":"afnews-admin"}`)
+	token, _ := decode(t, rec)["token"].(string)
+	if token == "" {
+		t.Fatalf("login failed: %d %s", rec.Code, rec.Body)
+	}
+
+	req := httptest.NewRequest("GET", "/admin/api/feeds?limit=5", nil)
+	req.Header.Set("Authorization", "Bearer "+token)
+	listRec := httptest.NewRecorder()
+	srv.Handler().ServeHTTP(listRec, req)
+	if listRec.Code != http.StatusOK {
+		t.Fatalf("feeds = %d body=%s", listRec.Code, listRec.Body)
+	}
+
+	body := decode(t, listRec)
+	items, _ := body["items"].([]any)
+	if len(items) == 0 {
+		t.Fatal("no feed rows returned")
+	}
+	contract := []string{
+		"id", "title", "xmlUrl", "sourceName", "sourceType", "language", "priority",
+		"pollTier", "enabled", "healthStatus", "consecutiveFailures", "lastCheckedAt",
+		"categoryKey", "scope", "needsReview", "healthScore",
+	}
+	for _, raw := range items {
+		row, ok := raw.(map[string]any)
+		if !ok {
+			t.Fatalf("row is not an object: %T", raw)
+		}
+		for _, key := range contract {
+			if _, present := row[key]; !present {
+				t.Fatalf("feed row is missing %q — the console would render undefined (row keys: %v)", key, keysOf(row))
+			}
+		}
+		if row["lastCheckedAt"] != nil {
+			t.Fatalf("a never-polled feed reported lastCheckedAt = %v", row["lastCheckedAt"])
+		}
+	}
+}
+
+func keysOf(m map[string]any) []string {
+	out := make([]string, 0, len(m))
+	for k := range m {
+		out = append(out, k)
+	}
+	sort.Strings(out)
+	return out
+}

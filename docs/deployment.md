@@ -85,6 +85,39 @@ published port and no HTTP health check: it is checked with `pgrep`. `ALLOW_PRIV
 | `QUARANTINE_AFTER` | `12` | consecutive failures before a feed is quarantined |
 | `BREAKING_MAX_PER_RUN` | `2` | per-feed cap on items that may be flagged breaking (§ anti-abuse) |
 
+## Seeding a fresh environment (`cmd/seed-fixtures`)
+
+An empty database is a legitimate deployment — but it makes three acceptance checks
+(`article detail`, `feed row contract`, `moderation paging`) fail for a reason that has
+nothing to do with the code, which is what a fresh CI runner used to look like. The
+fixture seeder closes that gap: **offline, deterministic and idempotent** — no network,
+safe to re-run, works in CI.
+
+```bash
+# against PostgreSQL
+cd backend && go run ./cmd/seed-fixtures -driver postgres \
+  -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+
+# the whole "does this build work on an empty database?" question, one command
+bash scripts/seed-and-verify.sh
+```
+
+What it loads, in order:
+
+1. **reference data** — categories, provinces, the admin/editorial user;
+2. **the bundled OPML pack** — 570 outlines reconciled into the feed registry;
+3. **a rollout wave** — `-wave 1` (core) by default, `1..4` accepted;
+4. **articles** — `backend/testdata/feeds/*.xml` decoded by the *real* parser and inserted
+   through the *real* dedup path (these files deliberately repeat a story, so the dedup
+   branch is exercised on every run), plus `-synth N` generated distinct stories spread
+   over different feeds so the home feed, article pages and moderation queue have content;
+5. **a push device** — `fixture-device-token`, so the push contract has something to answer.
+
+Flags: `-driver sqlite|postgres`, `-dsn`, `-sqlite`, `-pack`, `-fixtures`, `-wave`, `-articles`, `-synth`.
+
+> The seeder is not a production bootstrap: real content arrives from the ingestion worker.
+> Use it for CI, demos and local rehearsal. Both `make seed` and `make seed-test` wrap it.
+
 ## Data migration: SQLite → PostgreSQL
 
 ```bash

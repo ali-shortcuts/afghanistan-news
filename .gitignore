@@ -48,5 +48,7 @@ android/keystore.properties
 /backend/migrate-data
 /backend/afnews-api
 /backend/afnews-worker
+/backend/seed-fixtures
+/backend/afnews-seed-fixtures
 /backend/api
 /backend/worker

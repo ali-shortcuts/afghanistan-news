@@ -239,6 +239,31 @@ func (s *Server) handleAdminDashboard(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// feedRowKeys is the exact key set the Admin console renders for a feed row and
+// the field contract the acceptance suite asserts. model.Feed tags several optional
+// fields `omitempty`, so a never-polled feed would silently drop `lastCheckedAt`
+// and the console would render `undefined`. Every key is therefore guaranteed here.
+var feedRowKeys = []string{
+	"id", "title", "xmlUrl", "sourceName", "sourceType", "language", "priority",
+	"pollTier", "enabled", "healthStatus", "consecutiveFailures", "lastCheckedAt",
+	"categoryKey", "scope", "needsReview", "healthScore",
+}
+
+// feedRow flattens a feed to the console's flat shape, backfilling any `omitempty`
+// key with an explicit null so the shape is stable for every feed in every state.
+func feedRow(feed *model.Feed) map[string]any {
+	flat := map[string]any{}
+	if b, err := json.Marshal(feed); err == nil {
+		_ = json.Unmarshal(b, &flat)
+	}
+	for _, key := range feedRowKeys {
+		if _, ok := flat[key]; !ok {
+			flat[key] = nil
+		}
+	}
+	return flat
+}
+
 func (s *Server) handleAdminFeeds(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
 	limit := parseLimit(values.Get("limit"), 50)
@@ -261,7 +286,11 @@ func (s *Server) handleAdminFeeds(w http.ResponseWriter, r *http.Request) {
 		s.serverError(w, r, err)
 		return
 	}
-	s.writeJSON(w, http.StatusOK, map[string]any{"items": feeds, "total": total, "limit": limit, "offset": offset})
+	rows := make([]map[string]any, 0, len(feeds))
+	for i := range feeds {
+		rows = append(rows, feedRow(&feeds[i]))
+	}
+	s.writeJSON(w, http.StatusOK, map[string]any{"items": rows, "total": total, "limit": limit, "offset": offset})
 }
 
 func (s *Server) handleAdminFeedDetail(w http.ResponseWriter, r *http.Request) {
@@ -288,10 +317,7 @@ func (s *Server) handleAdminFeedDetail(w http.ResponseWriter, r *http.Request) {
 	}
 	// Flat shape: the console reads the feed fields directly (feed.xmlUrl, feed.healthScore, …)
 	// with the health timeline and recent articles attached as extra keys.
-	flat := map[string]any{}
-	if b, err := json.Marshal(feed); err == nil {
-		_ = json.Unmarshal(b, &flat)
-	}
+	flat := feedRow(feed)
 	flat["healthEvents"] = events
 	flat["recentArticles"] = cards
 	s.writeJSON(w, http.StatusOK, flat)

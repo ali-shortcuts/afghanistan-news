@@ -43,6 +43,20 @@ jobs:
           DATABASE_URL: ${{ env.PG_URL }}
         run: go test ./... -count=1
 
+      # The acceptance suite asserts things that only mean something against real content
+      # (article detail, the admin feed-row contract, moderation paging). On a virgin CI
+      # database those three failed for a reason unrelated to the code under test, so the
+      # fixtures are loaded first: reference data → OPML feed pack → activation wave →
+      # articles decoded by the real parser and inserted through the real dedup path.
+      # Offline and idempotent: no network, safe to re-run.
+      - name: seed the database with repository fixtures
+        env:
+          DATABASE_URL: ${{ env.PG_URL }}
+        run: |
+          go run ./cmd/seed-fixtures -driver postgres \
+            -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
+            -fixtures testdata/feeds -wave 1
+
       - name: start the API (no embedded worker) and check the surfaces
         env:
           DATABASE_URL: ${{ env.PG_URL }}
@@ -56,7 +70,7 @@ jobs:
             printf '%-28s %s\n' "$path" "$(curl -s -o /dev/null -w '%{http_code}' "localhost:8080$path")"
           done
 
-      - name: full acceptance suite (48 checks)
+      - name: full acceptance suite (48 checks, against the seeded database)
         env:
           API_BASE: http://127.0.0.1:8080
           RATE_LIMIT_PER_MINUTE: "600"
