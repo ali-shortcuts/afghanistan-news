@@ -12,10 +12,10 @@ import (
 
 // articleColumns is the canonical article projection used by every read path.
 const articleColumns = `a.id, a.source_id, COALESCE(a.feed_id,''), COALESCE(a.external_guid,''),
-	a.canonical_url, a.original_url, a.normalized_url, a.title, a.normalized_title,
-	COALESCE(a.summary,''), COALESCE(a.feed_content,''), COALESCE(a.image_url,''), COALESCE(a.author,''),
-	a.published_at, a.updated_at, a.discovered_at, COALESCE(a.language,''), a.is_breaking,
-	COALESCE(a.cluster_id,''), COALESCE(a.content_hash,''), a.status, a.created_at`
+        a.canonical_url, a.original_url, a.normalized_url, a.title, a.normalized_title,
+        COALESCE(a.summary,''), COALESCE(a.feed_content,''), COALESCE(a.image_url,''), COALESCE(a.author,''),
+        a.published_at, a.updated_at, a.discovered_at, COALESCE(a.language,''), a.is_breaking,
+        COALESCE(a.cluster_id,''), COALESCE(a.content_hash,''), a.status, a.created_at`
 
 func scanArticle(sc interface{ Scan(...any) error }) (*model.Article, error) {
 	var a model.Article
@@ -171,9 +171,9 @@ func (s *Store) InsertArticle(ctx context.Context, in ArticleInput) (InsertResul
 
 	_, err = s.txExec(ctx, tx,
 		`INSERT INTO articles (id, source_id, feed_id, external_guid, canonical_url, original_url, normalized_url,
-		   title, normalized_title, summary, feed_content, image_url, author, published_at, updated_at,
-		   discovered_at, language, is_breaking, cluster_id, content_hash, status, created_at)
-		 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$16)`,
+                   title, normalized_title, summary, feed_content, image_url, author, published_at, updated_at,
+                   discovered_at, language, is_breaking, cluster_id, content_hash, status, created_at)
+                 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$16)`,
 		in.ID, in.SourceID, nullString(in.FeedID), nullString(in.ExternalGUID), in.CanonicalURL, in.OriginalURL,
 		in.NormalizedURL, in.Title, in.NormalizedTitle, nullString(in.Summary), nullString(in.FeedContent),
 		nullString(in.ImageURL), nullString(in.Author), s.DB.TimePtrVal(in.PublishedAt), s.DB.TimePtrVal(in.UpdatedAt),
@@ -189,7 +189,7 @@ func (s *Store) InsertArticle(ctx context.Context, in ArticleInput) (InsertResul
 	for _, c := range in.Categories {
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_categories (article_id, category_id, confidence, origin) VALUES ($1,$2,$3,$4)
-			 ON CONFLICT (article_id, category_id) DO UPDATE SET confidence = $3, origin = $4`,
+                         ON CONFLICT (article_id, category_id) DO UPDATE SET confidence = $3, origin = $4`,
 			in.ID, c.ID, c.Confidence, string(c.Origin)); err != nil {
 			return InsertResult{}, err
 		}
@@ -197,7 +197,7 @@ func (s *Store) InsertArticle(ctx context.Context, in ArticleInput) (InsertResul
 	for _, p := range in.Provinces {
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_provinces (article_id, province_id, confidence, origin) VALUES ($1,$2,$3,$4)
-			 ON CONFLICT (article_id, province_id) DO UPDATE SET confidence = $3, origin = $4`,
+                         ON CONFLICT (article_id, province_id) DO UPDATE SET confidence = $3, origin = $4`,
 			in.ID, p.ID, p.Confidence, string(p.Origin)); err != nil {
 			return InsertResult{}, err
 		}
@@ -206,9 +206,9 @@ func (s *Store) InsertArticle(ctx context.Context, in ArticleInput) (InsertResul
 		o := in.Opportunity
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_opportunities (article_id, organization, location, deadline, employment_type, opportunity_type, reference_number)
-			 VALUES ($1,$2,$3,$4,$5,$6,$7)
-			 ON CONFLICT (article_id) DO UPDATE SET organization = $2, location = $3, deadline = $4,
-			   employment_type = $5, opportunity_type = $6, reference_number = $7`,
+                         VALUES ($1,$2,$3,$4,$5,$6,$7)
+                         ON CONFLICT (article_id) DO UPDATE SET organization = $2, location = $3, deadline = $4,
+                           employment_type = $5, opportunity_type = $6, reference_number = $7`,
 			in.ID, nullString(o.Organization), nullString(o.Location), s.DB.TimePtrVal(o.Deadline),
 			nullString(o.EmploymentType), nullString(o.OpportunityType), nullString(o.ReferenceNumber)); err != nil {
 			return InsertResult{}, err
@@ -292,8 +292,8 @@ func (s *Store) HydrateCards(ctx context.Context, arts []*model.Article, lang st
 	cats := map[string]catInfo{}
 	rows, err := s.query(ctx,
 		`SELECT ac.article_id, c.id, COALESCE(c.name_en,''), COALESCE(c.name_fa,''), COALESCE(c.name_ps,''), COALESCE(ac.confidence,0)
-		 FROM article_categories ac JOIN categories c ON c.id = ac.category_id
-		 WHERE ac.article_id IN (`+ph+`)`, ids...)
+                 FROM article_categories ac JOIN categories c ON c.id = ac.category_id
+                 WHERE ac.article_id IN (`+ph+`)`, ids...)
 	if err != nil {
 		return nil, err
 	}
@@ -319,8 +319,8 @@ func (s *Store) HydrateCards(ctx context.Context, arts []*model.Article, lang st
 	provinces := map[string]model.ProvinceRef{}
 	rows, err = s.query(ctx,
 		`SELECT ap.article_id, p.id, COALESCE(p.name_en,''), COALESCE(p.name_fa,''), COALESCE(p.name_ps,'')
-		 FROM article_provinces ap JOIN provinces p ON p.id = ap.province_id
-		 WHERE ap.article_id IN (`+ph+`)`, ids...)
+                 FROM article_provinces ap JOIN provinces p ON p.id = ap.province_id
+                 WHERE ap.article_id IN (`+ph+`)`, ids...)
 	if err != nil {
 		return nil, err
 	}
@@ -361,8 +361,8 @@ func (s *Store) HydrateCards(ctx context.Context, arts []*model.Article, lang st
 	opps := map[string]*model.Opportunity{}
 	rows, err = s.query(ctx,
 		`SELECT article_id, COALESCE(organization,''), COALESCE(location,''), deadline, COALESCE(employment_type,''),
-		        COALESCE(opportunity_type,''), COALESCE(reference_number,'')
-		 FROM article_opportunities WHERE article_id IN (`+ph+`)`, ids...)
+                        COALESCE(opportunity_type,''), COALESCE(reference_number,'')
+                 FROM article_opportunities WHERE article_id IN (`+ph+`)`, ids...)
 	if err != nil {
 		return nil, err
 	}
@@ -452,7 +452,7 @@ func (s *Store) ReclassifyArticle(ctx context.Context, articleID, categoryID, pr
 		}
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_categories (article_id, category_id, confidence, origin) VALUES ($1,$2,$3,$4)
-			 ON CONFLICT (article_id, category_id) DO UPDATE SET confidence = $3, origin = $4`,
+                         ON CONFLICT (article_id, category_id) DO UPDATE SET confidence = $3, origin = $4`,
 			articleID, categoryID, 1.0, string(model.OriginEditor)); err != nil {
 			return err
 		}
@@ -464,7 +464,7 @@ func (s *Store) ReclassifyArticle(ctx context.Context, articleID, categoryID, pr
 		}
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_provinces (article_id, province_id, confidence, origin) VALUES ($1,$2,$3,$4)
-			 ON CONFLICT (article_id, province_id) DO UPDATE SET confidence = $3, origin = $4`,
+                         ON CONFLICT (article_id, province_id) DO UPDATE SET confidence = $3, origin = $4`,
 			articleID, provinceID, 1.0, string(model.OriginEditor)); err != nil {
 			return err
 		}
@@ -476,8 +476,8 @@ func (s *Store) ReclassifyArticle(ctx context.Context, articleID, categoryID, pr
 func (s *Store) ClusterCoverage(ctx context.Context, clusterID string, excludeID string, limit int, lang string) ([]model.ArticleCard, error) {
 	rows, err := s.query(ctx,
 		`SELECT `+articleColumns+` FROM articles a
-		 WHERE a.cluster_id = $1 AND a.id <> $2 AND a.status = 'ACTIVE'
-		 ORDER BY a.published_at DESC LIMIT $3`, clusterID, excludeID, limit)
+                 WHERE a.cluster_id = $1 AND a.id <> $2 AND a.status = 'ACTIVE'
+                 ORDER BY a.published_at DESC LIMIT $3`, clusterID, excludeID, limit)
 	if err != nil {
 		return nil, err
 	}
@@ -512,18 +512,21 @@ func (s *Store) AssignCluster(ctx context.Context, articleID, clusterID, topicKe
 	if exists == 0 {
 		if _, err := s.txExec(ctx, tx,
 			`INSERT INTO article_clusters (id, representative_article_id, normalized_topic_key, first_seen_at, last_seen_at, article_count)
-			 VALUES ($1,$2,$3,$4,$4,$5)`,
+                         VALUES ($1,$2,$3,$4,$4,$5)`,
 			clusterID, articleID, topicKey, now, 1); err != nil {
 			return err
 		}
 	}
-	if _, err := s.txExec(ctx, tx,
-		`UPDATE article_clusters SET last_seen_at = $2, article_count = (
-		     SELECT COUNT(*) FROM articles WHERE cluster_id = $1 AND status = 'ACTIVE'
-		 ) WHERE id = $1`, clusterID, now); err != nil {
+	// Attach the article BEFORE recounting: the recount must include the newest
+	// member or article_count permanently lags one behind after the last report
+	// of a story joins (exposed by the trending surface).
+	if _, err := s.txExec(ctx, tx, `UPDATE articles SET cluster_id = $2 WHERE id = $1`, articleID, clusterID); err != nil {
 		return err
 	}
-	if _, err := s.txExec(ctx, tx, `UPDATE articles SET cluster_id = $2 WHERE id = $1`, articleID, clusterID); err != nil {
+	if _, err := s.txExec(ctx, tx,
+		`UPDATE article_clusters SET last_seen_at = $2, article_count = (
+                     SELECT COUNT(*) FROM articles WHERE cluster_id = $1 AND status = 'ACTIVE'
+                 ) WHERE id = $1`, clusterID, now); err != nil {
 		return err
 	}
 	return tx.Commit()
@@ -535,7 +538,7 @@ func (s *Store) FindClusterCandidate(ctx context.Context, topicKey string, since
 	var id string
 	err := s.queryRow(ctx,
 		`SELECT id FROM article_clusters WHERE normalized_topic_key = $1 AND last_seen_at >= $2
-		 ORDER BY last_seen_at DESC LIMIT 1`, topicKey, s.timeVal(since)).Scan(&id)
+                 ORDER BY last_seen_at DESC LIMIT 1`, topicKey, s.timeVal(since)).Scan(&id)
 	if err == sql.ErrNoRows {
 		return "", nil
 	}
@@ -547,8 +550,8 @@ func (s *Store) FindClusterCandidate(ctx context.Context, topicKey string, since
 func (s *Store) DistinctSourceCountForTopic(ctx context.Context, topicKey string, since time.Time) (int, error) {
 	return s.CountRow(ctx,
 		`SELECT COUNT(DISTINCT a.source_id) FROM articles a
-		 JOIN article_clusters c ON c.id = a.cluster_id
-		 WHERE c.normalized_topic_key = $1 AND a.discovered_at >= $2 AND a.status = 'ACTIVE'`,
+                 JOIN article_clusters c ON c.id = a.cluster_id
+                 WHERE c.normalized_topic_key = $1 AND a.discovered_at >= $2 AND a.status = 'ACTIVE'`,
 		topicKey, s.timeVal(since))
 }
 
@@ -556,8 +559,8 @@ func (s *Store) DistinctSourceCountForTopic(ctx context.Context, topicKey string
 func (s *Store) RecentBreakingCandidates(ctx context.Context, since time.Time, limit int) ([]*model.Article, error) {
 	rows, err := s.query(ctx,
 		`SELECT `+articleColumns+` FROM articles a
-		 WHERE a.discovered_at >= $1 AND a.status = 'ACTIVE'
-		 ORDER BY a.discovered_at DESC LIMIT $2`, s.timeVal(since), limit)
+                 WHERE a.discovered_at >= $1 AND a.status = 'ACTIVE'
+                 ORDER BY a.discovered_at DESC LIMIT $2`, s.timeVal(since), limit)
 	if err != nil {
 		return nil, err
 	}
@@ -585,4 +588,80 @@ func isUniqueViolation(err error) bool {
 	}
 	msg := strings.ToLower(err.Error())
 	return strings.Contains(msg, "unique") || strings.Contains(msg, "duplicate key")
+}
+
+// ClusterSeed is one recent clustered article, used by the ingestion pipeline's
+// simhash near-duplicate scan: the seed's cluster absorbs reworded reports that
+// the exact topic-key lookup missed (§159 level 5 fallback).
+type ClusterSeed struct {
+	ClusterID string
+	Title     string
+}
+
+// RecentClusteredSeeds returns the newest clustered articles in the window, bounded
+// by limit. Multiple rows may share a cluster; the caller stops at the first hit,
+// which biases matching toward the most recent (best) title per story.
+func (s *Store) RecentClusteredSeeds(ctx context.Context, since time.Time, limit int) ([]ClusterSeed, error) {
+	rows, err := s.query(ctx,
+		`SELECT a.cluster_id, a.title FROM articles a
+                 WHERE a.cluster_id IS NOT NULL AND a.status = 'ACTIVE' AND a.discovered_at >= $1
+                 ORDER BY a.discovered_at DESC LIMIT $2`, s.timeVal(since), limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := []ClusterSeed{}
+	for rows.Next() {
+		var seed ClusterSeed
+		if err := rows.Scan(&seed.ClusterID, &seed.Title); err != nil {
+			return nil, err
+		}
+		out = append(out, seed)
+	}
+	return out, rows.Err()
+}
+
+// TrendingCluster is one aggregated story for the public trending surface: the
+// story's representative title, how many articles and how many independent
+// publishers covered it inside the window.
+type TrendingCluster struct {
+	ClusterID    string    `json:"clusterId"`
+	TopicKey     string    `json:"-"`
+	Title        string    `json:"title"`
+	ArticleCount int       `json:"articleCount"`
+	SourceCount  int       `json:"sourceCount"`
+	LastSeenAt   time.Time `json:"lastSeenAt"`
+}
+
+// TopClusters ranks stories by independent coverage inside the window. The
+// representative title is the newest active article's title; source_count is the
+// deterministic corroboration signal (§164) exposed to clients as a strength metric.
+func (s *Store) TopClusters(ctx context.Context, since time.Time, limit int) ([]TrendingCluster, error) {
+	rows, err := s.query(ctx, `SELECT c.id, c.normalized_topic_key,
+                        (SELECT a2.title FROM articles a2 WHERE a2.cluster_id = c.id AND a2.status = 'ACTIVE' ORDER BY a2.discovered_at DESC LIMIT 1) AS rep_title,
+                        c.article_count, COUNT(DISTINCT a.source_id) AS source_count, c.last_seen_at
+                FROM article_clusters c
+                JOIN articles a ON a.cluster_id = c.id AND a.status = 'ACTIVE'
+                WHERE c.last_seen_at >= $1
+                GROUP BY c.id, c.normalized_topic_key, c.article_count, c.last_seen_at
+                ORDER BY source_count DESC, c.article_count DESC, c.last_seen_at DESC
+                LIMIT $2`, s.timeVal(since), limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var lastSeen NullTimeOf
+	out := []TrendingCluster{}
+	for rows.Next() {
+		var tc TrendingCluster
+		if err := rows.Scan(&tc.ClusterID, &tc.TopicKey, &tc.Title,
+			&tc.ArticleCount, &tc.SourceCount, &lastSeen); err != nil {
+			return nil, err
+		}
+		if lastSeen.Valid {
+			tc.LastSeenAt = lastSeen.Time
+		}
+		out = append(out, tc)
+	}
+	return out, rows.Err()
 }

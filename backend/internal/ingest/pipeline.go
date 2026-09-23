@@ -338,6 +338,17 @@ func (p *Pipeline) attachToCluster(ctx context.Context, feed model.Feed, in stor
 		return err
 	}
 	if clusterID == "" {
+		// Exact topic-key miss. Independent publishers reword the same story, so the
+		// exact fingerprint alone would split one event into many clusters. Fall back
+		// to token-overlap matching over recent clustered titles (§159 level 5 fallback).
+		seeds, seedErr := p.store.RecentClusteredSeeds(ctx, since, nearDupScanLimit)
+		if seedErr != nil {
+			p.log.Debug("near-duplicate scan unavailable", "error", seedErr)
+		} else if id := nearDuplicateCluster(in.NormalizedTitle, seeds); id != "" {
+			clusterID = id
+		}
+	}
+	if clusterID == "" {
 		clusterID = store.StableID("cluster", in.TitleFingerprint)
 	}
 	published := in.DiscoveredAt
@@ -345,6 +356,26 @@ func (p *Pipeline) attachToCluster(ctx context.Context, feed model.Feed, in stor
 		published = *in.PublishedAt
 	}
 	return p.store.AssignCluster(ctx, articleID, clusterID, in.TitleFingerprint, published)
+}
+
+// nearDupScanLimit bounds the near-duplicate seed scan: the newest 300 clustered
+// articles inside the window cover the live news cycle while keeping the per-insert
+// cost at a few hundred uint64 comparisons.
+const nearDupScanLimit = 300
+
+// nearDuplicateCluster picks the cluster of the first seed whose title describes
+// the same story under the token-overlap gate. Pure function so the matching rule
+// stays unit-testable without a database.
+func nearDuplicateCluster(candNormalizedTitle string, seeds []store.ClusterSeed) string {
+	if strings.TrimSpace(candNormalizedTitle) == "" {
+		return ""
+	}
+	for _, seed := range seeds {
+		if normalize.NearDuplicateTitle(candNormalizedTitle, normalize.NormalizedTitle(seed.Title)) {
+			return seed.ClusterID
+		}
+	}
+	return ""
 }
 
 // breakingSignals is the pure input of the breaking decision, which keeps the rule

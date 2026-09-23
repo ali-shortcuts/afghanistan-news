@@ -10,6 +10,7 @@ package httpapi
 // fields: only the same card data the mobile API already exposes.
 
 import (
+	"bytes"
 	"encoding/xml"
 	"net/http"
 	"time"
@@ -119,16 +120,16 @@ func (s *Server) handleRSS(w http.ResponseWriter, r *http.Request) {
 		Items:         items,
 	}
 
-	w.Header().Set("Content-Type", "application/rss+xml; charset=utf-8")
-	// Feed readers poll on fixed intervals; a short shared cache window is plenty.
-	w.Header().Set("Cache-Control", "public, max-age=300")
-	if _, err := w.Write([]byte(xml.Header)); err != nil {
+	// Render the full document once so the ETag covers the exact bytes served;
+	// feed readers revalidating with If-None-Match get an empty 304.
+	doc := &bytes.Buffer{}
+	if _, err := doc.WriteString(xml.Header); err != nil {
 		return
 	}
-	enc := xml.NewEncoder(w)
-	if err := enc.Encode(rssFeed{Version: "2.0", Channel: channel}); err != nil {
+	if err := xml.NewEncoder(doc).Encode(rssFeed{Version: "2.0", Channel: channel}); err != nil {
 		return
 	}
+	s.writeXMLCached(w, r, doc.Bytes())
 }
 
 // publicBaseURL derives the channel self-link from the request, honouring

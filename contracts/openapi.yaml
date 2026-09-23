@@ -206,6 +206,42 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
 
+  /v1/trending:
+    get:
+      tags: [articles]
+      summary: Most-covered stories inside a window, ranked by independent publishers
+      description: >-
+        Aggregates clustered reports into stories and ranks them by distinct source
+        count inside the window — the same corroboration signal the breaking gate
+        uses. Items carry the newest representative title and coverage counts.
+      parameters:
+        - { name: window, in: query, schema: { type: integer, default: 48, maximum: 168 }, description: "Lookback window in hours" }
+        - { name: limit, in: query, schema: { type: integer, default: 20, maximum: 50 } }
+      responses:
+        "200":
+          description: Ranked story list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  windowHours: { type: integer }
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        clusterId: { type: string }
+                        title: { type: string }
+                        articleCount: { type: integer }
+                        sourceCount: { type: integer }
+                        lastSeenAt: { type: string, format: date-time }
+        "400":
+          description: Invalid window/limit (structured error envelope)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
   /v1/feed-pack/version:
     get:
       tags: [reference]

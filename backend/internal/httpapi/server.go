@@ -39,7 +39,6 @@ type FeedTester interface {
 
 // Server bundles dependencies for all HTTP handlers.
 // Options configures the server.
-// Server bundles dependencies for all HTTP handlers.
 type Server struct {
 	cfg       *config.Config
 	store     *store.Store
@@ -117,6 +116,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("DELETE /v1/push/registrations/{id}", s.handlePushUnregister)
 	mux.HandleFunc("GET /v1/notifications", s.handleNotificationInbox)
 	mux.HandleFunc("GET /v1/rss.xml", s.handleRSS)
+	mux.HandleFunc("GET /v1/trending", s.handleTrending)
 
 	// ---- operational endpoints (§127) ----
 	mux.HandleFunc("GET /health/live", s.handleLiveness)
@@ -253,7 +253,7 @@ func (s *Server) handleHome(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Header().Set("Cache-Control", "public, max-age=60")
-	s.writeJSON(w, http.StatusOK, payload)
+	s.writeJSONCached(w, r, http.StatusOK, payload)
 }
 
 func (s *Server) handleArticles(w http.ResponseWriter, r *http.Request) {
@@ -275,7 +275,7 @@ func (s *Server) handleArticles(w http.ResponseWriter, r *http.Request) {
 	if q.Sort == "top" {
 		cards = store.ApplySourceDiversity(cards, 2)
 	}
-	s.writeJSON(w, http.StatusOK, model.Page{Items: cards, NextCursor: next})
+	s.writeJSONCached(w, r, http.StatusOK, model.Page{Items: cards, NextCursor: next})
 }
 
 func (s *Server) handleArticleByID(w http.ResponseWriter, r *http.Request) {
