@@ -1,6 +1,5 @@
 package com.afghanistan.news.ui.theme
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -25,6 +24,10 @@ import com.afghanistan.news.core.model.Language
  * Design tokens (Architecture §143-§150). Spacing 4/8/12/16/24/32, corners 8/12/16/20,
  * minimum touch target 48dp, headline-first typography with generous line height because
  * Persian/Arabic script needs vertical room.
+ *
+ * v1.2: the palette moved from a single muted teal to a vivid, high-contrast brand —
+ * emerald primary, amber secondary, azure tertiary — plus a deterministic color per
+ * news category so every menu, chip and badge is recognisable at a glance.
  */
 object AfNewsSpacing {
     val xs = 4.dp
@@ -43,42 +46,66 @@ object AfNewsShapes {
     val extraLarge = 20.dp
 }
 
-private val Teal = Color(0xFF0F766E)
-private val TealDark = Color(0xFF2DD4BF)
-private val Ink = Color(0xFF12161C)
-private val Paper = Color(0xFFF6F7F9)
-private val Alert = Color(0xFFB42318)
+private val Emerald = Color(0xFF059669)
+private val EmeraldDark = Color(0xFF34D399)
+private val Amber = Color(0xFFF59E0B)
+private val AmberDark = Color(0xFFFBBF24)
+private val Azure = Color(0xFF2563EB)
+private val AzureDark = Color(0xFF60A5FA)
+private val Ink = Color(0xFF101720)
+private val Paper = Color(0xFFF7F9FB)
+private val Alert = Color(0xFFDC2626)
 
 private val LightColors = lightColorScheme(
-    primary = Teal,
+    primary = Emerald,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFE6F4F2),
-    onPrimaryContainer = Color(0xFF0B5C56),
-    secondary = Color(0xFF475467),
+    primaryContainer = Color(0xFFD1FAE5),
+    onPrimaryContainer = Color(0xFF065F46),
+    secondary = Amber,
+    onSecondary = Color(0xFF3B2A00),
+    secondaryContainer = Color(0xFFFEF3C7),
+    onSecondaryContainer = Color(0xFF92400E),
+    tertiary = Azure,
+    onTertiary = Color.White,
+    tertiaryContainer = Color(0xFFDBEAFE),
+    onTertiaryContainer = Color(0xFF1E40AF),
     background = Paper,
     onBackground = Ink,
     surface = Color.White,
     onSurface = Ink,
-    surfaceVariant = Color(0xFFEEF1F4),
-    onSurfaceVariant = Color(0xFF5B6472),
+    surfaceVariant = Color(0xFFEDF2F6),
+    onSurfaceVariant = Color(0xFF57646F),
     error = Alert,
-    outline = Color(0xFFD9DEE5),
+    onError = Color.White,
+    errorContainer = Color(0xFFFEE2E2),
+    onErrorContainer = Color(0xFF991B1B),
+    outline = Color(0xFFD6DEE6),
 )
 
 private val DarkColors = darkColorScheme(
-    primary = TealDark,
-    onPrimary = Color(0xFF06221F),
-    primaryContainer = Color(0xFF10312D),
-    onPrimaryContainer = Color(0xFF9FE3DA),
-    secondary = Color(0xFF98A2B3),
-    background = Color(0xFF0F1319),
+    primary = EmeraldDark,
+    onPrimary = Color(0xFF04241A),
+    primaryContainer = Color(0xFF0B3B2D),
+    onPrimaryContainer = Color(0xFFA7F3D0),
+    secondary = AmberDark,
+    onSecondary = Color(0xFF2C1E00),
+    secondaryContainer = Color(0xFF4A3403),
+    onSecondaryContainer = Color(0xFFFDE68A),
+    tertiary = AzureDark,
+    onTertiary = Color(0xFF0A1B3D),
+    tertiaryContainer = Color(0xFF1E3A8A),
+    onTertiaryContainer = Color(0xFFBFDBFE),
+    background = Color(0xFF0E1319),
     onBackground = Color(0xFFE7ECF2),
-    surface = Color(0xFF161B22),
+    surface = Color(0xFF151B23),
     onSurface = Color(0xFFE7ECF2),
-    surfaceVariant = Color(0xFF1D232C),
+    surfaceVariant = Color(0xFF1D2530),
     onSurfaceVariant = Color(0xFFAFBAC8),
-    error = Color(0xFFF97066),
-    outline = Color(0xFF2A323C),
+    error = Color(0xFFF87171),
+    onError = Color(0xFF2C0B0B),
+    errorContainer = Color(0xFF7F1D1D),
+    onErrorContainer = Color(0xFFFECACA),
+    outline = Color(0xFF2A3440),
 )
 
 /** Persian/Arabic first font stack; the platform falls back per-glyph on API 21 devices. */
@@ -97,6 +124,58 @@ val AfNewsTypography = Typography(
 
 /** True when the device locale should mirror the layout for Dari/Pashto (§150). */
 val LocalAfNewsLanguage = staticCompositionLocalOf { Language.DARI }
+
+/**
+ * Deterministic accent color per canonical category id (§29.5 keys). The hue travels with
+ * the category everywhere — chips, badges, category tiles and feed top bars — so readers
+ * recognise a topic by color before they read its label.
+ */
+object AfNewsCategoryColors {
+    private val map = mapOf(
+        "afghanistan" to Color(0xFFEA580C),
+        "breaking" to Color(0xFFDC2626),
+        "politics" to Color(0xFF7C3AED),
+        "economy" to Color(0xFF059669),
+        "finance" to Color(0xFF0D9488),
+        "security" to Color(0xFFB91C1C),
+        "society" to Color(0xFFDB2777),
+        "provincial" to Color(0xFF65A30D),
+        "jobs" to Color(0xFF2563EB),
+        "opportunities" to Color(0xFF16A34A),
+        "tender" to Color(0xFFA16207),
+        "migration" to Color(0xFF0891B2),
+        "health" to Color(0xFFE11D48),
+        "education" to Color(0xFF4F46E5),
+        "humanitarian" to Color(0xFFF59E0B),
+        "world" to Color(0xFF0284C7),
+        "regional" to Color(0xFF8B5CF6),
+        "technology" to Color(0xFF0E7490),
+        "ai" to Color(0xFF6366F1),
+        "crypto" to Color(0xFFF97316),
+        "science" to Color(0xFF9333EA),
+        "climate" to Color(0xFF15803D),
+        "disasters" to Color(0xFF991B1B),
+        "sports" to Color(0xFF4D7C0F),
+        "cricket" to Color(0xFF0F766E),
+        "culture" to Color(0xFFC026D3),
+        "media" to Color(0xFF334155),
+        "official" to Color(0xFF475569),
+        "energy" to Color(0xFFD97706),
+        "agriculture" to Color(0xFF3F6212),
+    )
+
+    /** Accent for a category id; unknown ids fall back to the emerald brand color. */
+    fun of(categoryId: String?): Color =
+        categoryId?.let { map[it] } ?: Emerald
+
+    /** True when the accent is bright enough to need dark text on it (readability §143). */
+    fun onColor(color: Color): Color =
+        if (color == Color(0xFFF59E0B) || color == Color(0xFFF97316) || color == Color(0xFFD97706)) {
+            Color(0xFF2C1E00)
+        } else {
+            Color.White
+        }
+}
 
 @Composable
 fun AfNewsTheme(

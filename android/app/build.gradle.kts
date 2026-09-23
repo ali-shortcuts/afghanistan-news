@@ -35,8 +35,8 @@ android {
         // §396: Android 5.0 must keep working — this floor is an acceptance criterion.
         minSdk = 21
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -50,7 +50,7 @@ android {
         ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64") }
 
         buildConfigField("String", "API_BASE_URL", "\"${prop("apiBaseUrl", "https://api.afghanistan.news/")}\"")
-        buildConfigField("String", "FEED_PACK_ASSET", "\"feedpack/afghanistan-global-news-master-v0.2.opml\"")
+        buildConfigField("String", "FEED_PACK_ASSET", "\"feedpack/afghanistan-global-news-master-v0.3.opml\"")
         buildConfigField("boolean", "PUSH_ENABLED", "true")
     }
 
@@ -229,7 +229,7 @@ dependencies {
 // The bundled OPML feed pack is the bootstrap registry. Keep the asset byte-identical to
 // the canonical pack in ../feedpacks and let CI verify the checksum.
 val syncFeedPack by tasks.registering(Copy::class) {
-    val canonical = rootProject.file("../feedpacks/afghanistan-global-news-master-v0.2.opml")
+    val canonical = rootProject.file("../feedpacks/afghanistan-global-news-master-v0.3.opml")
     onlyIf { canonical.exists() }
     from(canonical)
     into(layout.projectDirectory.dir("src/main/assets/feedpack"))

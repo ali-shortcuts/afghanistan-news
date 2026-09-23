@@ -113,6 +113,11 @@ fun AfNewsApp(
                         FeedScreen(
                             title = "افغانستان",
                             categoryId = "afghanistan",
+                            subCategories = listOf(
+                                "politics", "security", "economy", "society",
+                                "health", "education", "jobs", "provincial",
+                            ),
+                            onOpenCategory = { navController.navigate(Routes.category(it)) },
                             onOpenArticle = { navController.navigate(Routes.article(it)) },
                         )
                     }
@@ -120,7 +125,17 @@ fun AfNewsApp(
                         FeedScreen(
                             title = "جهان",
                             categoryId = "world",
+                            subCategories = listOf(
+                                "breaking", "regional", "politics", "economy",
+                                "technology", "ai", "sports", "science", "climate", "culture",
+                            ),
+                            onOpenCategory = { navController.navigate(Routes.category(it)) },
                             onOpenArticle = { navController.navigate(Routes.article(it)) },
+                        )
+                    }
+                    composable(Routes.CATEGORIES) {
+                        com.afghanistan.news.ui.categories.CategoriesScreen(
+                            onOpenCategory = { navController.navigate(Routes.category(it)) },
                         )
                     }
                     composable(Routes.CATEGORY) { entry ->
@@ -147,6 +162,19 @@ fun AfNewsApp(
                             onOpenArticle = { navController.navigate(Routes.article(it)) },
                         )
                     }
+                    composable(Routes.MORE) {
+                        MoreScreen(
+                            onOpenProvinces = { navController.navigate(Routes.PROVINCES) },
+                            onOpenSources = { navController.navigate(Routes.SOURCES) },
+                            onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                            onOpenNotifications = { navController.navigate(Routes.NOTIFICATIONS) },
+                            onOpenSearch = { navController.navigate(Routes.SEARCH) },
+                            onOpenSaved = { navController.navigate(Routes.SAVED) },
+                            onOpenCategories = { navController.navigate(Routes.CATEGORIES) },
+                            onOpenAbout = { navController.navigate(Routes.ABOUT) },
+                            onOpenCategory = { navController.navigate(Routes.category(it)) },
+                        )
+                    }
                     composable(Routes.SAVED) {
                         SavedScreen(onOpenArticle = { navController.navigate(Routes.article(it)) })
                     }
@@ -159,17 +187,6 @@ fun AfNewsApp(
                             articleId = id,
                             onBack = { navController.popBackStack() },
                             onOpenSource = { navController.navigate(Routes.source(it)) },
-                        )
-                    }
-                    composable(Routes.MORE) {
-                        MoreScreen(
-                            onOpenProvinces = { navController.navigate(Routes.PROVINCES) },
-                            onOpenSources = { navController.navigate(Routes.SOURCES) },
-                            onOpenSettings = { navController.navigate(Routes.SETTINGS) },
-                            onOpenNotifications = { navController.navigate(Routes.NOTIFICATIONS) },
-                            onOpenSearch = { navController.navigate(Routes.SEARCH) },
-                            onOpenAbout = { navController.navigate(Routes.ABOUT) },
-                            onOpenCategory = { navController.navigate(Routes.category(it)) },
                         )
                     }
                     composable(Routes.PROVINCES) {

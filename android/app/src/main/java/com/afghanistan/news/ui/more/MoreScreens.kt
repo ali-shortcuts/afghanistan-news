@@ -221,7 +221,7 @@ sealed interface ServerTestState {
     data class Failure(val message: String) : ServerTestState
 }
 
-/** "More" hub: reference data, notification settings and honest product information. */
+/** "More" hub: saved articles, reference data, notification settings and honest product info. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MoreScreen(
@@ -230,29 +230,40 @@ fun MoreScreen(
     onOpenSettings: () -> Unit,
     onOpenNotifications: () -> Unit,
     onOpenSearch: () -> Unit,
+    onOpenSaved: () -> Unit,
+    onOpenCategories: () -> Unit,
     onOpenAbout: () -> Unit,
     onOpenCategory: (String) -> Unit,
 ) {
     Scaffold(topBar = { TopAppBar(title = { Text("بیشتر") }) }) { padding ->
         LazyColumn(Modifier.fillMaxSize().padding(padding)) {
             val entries = listOf(
-                "جستجو" to onOpenSearch,
-                "ولایت‌ها" to onOpenProvinces,
-                "منابع و شفافیت" to onOpenSources,
-                "اعلان‌ها" to onOpenNotifications,
-                "تنظیمات" to onOpenSettings,
-                "دربارهٔ برنامه" to onOpenAbout,
+                Triple("🔖", "ذخیره‌شده", onOpenSaved),
+                Triple("🗂", "دسته‌بندی‌ها", onOpenCategories),
+                Triple("🔎", "جستجو", onOpenSearch),
+                Triple("🗺", "ولایت‌ها", onOpenProvinces),
+                Triple("📰", "منابع و شفافیت", onOpenSources),
+                Triple("🔔", "اعلان‌ها", onOpenNotifications),
+                Triple("⚙️", "تنظیمات", onOpenSettings),
+                Triple("ℹ️", "دربارهٔ برنامه", onOpenAbout),
             )
-            items(entries) { (label, action) ->
+            items(entries) { (icon, label, action) ->
                 Row(
                     Modifier
                         .fillMaxWidth()
                         .clickable(onClick = action)
-                        .padding(AfNewsSpacing.lg),
+                        .padding(horizontal = AfNewsSpacing.lg, vertical = AfNewsSpacing.md),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(label, style = MaterialTheme.typography.titleMedium)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            icon,
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(end = AfNewsSpacing.md),
+                        )
+                        Text(label, style = MaterialTheme.typography.titleMedium)
+                    }
                     Text("‹", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 Divider()

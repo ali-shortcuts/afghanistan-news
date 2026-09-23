@@ -17,7 +17,7 @@ x-backend-env: &backend-env
   LOG_LEVEL: ${LOG_LEVEL:-info}
   DB_DRIVER: postgres
   DATABASE_URL: postgres://${DB_USER:-afnews}:${DB_PASS:-afnews}@db:5432/${DB_NAME:-afnews}?sslmode=disable
-  FEED_PACK_PATH: /app/resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+  FEED_PACK_PATH: /app/resources/feedpacks/afghanistan-global-news-master-v0.3.opml
   FEED_ACTIVATION_WAVE: ${FEED_ACTIVATION_WAVE:-1}
   PUSH_DRY_RUN: ${PUSH_DRY_RUN:-true}
   ALLOW_PRIVATE_FETCH: "false"          # SSRF guard (§103) — never loosen this in production

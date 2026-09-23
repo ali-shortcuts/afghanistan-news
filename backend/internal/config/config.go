@@ -69,7 +69,7 @@ func Load() (*Config, error) {
 		DatabaseURL:        env("DATABASE_URL", "postgres://afnews:afnews@127.0.0.1:5432/afnews?sslmode=disable"),
 		DBDriver:           env("DB_DRIVER", ""),
 		SQLitePath:         env("SQLITE_PATH", "data/afnews.db"),
-		FeedPackPath:       env("FEED_PACK_PATH", "resources/feedpacks/afghanistan-global-news-master-v0.2.opml"),
+		FeedPackPath:       env("FEED_PACK_PATH", "resources/feedpacks/afghanistan-global-news-master-v0.3.opml"),
 		ActivationWave:     envInt("FEED_ACTIVATION_WAVE", 1),
 		WorkerEnabled:      envBool("WORKER_ENABLED", true),
 		WorkerConcurrency:  envInt("WORKER_CONCURRENCY", 8),

@@ -31,7 +31,7 @@ acceptance: ## full end-to-end check of every surface against $(API_BASE)
 	./scripts/acceptance.sh
 
 seed: ## load repository fixtures: reference data, feed pack, articles, push device
-	cd backend && go run ./cmd/seed-fixtures -driver "$(DB_DRIVER)" -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+	cd backend && go run ./cmd/seed-fixtures -driver "$(DB_DRIVER)" -pack resources/feedpacks/afghanistan-global-news-master-v0.3.opml
 
 seed-test: ## seed a scratch PostgreSQL database, then run the acceptance suite against it
 	./scripts/seed-and-verify.sh

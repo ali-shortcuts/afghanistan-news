@@ -54,7 +54,7 @@ jobs:
           DATABASE_URL: ${{ env.PG_URL }}
         run: |
           go run ./cmd/seed-fixtures -driver postgres \
-            -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
+            -pack resources/feedpacks/afghanistan-global-news-master-v0.3.opml \
             -fixtures testdata/feeds -wave 1
 
       - name: start the API (no embedded worker) and check the surfaces
@@ -91,10 +91,10 @@ jobs:
           sha256sum resources/feedpacks/*.opml
           # three copies exist on purpose (worker bootstrap, repo pack, Android asset):
           # they must never drift apart.
-          diff -q resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
-                  ../feedpacks/afghanistan-global-news-master-v0.2.opml
-          diff -q ../feedpacks/afghanistan-global-news-master-v0.2.opml \
-                  ../android/app/src/main/assets/feedpack/afghanistan-global-news-master-v0.2.opml
+          diff -q resources/feedpacks/afghanistan-global-news-master-v0.3.opml \
+                  ../feedpacks/afghanistan-global-news-master-v0.3.opml
+          diff -q ../feedpacks/afghanistan-global-news-master-v0.3.opml \
+                  ../android/app/src/main/assets/feedpack/afghanistan-global-news-master-v0.3.opml
 
   android:
     runs-on: ubuntu-latest
@@ -143,7 +143,7 @@ jobs:
           grep -q "minSdkVersion:'21'" /tmp/badging.txt
           grep -q "targetSdkVersion:'36'" /tmp/badging.txt
           grep -q "native-code: 'arm64-v8a' 'armeabi-v7a'" /tmp/badging.txt
-          unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.2.opml"
+          unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.3.opml"
 
       - uses: actions/upload-artifact@v4
         with:

@@ -2,7 +2,7 @@
 
 A full-stack, offline-first news platform for Afghanistan: a multi-language reader app, a public
 news API, an editorial console, and an ingestion pipeline that turns an OPML 2.0 feed pack of
-570 publisher feeds into a deduplicated, attributed, province-aware news stream.
+676 publisher feeds into a deduplicated, attributed, province-aware news stream.
 
 ```
 news-platform/
@@ -10,7 +10,7 @@ news-platform/
 ├── admin/       Editorial console (protected, zero-dependency, served at /admin/)
 ├── app/         Mobile client preview (offline-first, RTL Persian, same /v1 contract)
 ├── android/     Kotlin · Compose · Room reader app (minSdk 21, arm32 + arm64, API-21 pinned)
-├── feedpacks/   Canonical OPML 2.0 feed pack v0.2 — 570 feeds, 34 folders
+├── feedpacks/   Canonical OPML 2.0 feed pack v0.3 — 676 feeds, 37 folders
 ├── contracts/   OpenAPI 3.0 public contract + admin API spec
 ├── docs/        Architecture, deployment, operations runbook, security posture, Android notes
 └── scripts/     bootstrap · import_feedpack · seed_demo_push · smoke · acceptance
@@ -71,7 +71,7 @@ CI-built one cannot, because GitHub Actions has no keystore: that is exactly why
 `scripts/resign-apk.sh` exists.
 
 **First run.** The app opens on a short onboarding screen (§7.1 of the architecture document): it
-reads the OPML pack that shipped inside the APK and shows what it found — 570 sources in 34 groups
+reads the OPML pack that shipped inside the APK and shows what it found — 676 sources in 37 groups
 — so you can see reading works before anything is configured; it offers the three languages; and it
 treats the server address as an optional step you can skip. Nothing there is required, and no
 account is ever needed. The bundled pack means the source directory is populated with no server and

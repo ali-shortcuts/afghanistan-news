@@ -6,7 +6,7 @@ set -euo pipefail
 API_BASE="${API_BASE:-http://localhost:8080}"
 ADMIN_USER="${ADMIN_USER:-admin}"
 ADMIN_PASSWORD="${ADMIN_PASSWORD:-afnews-admin}"
-FEED_PACK="${FEED_PACK:-resources/feedpacks/afghanistan-global-news-master-v0.2.opml}"
+FEED_PACK="${FEED_PACK:-resources/feedpacks/afghanistan-global-news-master-v0.3.opml}"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo "== waiting for api at ${API_BASE} =="

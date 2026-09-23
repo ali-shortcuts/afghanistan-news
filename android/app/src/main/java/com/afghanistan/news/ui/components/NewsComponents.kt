@@ -5,12 +5,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,12 +24,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.afghanistan.news.core.model.Article
+import com.afghanistan.news.ui.theme.AfNewsCategoryColors
 import com.afghanistan.news.ui.theme.AfNewsShapes
 import com.afghanistan.news.ui.theme.AfNewsSpacing
 
@@ -37,15 +42,34 @@ import com.afghanistan.news.ui.theme.AfNewsSpacing
 @Composable
 fun BreakingStrip(article: Article, coverageCount: Int, onClick: () -> Unit) {
     Surface(
-        color = MaterialTheme.colorScheme.error,
         shape = RoundedCornerShape(AfNewsShapes.large),
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = AfNewsSpacing.md)
             .clickable(onClick = onClick),
+        color = Color.Transparent,
     ) {
-        Column(Modifier.padding(AfNewsSpacing.lg)) {
-            Text("خبر فوری", style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.92f))
+        Column(
+            Modifier
+                .background(
+                    brush = Brush.linearGradient(
+                        listOf(Color(0xFFDC2626), Color(0xFFF97316)),
+                    ),
+                )
+                .padding(AfNewsSpacing.lg),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    Modifier
+                        .size(8.dp)
+                        .background(Color.White, RoundedCornerShape(percent = 50)),
+                )
+                Text(
+                    "  خبر فوری  •  $coverageCount منبع",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color.White,
+                )
+            }
             Text(
                 article.title,
                 style = MaterialTheme.typography.titleLarge,
@@ -53,7 +77,7 @@ fun BreakingStrip(article: Article, coverageCount: Int, onClick: () -> Unit) {
                 modifier = Modifier.padding(top = AfNewsSpacing.xs),
             )
             Text(
-                "${article.source.name} · ${coverageCount} منبع",
+                article.source.name,
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.White.copy(alpha = 0.9f),
                 modifier = Modifier.padding(top = AfNewsSpacing.xs),
@@ -78,36 +102,45 @@ fun ArticleCard(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
-        Column {
-            if (!compact && !article.imageUrl.isNullOrBlank()) {
-                AsyncImage(
-                    model = article.imageUrl,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(16f / 9f)
-                        .clip(RoundedCornerShape(topStart = AfNewsShapes.medium, topEnd = AfNewsShapes.medium)),
-                )
-            }
-            Column(Modifier.padding(AfNewsSpacing.md)) {
-                Text(
-                    article.title,
-                    style = if (compact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
-                    maxLines = if (compact) 3 else 4,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                if (!compact && !article.summary.isNullOrBlank()) {
-                    Text(
-                        article.summary,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 3,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.padding(top = AfNewsSpacing.xs),
+        Row(Modifier.height(IntrinsicSize.Min)) {
+            // Category accent strip: the topic color leads every card.
+            Box(
+                Modifier
+                    .width(4.dp)
+                    .fillMaxHeight()
+                    .background(AfNewsCategoryColors.of(article.category?.id)),
+            )
+            Column {
+                if (!compact && !article.imageUrl.isNullOrBlank()) {
+                    AsyncImage(
+                        model = article.imageUrl,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(16f / 9f)
+                            .clip(RoundedCornerShape(topStart = AfNewsShapes.medium, topEnd = AfNewsShapes.medium)),
                     )
                 }
-                AttributionRow(article)
+                Column(Modifier.padding(AfNewsSpacing.md)) {
+                    Text(
+                        article.title,
+                        style = if (compact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
+                        maxLines = if (compact) 3 else 4,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    if (!compact && !article.summary.isNullOrBlank()) {
+                        Text(
+                            article.summary,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 3,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.padding(top = AfNewsSpacing.xs),
+                        )
+                    }
+                    AttributionRow(article)
+                }
             }
         }
     }
@@ -124,20 +157,31 @@ fun AttributionRow(article: Article) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Badge(article.source.name, primary = true)
-        article.category?.let { Badge(it.localized("fa")) }
+        article.category?.let {
+            val accent = AfNewsCategoryColors.of(it.id)
+            Badge(it.localized("fa"), color = accent)
+        }
         article.province?.let { Badge(it.name) }
         if (article.isBreaking) Badge("فوری", alert = true)
     }
 }
 
+/** Pill badge; a category accent color makes topics recognisable at a glance (§143). */
 @Composable
-fun Badge(text: String, primary: Boolean = false, alert: Boolean = false) {
+fun Badge(
+    text: String,
+    primary: Boolean = false,
+    alert: Boolean = false,
+    color: Color? = null,
+) {
     val background = when {
+        color != null -> color
         alert -> MaterialTheme.colorScheme.error
         primary -> MaterialTheme.colorScheme.primaryContainer
         else -> MaterialTheme.colorScheme.surfaceVariant
     }
     val foreground = when {
+        color != null -> AfNewsCategoryColors.onColor(color)
         alert -> Color.White
         primary -> MaterialTheme.colorScheme.onPrimaryContainer
         else -> MaterialTheme.colorScheme.onSurfaceVariant

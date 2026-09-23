@@ -131,6 +131,12 @@ var FolderToCategories = map[string][]string{
 	"culture-media-expanded":                {"culture", "media"},
 	"development-migration-rights-expanded": {"migration", "humanitarian"},
 	"official-institutions":                 {"official", "politics"},
+	// v0.3 world expansion: major outlets, per-language top stories and multilingual
+	// topic discovery. Every feed in these folders is first and foremost "world";
+	// keyword rules add the finer topic on top of the folder signal.
+	"world-major-outlets": {"world"},
+	"world-headlines":     {"world", "breaking"},
+	"world-topic-global":  {"world"},
 }
 
 // PrimaryCategoryForFolder returns the primary internal category for an OPML folder.

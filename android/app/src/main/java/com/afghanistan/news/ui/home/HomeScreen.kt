@@ -1,22 +1,36 @@
 package com.afghanistan.news.ui.home
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -34,6 +48,9 @@ import com.afghanistan.news.ui.components.ErrorState
 import com.afghanistan.news.ui.components.LoadingState
 import com.afghanistan.news.ui.components.OfflineBanner
 import com.afghanistan.news.ui.components.SectionHeader
+import com.afghanistan.news.ui.navigation.CategoryCatalog
+import com.afghanistan.news.ui.theme.AfNewsCategoryColors
+import com.afghanistan.news.ui.theme.AfNewsShapes
 import com.afghanistan.news.ui.theme.AfNewsSpacing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -91,6 +108,12 @@ class HomeViewModel @Inject constructor(
     }
 }
 
+/** Quick menus shown as colorful chips under the Home top bar; each opens its own feed. */
+private val QuickCategories = listOf(
+    "afghanistan", "world", "breaking", "politics", "economy", "jobs",
+    "technology", "sports", "health", "education", "culture", "cricket",
+)
+
 /**
  * Home: breaking strip, top stories and the sectioned feed defined by the Home DTO (§41).
  * Sections the server did not populate are simply omitted — no empty headers (§70).
@@ -109,7 +132,66 @@ fun HomeScreen(
     val refreshing by viewModel.refreshing.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("خبر — افغانستان") }) },
+        topBar = {
+            Column {
+                TopAppBar(
+                    title = {
+                        Column {
+                            Text(
+                                "خبر افغانستان",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold,
+                            )
+                            Text(
+                                "از ۶۷۶ منبع خبری جهان و افغانستان",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.background,
+                    ),
+                )
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm),
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = AfNewsSpacing.lg),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = AfNewsSpacing.sm),
+                ) {
+                    items(QuickCategories, key = { it }) { id ->
+                        val accent = AfNewsCategoryColors.of(id)
+                        Surface(
+                            shape = RoundedCornerShape(percent = 50),
+                            color = accent.copy(alpha = 0.14f),
+                            modifier = Modifier.clickable { onOpenCategory(id) },
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.padding(
+                                    horizontal = AfNewsSpacing.md,
+                                    vertical = AfNewsSpacing.xs + 2.dp,
+                                ),
+                            ) {
+                                androidx.compose.foundation.layout.Box(
+                                    Modifier
+                                        .padding(end = AfNewsSpacing.xs)
+                                        .size(6.dp)
+                                        .background(accent, RoundedCornerShape(percent = 50)),
+                                )
+                                Text(
+                                    CategoryCatalog.localized(id, "fa"),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = accent,
+                                    maxLines = 1,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
     ) { padding ->
         PullToRefreshBox(
             isRefreshing = refreshing,

@@ -14,7 +14,7 @@
 //
 // Nothing touches the network, so it is safe in CI and repeatable on a laptop:
 //
-//	go run ./cmd/seed-fixtures -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+//	go run ./cmd/seed-fixtures -pack resources/feedpacks/afghanistan-global-news-master-v0.3.opml
 //
 // Re-running is harmless: articles dedup on their content hash and the import reconciles.
 package main
@@ -42,7 +42,7 @@ func main() {
 		driver   = flag.String("driver", envOr("DB_DRIVER", "sqlite"), "sqlite or postgres")
 		dsn      = flag.String("dsn", os.Getenv("DATABASE_URL"), "postgres DSN")
 		sqlite   = flag.String("sqlite", envOr("SQLITE_PATH", "data/afnews.db"), "sqlite file")
-		pack     = flag.String("pack", "resources/feedpacks/afghanistan-global-news-master-v0.2.opml", "OPML pack")
+		pack     = flag.String("pack", "resources/feedpacks/afghanistan-global-news-master-v0.3.opml", "OPML pack")
 		fixtures = flag.String("fixtures", "testdata/feeds", "directory of feed fixtures")
 		wave     = flag.Int("wave", 1, "rollout wave to activate")
 		articles = flag.Int("articles", 12, "how many fixture articles to insert")

@@ -13,7 +13,7 @@ verified here**, so nobody mistakes an unchecked box for a passing one.
 | Smoke | `./scripts/smoke.sh` | health, home, articles, sources, config |
 | Web bundles | `node --check admin/app.js app/app.js` | syntax clean |
 | Android sources | `python3 android/tools/check_sources.py` | every internal import, every `R.*` reference and every resource reference resolves (40 files / 25 packages / 142 declarations) |
-| Feed pack | `cd backend && go test ./internal/feed/opml/ -run TestRealFeedPack` | 570 feeds, 34 folders, sha256 pinned |
+| Feed pack | `cd backend && go test ./internal/feed/opml/ -run TestRealFeedPack` | 676 feeds, 37 folders, sha256 pinned |
 | Compose / CI / contract | parsed as YAML | `docker-compose.yml`, `.github/workflows/ci.yml`, `contracts/openapi.yaml` |
 
 ## What `scripts/acceptance.sh` asserts
@@ -31,7 +31,7 @@ It is not a status-code smoke test. It asserts the **contract the clients depend
    (feed rows: `healthStatus`, `healthScore`, `consecutiveFailures`, `pollTier`, `needsReview`, …);
    the moderation table returns `total` **and** `status` for offset paging; `enabled=true|false`
    is tri-state; feed detail is flat and carries `healthEvents` + `recentArticles`; the OPML dry
-   run reports 570 outlines with `committed: false` and writes nothing; the push preview accepts
+   run reports 676 outlines with `committed: false` and writes nothing; the push preview accepts
    the exact payload the console sends.
 5. **Observability** — `/metrics` exposes the per-health feed gauges as a labelled series and the
    article/feed totals as gauges, so a scraper never sees a stale `0`.

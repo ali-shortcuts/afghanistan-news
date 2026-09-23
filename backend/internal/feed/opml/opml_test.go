@@ -12,8 +12,8 @@ import (
 func feedPackPath(t *testing.T) string {
 	t.Helper()
 	candidates := []string{
-		filepath.Join("..", "..", "..", "resources", "feedpacks", "afghanistan-global-news-master-v0.2.opml"),
-		filepath.Join("..", "..", "..", "..", "feedpacks", "afghanistan-global-news-master-v0.2.opml"),
+		filepath.Join("..", "..", "..", "resources", "feedpacks", "afghanistan-global-news-master-v0.3.opml"),
+		filepath.Join("..", "..", "..", "..", "feedpacks", "afghanistan-global-news-master-v0.3.opml"),
 	}
 	for _, c := range candidates {
 		if _, err := os.Stat(c); err == nil {
@@ -32,14 +32,14 @@ func TestParseRealFeedPack(t *testing.T) {
 	if doc.OPMLVersion != "2.0" {
 		t.Errorf("opml version = %q", doc.OPMLVersion)
 	}
-	if got := len(doc.ValidFeeds()); got != 570 {
-		t.Errorf("valid feeds = %d, want 570", got)
+	if got := len(doc.ValidFeeds()); got != 676 {
+		t.Errorf("valid feeds = %d, want 676", got)
 	}
-	if doc.FolderCount != 34 {
-		t.Errorf("folder count = %d, want 34", doc.FolderCount)
+	if doc.FolderCount != 37 {
+		t.Errorf("folder count = %d, want 37", doc.FolderCount)
 	}
-	if doc.FeedPackVer != "v0.2" {
-		t.Errorf("feed pack version = %q, want v0.2", doc.FeedPackVer)
+	if doc.FeedPackVer != "v0.3" {
+		t.Errorf("feed pack version = %q, want v0.3", doc.FeedPackVer)
 	}
 	if len(doc.InvalidFeeds()) != 0 {
 		t.Errorf("unexpected invalid feeds: %v", doc.ValidationEr)
@@ -59,11 +59,11 @@ func TestFeedPackComposition(t *testing.T) {
 		counts[o.SourceType]++
 	}
 	// Composition measured in architecture §268.
-	if counts[model.SourceAggregatorSearch] != 463 {
-		t.Errorf("aggregator-search = %d, want 463", counts[model.SourceAggregatorSearch])
+	if counts[model.SourceAggregatorSearch] != 489 {
+		t.Errorf("aggregator-search = %d, want 489", counts[model.SourceAggregatorSearch])
 	}
-	if counts[model.SourceValidatedDirect] != 41 {
-		t.Errorf("validated-direct = %d, want 41", counts[model.SourceValidatedDirect])
+	if counts[model.SourceValidatedDirect] != 73 {
+		t.Errorf("validated-direct = %d, want 73", counts[model.SourceValidatedDirect])
 	}
 	if counts[model.SourceDirectPublisher] != 53 {
 		t.Errorf("direct = %d, want 53", counts[model.SourceDirectPublisher])
@@ -71,8 +71,8 @@ func TestFeedPackComposition(t *testing.T) {
 	if counts[model.SourceOfficialRealtime] != 5 {
 		t.Errorf("official-realtime = %d, want 5", counts[model.SourceOfficialRealtime])
 	}
-	if counts[model.SourceAggregatorTopic] != 8 {
-		t.Errorf("aggregator-topic = %d, want 8", counts[model.SourceAggregatorTopic])
+	if counts[model.SourceAggregatorTopic] != 56 {
+		t.Errorf("aggregator-topic = %d, want 56", counts[model.SourceAggregatorTopic])
 	}
 }
 
@@ -92,8 +92,8 @@ func TestFeedIDsAreDeterministicAndUnique(t *testing.T) {
 			t.Fatalf("feed id %q lacks prefix", id)
 		}
 	}
-	if len(seen) != 570 {
-		t.Fatalf("unique feed ids = %d, want 570", len(seen))
+	if len(seen) != 676 {
+		t.Fatalf("unique feed ids = %d, want 676", len(seen))
 	}
 }
 

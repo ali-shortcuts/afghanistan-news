@@ -77,12 +77,12 @@ d=json.load(sys.stdin)
 assert 'xmlUrl' in d and 'healthEvents' in d and 'recentArticles' in d, sorted(d)[:8]
 " && ok "feed detail is flat + extras" || bad "feed detail shape"
 # dry-run must never mutate
-DRY="$(curl -s "${AUTH[@]}" -X POST "${API_BASE}/admin/api/feedpacks/import?path=resources/feedpacks/afghanistan-global-news-master-v0.2.opml" -H 'Content-Type: application/json' -d '{}')"
+DRY="$(curl -s "${AUTH[@]}" -X POST "${API_BASE}/admin/api/feedpacks/import?path=resources/feedpacks/afghanistan-global-news-master-v0.3.opml" -H 'Content-Type: application/json' -d '{}')"
 echo "${DRY}" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
-assert d['committed'] is False and d['total']==570, d
-" && ok "OPML dry run (570 outlines, nothing written)" || bad "OPML dry run"
+assert d['committed'] is False and d['total']==676, d
+" && ok "OPML dry run (676 outlines, nothing written)" || bad "OPML dry run"
 # push preview accepts the console payload (with confirm)
 PV="$(curl -s "${AUTH[@]}" -X POST "${API_BASE}/admin/api/push/preview" -H 'Content-Type: application/json' -d '{"topic":"breaking","title":"t","body":"b","confirm":false}')"
 echo "${PV}" | json "d.get('audience','')" >/dev/null && ok "push preview" || bad "push preview"

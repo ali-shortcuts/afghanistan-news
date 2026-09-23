@@ -56,7 +56,7 @@ fi
 say "2/4 migrate + seed the repository fixtures"
 cd "${ROOT}/backend"
 DATABASE_URL="${DSN}" go run ./cmd/seed-fixtures -driver postgres \
-  -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml \
+  -pack resources/feedpacks/afghanistan-global-news-master-v0.3.opml \
   -fixtures testdata/feeds -wave 1 -synth 8
 
 say "3/4 boot the API against the seeded database (port ${PORT})"

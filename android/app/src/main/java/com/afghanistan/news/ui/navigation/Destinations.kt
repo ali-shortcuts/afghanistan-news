@@ -11,6 +11,7 @@ object Routes {
     const val HOME = "home"
     const val AFGHANISTAN = "afghanistan"
     const val WORLD = "world"
+    const val CATEGORIES = "categories"
     const val SAVED = "saved"
     const val MORE = "more"
 
@@ -37,7 +38,7 @@ enum class BottomDestination(val route: String, val label: String, val icon: Str
     HOME(Routes.HOME, "خانه", "⌂"),
     AFGHANISTAN(Routes.AFGHANISTAN, "افغانستان", "🏳"),
     WORLD(Routes.WORLD, "جهان", "🌍"),
-    SAVED(Routes.SAVED, "ذخیره‌شده", "🔖"),
+    CATEGORIES(Routes.CATEGORIES, "دسته‌ها", "🗂"),
     MORE(Routes.MORE, "بیشتر", "⋯"),
 }
 

@@ -158,7 +158,7 @@ start_stack() {
     WORKER_ENABLED=false \
     ADMIN_SESSION_KEY="${ADMIN_SESSION_KEY:-local-dev-session-key-32-bytes-min}" \
     ADMIN_STATIC_DIR="$ROOT/admin" APP_STATIC_DIR="$ROOT/app" \
-    FEED_PACK_PATH="$ROOT/backend/resources/feedpacks/afghanistan-global-news-master-v0.2.opml" \
+    FEED_PACK_PATH="$ROOT/backend/resources/feedpacks/afghanistan-global-news-master-v0.3.opml" \
     FEED_ACTIVATION_WAVE="${FEED_ACTIVATION_WAVE:-1}" \
     PUSH_DRY_RUN="${PUSH_DRY_RUN:-true}" ALLOW_PRIVATE_FETCH=false \
     RATE_LIMIT_PER_MINUTE="${RATE_LIMIT_PER_MINUTE:-600}" || return 1
@@ -171,7 +171,7 @@ start_stack() {
   start_process_bg worker "$WORKER_PID" "$ROOT/bin/afnews-worker" \
     ENV="${ENV:-production}" DATABASE_URL="$DATABASE_URL" DB_DRIVER="$DB_DRIVER" \
     WORKER_CONCURRENCY="${WORKER_CONCURRENCY:-8}" \
-    FEED_PACK_PATH="$ROOT/backend/resources/feedpacks/afghanistan-global-news-master-v0.2.opml" \
+    FEED_PACK_PATH="$ROOT/backend/resources/feedpacks/afghanistan-global-news-master-v0.3.opml" \
     FEED_ACTIVATION_WAVE="${FEED_ACTIVATION_WAVE:-1}" \
     PUSH_DRY_RUN="${PUSH_DRY_RUN:-true}" ALLOW_PRIVATE_FETCH=false || true
 }

@@ -96,7 +96,7 @@ safe to re-run, works in CI.
 ```bash
 # against PostgreSQL
 cd backend && go run ./cmd/seed-fixtures -driver postgres \
-  -pack resources/feedpacks/afghanistan-global-news-master-v0.2.opml
+  -pack resources/feedpacks/afghanistan-global-news-master-v0.3.opml
 
 # the whole "does this build work on an empty database?" question, one command
 bash scripts/seed-and-verify.sh
@@ -105,7 +105,7 @@ bash scripts/seed-and-verify.sh
 What it loads, in order:
 
 1. **reference data** — categories, provinces, the admin/editorial user;
-2. **the bundled OPML pack** — 570 outlines reconciled into the feed registry;
+2. **the bundled OPML pack** — 676 outlines reconciled into the feed registry;
 3. **a rollout wave** — `-wave 1` (core) by default, `1..4` accepted;
 4. **articles** — `backend/testdata/feeds/*.xml` decoded by the *real* parser and inserted
    through the *real* dedup path (these files deliberately repeat a story, so the dedup

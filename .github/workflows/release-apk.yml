@@ -109,7 +109,7 @@ jobs:
           grep -q "native-code: 'arm64-v8a' 'armeabi-v7a'" /tmp/badging.txt
           unzip -l "$APK" | grep -q "lib/armeabi-v7a"
           unzip -l "$APK" | grep -q "lib/arm64-v8a"
-          unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.2.opml"
+          unzip -l "$APK" | grep -q "assets/feedpack/afghanistan-global-news-master-v0.3.opml"
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$APK" | head -5
 
       - name: Name the artifact after the version and the build it actually is
