@@ -42,8 +42,12 @@ android {
         vectorDrawables.useSupportLibrary = true
         resourceConfigurations += listOf("en", "fa", "ps")
 
-        // Both ABIs ship in one APK: 32-bit devices still matter in the Afghan market.
-        ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
+        // Universal distribution: every common ABI ships in one APK so the same file
+        // installs on any device — 32-bit phones (armeabi-v7a), modern 64-bit phones
+        // (arm64-v8a), Chromebooks / emulators (x86_64) and legacy Intel devices (x86).
+        // Native-code ABIs only affect bundled .so libraries; the Kotlin/Compose UI is
+        // ABI-independent, so the size cost is small and the coverage is total.
+        ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64") }
 
         buildConfigField("String", "API_BASE_URL", "\"${prop("apiBaseUrl", "https://api.afghanistan.news/")}\"")
         buildConfigField("String", "FEED_PACK_ASSET", "\"feedpack/afghanistan-global-news-master-v0.2.opml\"")
