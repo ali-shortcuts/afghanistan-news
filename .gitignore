@@ -28,6 +28,8 @@ Thumbs.db
 # --- local databases --------------------------------------------------------
 *.db
 *.db-journal
+*.db-shm
+*.db-wal
 *.sqlite
 
 # Phase B runtime artifacts (never committed)

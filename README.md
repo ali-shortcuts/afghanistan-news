@@ -122,7 +122,7 @@ builds the minified APK on a GitHub runner (7 GB) whenever a `v*` tag is pushed.
 | Surface | URL |
 |---|---|
 | Landing / service index | `/` |
-| Public API | `/v1/*` — `home`, `articles`, `categories`, `provinces`, `sources`, `search`, `config`, `feed-pack/version`, `notifications` |
+| Public API | `/v1/*` — `home`, `articles`, `categories`, `provinces`, `sources`, `search`, `config`, `feed-pack/version`, `notifications`, `rss.xml` |
 | Mobile client preview | `/app/` |
 | Editorial console | `/admin/` (seed login `admin` / `afnews-admin`, development only) |
 | Metrics · Health | `/metrics` · `/health/live`, `/health/ready` |
@@ -141,12 +141,12 @@ builds the minified APK on a GitHub runner (7 GB) whenever a `v*` tag is pushed.
 * web surfaces: `/`, `/admin/*`, `/app/*` all served
 * Android: static reference checks (`android/tools/check_sources.py`) + module layout
 
-Backend unit/integration tests: `cd backend && go test ./...` → **69 test cases, all packages
+Backend unit/integration tests: `cd backend && go test ./...` → **77 test cases, all packages
 green** — and the same suite runs against PostgreSQL with `TEST_DB_DRIVER=postgres` (each test
 gets its own schema). Dialect parity is asserted, not assumed.
 
 Android: `cd android && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug` →
-APK produced, 6 unit tests green, `lintDebug` fails the build on any `NewApi` violation. Two
+APK produced, 16 unit tests green, `lintDebug` fails the build on any `NewApi` violation. Two
 artifact-level gates run before the build: `tools/check_deps_api21.py` (every dependency's
 declared `minSdk`) and `tools/check_sources.py` (every internal reference).
 
@@ -157,7 +157,7 @@ articles stored, health events per feed, pushes recorded by the dry-run sender.
 
 | Phase | Scope | State | Evidence |
 |---|---|---|---|
-| **A** | Version pins to the newest API-21-compatible releases, real Gradle wrapper, compileSdk/targetSdk 36, closing every documented deviation | **done** | debug APK builds for `arm64-v8a` + `armeabi-v7a`; `minSdkVersion:'21'`, `targetSdkVersion:'36'`; 6 unit tests; lint clean; `docs/android/compatibility.md` |
+| **A** | Version pins to the newest API-21-compatible releases, real Gradle wrapper, compileSdk/targetSdk 36, closing every documented deviation | **done** | debug APK builds for `arm64-v8a` + `armeabi-v7a`; `minSdkVersion:'21'`, `targetSdkVersion:'36'`; 16 unit tests; lint clean; `docs/android/compatibility.md` |
 | **B** | PostgreSQL instead of SQLite, API and worker as separate processes, Docker Compose, data migration, backup/restore | **done** | 11 034 rows migrated and verified; API parity across 8 endpoints; suite green on both dialects; backup + restore drill; `docs/deployment.md` |
 | **C** | Real FCM, story/cluster pages, AFN rates + fuel from a dedicated source, full offline download, advanced search and filters | next | — |
 

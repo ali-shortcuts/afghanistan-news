@@ -180,6 +180,32 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/NotificationPage" }
 
+  /v1/rss.xml:
+    get:
+      tags: [articles]
+      summary: Public RSS 2.0 feed of the latest articles
+      description: >-
+        A bounded, newest-first RSS 2.0 snapshot (max 50 items). Accepts the same
+        filters as /v1/articles (language, category, province, breaking); feed
+        readers and other news rooms can mirror the public card list without the
+        private JSON contract.
+      parameters:
+        - { name: language, in: query, schema: { type: string, enum: [fa, ps, en, mixed, unknown] } }
+        - { name: category, in: query, schema: { type: string } }
+        - { name: province, in: query, schema: { type: string } }
+        - { name: breaking, in: query, schema: { type: boolean } }
+      responses:
+        "200":
+          description: RSS 2.0 document
+          content:
+            application/rss+xml:
+              schema: { type: string }
+        "400":
+          description: Invalid filter (structured error envelope)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
   /v1/feed-pack/version:
     get:
       tags: [reference]

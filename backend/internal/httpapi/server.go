@@ -116,6 +116,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("POST /v1/push/register", s.handlePushRegister)
 	mux.HandleFunc("DELETE /v1/push/registrations/{id}", s.handlePushUnregister)
 	mux.HandleFunc("GET /v1/notifications", s.handleNotificationInbox)
+	mux.HandleFunc("GET /v1/rss.xml", s.handleRSS)
 
 	// ---- operational endpoints (§127) ----
 	mux.HandleFunc("GET /health/live", s.handleLiveness)
