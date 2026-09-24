@@ -50,6 +50,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="afnews" />
             </intent-filter>
+            <!-- Static launcher shortcuts (v1.3): long-press → جستجو / ذخیره‌شده‌ها. -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <service

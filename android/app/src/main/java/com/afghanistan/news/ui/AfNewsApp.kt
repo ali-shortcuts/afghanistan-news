@@ -34,6 +34,7 @@ import com.afghanistan.news.ui.onboarding.OnboardingScreen
 import com.afghanistan.news.ui.saved.SavedScreen
 import com.afghanistan.news.ui.search.SearchScreen
 import com.afghanistan.news.ui.theme.AfNewsTheme
+import com.afghanistan.news.ui.theme.LocalDataSaver
 
 /**
  * Root composable: theme + bottom-navigation shell + navigation graph.
@@ -44,10 +45,24 @@ fun AfNewsApp(
     initialDeepLink: DeepLink?,
     themeMode: String,
     languageTag: String,
+    dataSaver: Boolean,
     ready: Boolean,
     mainViewModel: MainViewModel = hiltViewModel(),
 ) {
     AfNewsTheme(themeMode = themeMode, languageTag = languageTag) {
+        // One provider at the root: cards and the reader consult it before loading images.
+        androidx.compose.runtime.CompositionLocalProvider(LocalDataSaver provides dataSaver) {
+            AfNewsNavigation(initialDeepLink, ready, mainViewModel)
+        }
+    }
+}
+
+@Composable
+private fun AfNewsNavigation(
+    initialDeepLink: DeepLink?,
+    ready: Boolean,
+    mainViewModel: MainViewModel,
+) {
         val navController = rememberNavController()
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
@@ -62,6 +77,7 @@ fun AfNewsApp(
                 is DeepLink.ArticleLink -> navController.navigate(Routes.article(link.articleId))
                 is DeepLink.ProvinceLink -> navController.navigate(Routes.province(link.provinceId))
                 is DeepLink.SearchLink -> navController.navigate(Routes.SEARCH)
+                is DeepLink.SavedLink -> navController.navigate(Routes.SAVED)
             }
         }
 
@@ -70,7 +86,7 @@ fun AfNewsApp(
         // never waits on the network and can always be dismissed.
         if (ready && onboardingRequired) {
             OnboardingScreen(onDone = { mainViewModel.completeOnboarding() })
-            return@AfNewsTheme
+            return@AfNewsNavigation
         }
 
         Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxSize()) {
@@ -129,6 +145,7 @@ fun AfNewsApp(
                                 "breaking", "regional", "politics", "economy",
                                 "technology", "ai", "sports", "science", "climate", "culture",
                             ),
+                            showLanguageChips = true,
                             onOpenCategory = { navController.navigate(Routes.category(it)) },
                             onOpenArticle = { navController.navigate(Routes.article(it)) },
                         )
@@ -187,6 +204,7 @@ fun AfNewsApp(
                             articleId = id,
                             onBack = { navController.popBackStack() },
                             onOpenSource = { navController.navigate(Routes.source(it)) },
+                            onOpenArticle = { navController.navigate(Routes.article(it)) },
                         )
                     }
                     composable(Routes.PROVINCES) {
@@ -214,4 +232,3 @@ fun AfNewsApp(
             }
         }
     }
-}

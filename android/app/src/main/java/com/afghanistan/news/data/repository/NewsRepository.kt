@@ -52,6 +52,7 @@ class NewsRepository @Inject constructor(
         categoryId: String? = null,
         provinceId: String? = null,
         sourceId: String? = null,
+        language: String? = null,
         query: String? = null,
         sort: SortMode = SortMode.LATEST,
     ): Flow<PagingData<Article>> = Pager(
@@ -66,6 +67,7 @@ class NewsRepository @Inject constructor(
                 categoryId = categoryId,
                 provinceId = provinceId,
                 sourceId = sourceId,
+                language = language,
                 query = query,
                 topFirst = if (sort == SortMode.TOP) 1 else 0,
                 limit = MAX_CACHED_PER_QUERY,
@@ -87,10 +89,16 @@ class NewsRepository @Inject constructor(
         if (key is FeedKey.Saved) return@withContext ApiResult.Success(null)
 
         val response = when (key) {
-            is FeedKey.Category -> api.articles(cursor = cursor, limit = pageSize, categoryId = key.categoryId, sort = sort.apiValue)
+            is FeedKey.Category -> api.articles(
+                cursor = cursor,
+                limit = pageSize,
+                categoryId = key.categoryId,
+                sort = sort.apiValue,
+                language = key.language,
+            )
             is FeedKey.Province -> api.provinceArticles(key.provinceId, cursor, pageSize)
             is FeedKey.Source -> api.articles(cursor = cursor, limit = pageSize, sourceId = key.sourceId)
-            is FeedKey.Search -> api.search(key.query, cursor, pageSize)
+            is FeedKey.Search -> api.search(key.query, key.categoryId, cursor = cursor, limit = pageSize)
             is FeedKey.Saved -> error("handled above")
         }
         val result = safeApiCall(errorMapper) { response }
@@ -120,6 +128,26 @@ class NewsRepository @Inject constructor(
                 articleDao.linkProvinces(dto.provinceLinks())
                 val source = referenceDao.source(entity.sourceId)
                 ApiResult.Success(entity.toDomain(source, null))
+            }
+        }
+    }
+
+    /**
+     * Related articles for the reader (v1.3): cluster peers first, then the same
+     * primary category. Results are mirrored into Room so a second visit also
+     * renders offline.
+     */
+    suspend fun relatedArticles(id: String): ApiResult<List<Article>> = withContext(dispatchers.io) {
+        when (val result = safeApiCall(errorMapper) { api.related(id) }) {
+            is ApiResult.Failure -> result
+            is ApiResult.Success -> {
+                val page = result.data
+                articleDao.storePage(
+                    articles = page.items.map { it.toEntity() },
+                    categories = page.items.flatMap { it.categoryLinks() },
+                    provinces = page.items.flatMap { it.provinceLinks() },
+                )
+                ApiResult.Success(page.items.map { it.toDomain() })
             }
         }
     }

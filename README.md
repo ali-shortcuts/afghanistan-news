@@ -122,7 +122,7 @@ builds the minified APK on a GitHub runner (7 GB) whenever a `v*` tag is pushed.
 | Surface | URL |
 |---|---|
 | Landing / service index | `/` |
-| Public API | `/v1/*` — `home`, `articles`, `categories`, `provinces`, `sources`, `search`, `config`, `feed-pack/version`, `notifications`, `rss.xml`, `trending` |
+| Public API | `/v1/*` — `home`, `articles`, `articles/{id}/related`, `categories`, `provinces`, `sources`, `search`, `config`, `feed-pack/version`, `notifications`, `rss.xml`, `trending` |
 | Mobile client preview | `/app/` |
 | Editorial console | `/admin/` (seed login `admin` / `afnews-admin`, development only) |
 | Metrics · Health | `/metrics` · `/health/live`, `/health/ready` |
@@ -141,12 +141,12 @@ builds the minified APK on a GitHub runner (7 GB) whenever a `v*` tag is pushed.
 * web surfaces: `/`, `/admin/*`, `/app/*` all served
 * Android: static reference checks (`android/tools/check_sources.py`) + module layout
 
-Backend unit/integration tests: `cd backend && go test ./...` → **87 test cases, all packages
+Backend unit/integration tests: `cd backend && go test ./...` → **91 test cases, all packages
 green** — and the same suite runs against PostgreSQL with `TEST_DB_DRIVER=postgres` (each test
 gets its own schema). Dialect parity is asserted, not assumed.
 
 Android: `cd android && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug` →
-APK produced, 16 unit tests green, `lintDebug` fails the build on any `NewApi` violation. Two
+APK produced, 24 unit tests green, `lintDebug` fails the build on any `NewApi` violation. Two
 artifact-level gates run before the build: `tools/check_deps_api21.py` (every dependency's
 declared `minSdk`) and `tools/check_sources.py` (every internal reference).
 

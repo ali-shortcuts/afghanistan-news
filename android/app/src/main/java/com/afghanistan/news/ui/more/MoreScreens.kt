@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -25,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -97,6 +99,12 @@ class MoreViewModel @Inject constructor(
     private val _currentLanguage = MutableStateFlow(SettingsStore.DEFAULT_LANGUAGE)
     val currentLanguage: StateFlow<String> = _currentLanguage.asStateFlow()
 
+    private val _theme = MutableStateFlow("system")
+    val theme: StateFlow<String> = _theme.asStateFlow()
+
+    private val _dataSaver = MutableStateFlow(false)
+    val dataSaver: StateFlow<Boolean> = _dataSaver.asStateFlow()
+
     private val _serverTest = MutableStateFlow<ServerTestState>(ServerTestState.Idle)
     val serverTest: StateFlow<ServerTestState> = _serverTest.asStateFlow()
 
@@ -129,6 +137,8 @@ class MoreViewModel @Inject constructor(
         viewModelScope.launch { settings.textScale.collect { _textScale.value = it } }
         viewModelScope.launch { settings.serverUrl.collect { _serverUrl.value = it } }
         viewModelScope.launch { settings.language.collect { _currentLanguage.value = it } }
+        viewModelScope.launch { settings.theme.collect { _theme.value = it } }
+        viewModelScope.launch { settings.dataSaver.collect { _dataSaver.value = it } }
     }
 
     fun followProvince(province: Province?) {
@@ -146,6 +156,16 @@ class MoreViewModel @Inject constructor(
     /** Language is observed by MainActivity, so this re-renders the whole app immediately. */
     fun setLanguage(code: String) {
         viewModelScope.launch { settings.setLanguage(code) }
+    }
+
+    /** system / light / dark; MainActivity re-composes the theme tree on change. */
+    fun setTheme(mode: String) {
+        viewModelScope.launch { settings.setTheme(mode) }
+    }
+
+    /** Data saver: skip card/reader images on metered connections (v1.3). */
+    fun setDataSaver(enabled: Boolean) {
+        viewModelScope.launch { settings.setDataSaver(enabled) }
     }
 
     /** Accepts the field content as typed; the answer comes back through [serverUrl]. */
@@ -378,6 +398,8 @@ fun SettingsScreen(viewModel: MoreViewModel = hiltViewModel()) {
     val textScale by viewModel.textScale.collectAsStateWithLifecycle()
     val currentLanguage by viewModel.currentLanguage.collectAsStateWithLifecycle()
     val serverUrl by viewModel.serverUrl.collectAsStateWithLifecycle()
+    val theme by viewModel.theme.collectAsStateWithLifecycle()
+    val dataSaver by viewModel.dataSaver.collectAsStateWithLifecycle()
     val serverTest by viewModel.serverTest.collectAsStateWithLifecycle()
     var serverField by remember(serverUrl) { mutableStateOf(serverUrl) }
 
@@ -405,6 +427,44 @@ fun SettingsScreen(viewModel: MoreViewModel = hiltViewModel()) {
                 Column(Modifier.padding(horizontal = AfNewsSpacing.lg)) {
                     Text("اندازهٔ متن", style = MaterialTheme.typography.bodyLarge)
                     Slider(value = textScale, onValueChange = { viewModel.setTextScale(it.coerceIn(0.85f, 1.6f)) })
+                }
+            }
+            item { SettingsSectionTitle("پوستهٔ برنامه") }
+            item {
+                Row(Modifier.padding(horizontal = AfNewsSpacing.lg), horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm)) {
+                    listOf("system" to "سیستم", "light" to "روشن", "dark" to "تاریک").forEach { (mode, label) ->
+                        val selected = theme == mode
+                        Surface(
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(percent = 50),
+                            color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.clickable { viewModel.setTheme(mode) },
+                        ) {
+                            Text(
+                                label,
+                                style = MaterialTheme.typography.labelMedium,
+                                color = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(horizontal = AfNewsSpacing.md, vertical = AfNewsSpacing.xs + 2.dp),
+                            )
+                        }
+                    }
+                }
+            }
+            item {
+                // Practical on Afghan mobile networks: text keeps flowing, images wait.
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = AfNewsSpacing.lg, vertical = AfNewsSpacing.sm),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column {
+                        Text("ذخیرهٔ داده", style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            "تصاویر بارگیری نشوند — مناسب اینترنت کم‌حجم",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Switch(checked = dataSaver, onCheckedChange = { viewModel.setDataSaver(it) })
                 }
             }
             item { SettingsSectionTitle("اعلان‌ها (بدون حساب کاربری)") }
@@ -539,7 +599,8 @@ fun AboutScreen(viewModel: MoreViewModel = hiltViewModel()) {
                 style = MaterialTheme.typography.bodyMedium,
             )
             Text("بستهٔ فید همراه برنامه: ${pack?.version ?: "—"} (${pack?.outlineCount ?: 0} فید در ${pack?.folders ?: 0} پوشه)", style = MaterialTheme.typography.bodySmall)
-            Text("سازگاری: Android 5.0 (API 21) تا Android 16 · armeabi-v7a و arm64-v8a", style = MaterialTheme.typography.bodySmall)
+            Text("سازگاری: Android 5.0 (API 21) تا Android 16 · APK universal برای ۴ معماری پردازنده", style = MaterialTheme.typography.bodySmall)
+            Text("تغذیهٔ خبر: ۶۷۶ فید RSS در ۳۷ پوشهٔ موضوعی از سراسر جهان + خروجی RSS خود سرور در /v1/rss.xml", style = MaterialTheme.typography.bodySmall)
             Text("بدون ورود اجباری · بدون بازنشر کامل متن ناشران", style = MaterialTheme.typography.bodySmall)
             TextButton(onClick = { }) { Text("سیاست حریم خصوصی") }
             Text(

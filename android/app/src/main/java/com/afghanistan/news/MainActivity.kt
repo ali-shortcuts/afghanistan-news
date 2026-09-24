@@ -43,11 +43,13 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val theme by settings.theme.collectAsState(initial = "system")
             val language by settings.language.collectAsState(initial = SettingsStore.DEFAULT_LANGUAGE)
+            val dataSaver by settings.dataSaver.collectAsState(initial = false)
             val started by viewModel.started.collectAsState()
             AfNewsRoot(
                 initialDeepLink = deepLink,
                 themeMode = theme,
                 languageTag = language,
+                dataSaver = dataSaver,
                 ready = started,
             )
         }

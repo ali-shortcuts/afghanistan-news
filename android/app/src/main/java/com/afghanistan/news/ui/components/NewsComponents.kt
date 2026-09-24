@@ -30,10 +30,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.afghanistan.news.core.common.RelativeTime
 import com.afghanistan.news.core.model.Article
 import com.afghanistan.news.ui.theme.AfNewsCategoryColors
 import com.afghanistan.news.ui.theme.AfNewsShapes
 import com.afghanistan.news.ui.theme.AfNewsSpacing
+import com.afghanistan.news.ui.theme.LocalDataSaver
 
 /**
  * Shared news UI atoms. Every card carries attribution; the design system forbids an
@@ -93,6 +95,7 @@ fun ArticleCard(
     modifier: Modifier = Modifier,
     compact: Boolean = false,
 ) {
+    val dataSaver = LocalDataSaver.current
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -111,7 +114,7 @@ fun ArticleCard(
                     .background(AfNewsCategoryColors.of(article.category?.id)),
             )
             Column {
-                if (!compact && !article.imageUrl.isNullOrBlank()) {
+                if (!compact && !article.imageUrl.isNullOrBlank() && !dataSaver) {
                     AsyncImage(
                         model = article.imageUrl,
                         contentDescription = null,
@@ -146,7 +149,10 @@ fun ArticleCard(
     }
 }
 
-/** Always-visible source attribution: name, transparency label and breaking flag. */
+/**
+ * Always-visible source attribution: name, transparency label, breaking flag and a
+ * relative timestamp ("۳ ساعت پیش") so freshness is scannable without mental math.
+ */
 @Composable
 fun AttributionRow(article: Article) {
     Row(
@@ -163,6 +169,13 @@ fun AttributionRow(article: Article) {
         }
         article.province?.let { Badge(it.name) }
         if (article.isBreaking) Badge("فوری", alert = true)
+        Text(
+            RelativeTime.format(article.sortTimestamp),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            modifier = Modifier.padding(start = AfNewsSpacing.xs),
+        )
     }
 }
 

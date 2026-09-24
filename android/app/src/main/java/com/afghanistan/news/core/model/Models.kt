@@ -118,10 +118,10 @@ enum class ArticleFilter(val apiValue: String) {
 
 /** Which list the user is browsing; drives paging keys and empty states. */
 sealed interface FeedKey {
-    data class Category(val categoryId: String) : FeedKey
+    data class Category(val categoryId: String, val language: String? = null) : FeedKey
     data class Province(val provinceId: String) : FeedKey
     data class Source(val sourceId: String) : FeedKey
-    data class Search(val query: String) : FeedKey
+    data class Search(val query: String, val categoryId: String? = null) : FeedKey
     data class Saved(val unused: Boolean = true) : FeedKey
 }
 

@@ -45,6 +45,8 @@ class SettingsStore @Inject constructor(
         val CACHE_BUDGET_MB = intPreferencesKey("cache_budget_mb")
         val DATA_SAVER = booleanPreferencesKey("data_saver")
         val TEXT_SCALE = stringPreferencesKey("text_scale")
+        val READER_SCALE = stringPreferencesKey("reader_scale")
+        val RECENT_SEARCHES = stringPreferencesKey("recent_searches")
         val SERVER_URL = stringPreferencesKey("server_url")
     }
 
@@ -56,6 +58,14 @@ class SettingsStore @Inject constructor(
     val dataSaver: Flow<Boolean> = context.dataStore.data.map { it[Keys.DATA_SAVER] ?: false }
     val cacheBudgetMb: Flow<Int> = context.dataStore.data.map { it[Keys.CACHE_BUDGET_MB] ?: DEFAULT_CACHE_MB }
     val textScale: Flow<Float> = context.dataStore.data.map { (it[Keys.TEXT_SCALE] ?: "1.0").toFloatOrNull() ?: 1.0f }
+
+    /** Type size inside the article reader only; lists keep the global [textScale]. */
+    val readerScale: Flow<Float> = context.dataStore.data.map { (it[Keys.READER_SCALE] ?: "1.0").toFloatOrNull() ?: 1.0f }
+
+    /** Last distinct searches, newest first, capped — a small practical memory (v1.3). */
+    val recentSearches: Flow<List<String>> = context.dataStore.data.map { prefs ->
+        prefs[Keys.RECENT_SEARCHES]?.split('\n')?.filter { it.isNotBlank() } ?: emptyList()
+    }
     val pushRegistrationId: Flow<String?> = context.dataStore.data.map { it[Keys.PUSH_REGISTRATION_ID] }
 
     /**
@@ -120,6 +130,19 @@ class SettingsStore @Inject constructor(
     suspend fun setDataSaver(value: Boolean) = edit { it[Keys.DATA_SAVER] = value }
     suspend fun setCacheBudgetMb(value: Int) = edit { it[Keys.CACHE_BUDGET_MB] = value }
     suspend fun setTextScale(scale: Float) = edit { it[Keys.TEXT_SCALE] = scale.toString() }
+    suspend fun setReaderScale(scale: Float) = edit { it[Keys.READER_SCALE] = scale.toString() }
+
+    /** Moves [query] to the front of the recent list, deduplicated, at most 8 kept. */
+    suspend fun addRecentSearch(query: String) = edit { prefs ->
+        val trimmed = query.trim()
+        if (trimmed.length >= 2) {
+            val updated = (listOf(trimmed) + prefs[Keys.RECENT_SEARCHES].orEmpty().split('\n').filter { it.isNotBlank() && it != trimmed })
+                .take(MAX_RECENT_SEARCHES)
+            prefs[Keys.RECENT_SEARCHES] = updated.joinToString("\n")
+        }
+    }
+
+    suspend fun clearRecentSearches() = edit { it.remove(Keys.RECENT_SEARCHES) }
     suspend fun markHomeRefreshed(at: Long) = edit { it[Keys.LAST_HOME_REFRESH] = at }
 
     private suspend fun edit(block: (androidx.datastore.preferences.core.MutablePreferences) -> Unit) {
@@ -129,6 +152,7 @@ class SettingsStore @Inject constructor(
     companion object {
         const val DEFAULT_LANGUAGE = "fa"
         const val DEFAULT_CACHE_MB = 120
+        const val MAX_RECENT_SEARCHES = 8
 
         /** Build-time default. ServerUrl.normalize() is not needed: Gradle always writes a slash. */
         val DEFAULT_SERVER_URL: String = BuildConfig.API_BASE_URL

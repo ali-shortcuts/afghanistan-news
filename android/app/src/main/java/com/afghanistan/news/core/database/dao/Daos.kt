@@ -75,6 +75,7 @@ interface ArticleDao {
         WHERE (:categoryId IS NULL OR a.category_id = :categoryId)
           AND (:provinceId IS NULL OR a.province_id = :provinceId)
           AND (:sourceId IS NULL OR a.source_id = :sourceId)
+          AND (:language IS NULL OR a.language = :language)
           AND (:query IS NULL OR a.title LIKE '%' || :query || '%' OR IFNULL(a.summary,'') LIKE '%' || :query || '%')
         ORDER BY
           CASE WHEN :topFirst = 1 THEN (a.is_breaking * 40 + a.cluster_coverage * 3) ELSE 0 END DESC,
@@ -86,6 +87,7 @@ interface ArticleDao {
         categoryId: String?,
         provinceId: String?,
         sourceId: String?,
+        language: String?,
         query: String?,
         topFirst: Int,
         limit: Int,

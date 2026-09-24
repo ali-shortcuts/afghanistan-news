@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static app shortcuts (v1.3): the practical moves — search and saved reads.
+     Declared on the launcher activity; shown on long-press of the app icon on
+     API 25+. API 21-24 devices simply ignore them. targetPackage uses the
+     manifest placeholder so debug (.debug suffix) installs work too. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="search"
+        android:enabled="true"
+        android:icon="@drawable/ic_stat_news"
+        android:shortcutShortLabel="@string/shortcut_search"
+        android:shortcutLongLabel="@string/shortcut_search_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="afnews://search"
+            android:targetPackage="${applicationId}"
+            android:targetClass="com.afghanistan.news.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="saved"
+        android:enabled="true"
+        android:icon="@drawable/ic_bookmark_filled"
+        android:shortcutShortLabel="@string/shortcut_saved"
+        android:shortcutLongLabel="@string/shortcut_saved_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="afnews://saved"
+            android:targetPackage="${applicationId}"
+            android:targetClass="com.afghanistan.news.MainActivity" />
+    </shortcut>
+</shortcuts>

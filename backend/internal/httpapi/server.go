@@ -103,6 +103,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("GET /v1/home", s.handleHome)
 	mux.HandleFunc("GET /v1/articles", s.handleArticles)
 	mux.HandleFunc("GET /v1/articles/{id}", s.handleArticleByID)
+	mux.HandleFunc("GET /v1/articles/{id}/related", s.handleRelatedArticles)
 	mux.HandleFunc("GET /v1/categories", s.handleCategories)
 	mux.HandleFunc("GET /v1/provinces", s.handleProvinces)
 	mux.HandleFunc("GET /v1/provinces/{id}/articles", s.handleProvinceArticles)
@@ -555,9 +556,9 @@ func (s *Server) parseArticleQuery(r *http.Request) (model.ArticleQuery, error) 
 		q.To = &t
 	}
 	if q.Language != "" {
-		switch q.Language {
-		case "fa", "ps", "en", "mixed", "unknown":
-		default:
+		// World coverage: any ISO 639-1/2 letter code is accepted so the 47 language
+		// editions of the feed pack can be filtered (fa/ps/en/ar/ur/tr/...).
+		if q.Language != "mixed" && q.Language != "unknown" && !languageCodeRE.MatchString(q.Language) {
 			return q, errors.New("invalid language filter")
 		}
 	}

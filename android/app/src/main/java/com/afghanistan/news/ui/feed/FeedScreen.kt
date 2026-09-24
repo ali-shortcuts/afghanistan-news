@@ -79,14 +79,23 @@ class FeedViewModel @Inject constructor(
     private val _syncing = MutableStateFlow(false)
     val syncing: StateFlow<Boolean> = _syncing.asStateFlow()
 
+    /** World language editions (v1.3): null = همهٔ زبان‌ها. */
+    private val _language = MutableStateFlow<String?>(null)
+    val language: StateFlow<String?> = _language.asStateFlow()
+
     val languageTag: StateFlow<String> =
         settings.language.stateIn(viewModelScope, SharingStarted.Eagerly, "fa")
+
+    fun setLanguage(code: String?) {
+        _language.value = code
+    }
 
     fun articles(key: FeedKey): Flow<PagingData<Article>> =
         newsRepository.pagingArticles(
             categoryId = (key as? FeedKey.Category)?.categoryId,
             provinceId = (key as? FeedKey.Province)?.provinceId,
             sourceId = (key as? FeedKey.Source)?.sourceId,
+            language = (key as? FeedKey.Category)?.language,
             query = (key as? FeedKey.Search)?.query,
             sort = _sort.value,
         )
@@ -104,6 +113,22 @@ class FeedViewModel @Inject constructor(
     }
 }
 
+/** Language editions exposed on the World tab (v1.3). Null = no language filter. */
+private data class WorldLanguageOption(val code: String?, val label: String)
+
+private val WorldLanguages = listOf(
+    WorldLanguageOption(null, "همهٔ زبان‌ها"),
+    WorldLanguageOption("fa", "فارسی"),
+    WorldLanguageOption("ps", "پښتو"),
+    WorldLanguageOption("en", "English"),
+    WorldLanguageOption("ar", "العربية"),
+    WorldLanguageOption("ur", "اردو"),
+    WorldLanguageOption("tr", "Türkçe"),
+    WorldLanguageOption("zh", "中文"),
+    WorldLanguageOption("es", "Español"),
+    WorldLanguageOption("ru", "Русский"),
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeedScreen(
@@ -113,14 +138,16 @@ fun FeedScreen(
     provinceId: String? = null,
     sourceId: String? = null,
     subCategories: List<String> = emptyList(),
+    showLanguageChips: Boolean = false,
     onOpenCategory: ((String) -> Unit)? = null,
     viewModel: FeedViewModel = hiltViewModel(),
 ) {
+    val language by viewModel.language.collectAsStateWithLifecycle()
     val key: FeedKey = when {
         provinceId != null -> FeedKey.Province(provinceId)
         sourceId != null -> FeedKey.Source(sourceId)
-        categoryId != null -> FeedKey.Category(categoryId)
-        else -> FeedKey.Category("afghanistan")
+        categoryId != null -> FeedKey.Category(categoryId, language)
+        else -> FeedKey.Category("afghanistan", language)
     }
     val sort by viewModel.sort.collectAsStateWithLifecycle()
     val syncing by viewModel.syncing.collectAsStateWithLifecycle()
@@ -173,6 +200,36 @@ fun FeedScreen(
                 .fillMaxSize()
                 .padding(padding),
         ) {
+            if (showLanguageChips) {
+                // World coverage (v1.3): narrow the global stream to one language edition.
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm),
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = AfNewsSpacing.lg),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = AfNewsSpacing.sm),
+                ) {
+                    items(WorldLanguages, key = { it?.code ?: "all" }) { option ->
+                        val selected = language == option?.code
+                        Surface(
+                            shape = RoundedCornerShape(percent = 50),
+                            color = if (selected) accent else MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.clickable { viewModel.setLanguage(option?.code) },
+                        ) {
+                            Text(
+                                option?.label ?: "همهٔ زبان‌ها",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 1,
+                                modifier = Modifier.padding(
+                                    horizontal = AfNewsSpacing.md,
+                                    vertical = AfNewsSpacing.xs + 2.dp,
+                                ),
+                            )
+                        }
+                    }
+                }
+            }
             if (subCategories.isNotEmpty() && onOpenCategory != null) {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm),

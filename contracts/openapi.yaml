@@ -76,12 +76,38 @@ paths:
               schema: { $ref: "#/components/schemas/Article" }
         "404": { $ref: "#/components/responses/Error" }
 
+  /v1/articles/{id}/related:
+    get:
+      tags: [feed]
+      summary: Related articles for reading continuity
+      description: >-
+        Cluster members first (other reports covering the same event), then the
+        newest stories sharing the article's primary category. The article itself
+        is never repeated. Bounded and cached.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 8, maximum: 20 } }
+      responses:
+        "200":
+          description: Hydrated article cards
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/ArticleCard" }
+        "404": { $ref: "#/components/responses/Error" }
+
   /v1/search:
     get:
       tags: [feed]
       summary: Full-text search over title and summary
       parameters:
         - { name: q, in: query, required: true, schema: { type: string, minLength: 2 } }
+        - { name: category, in: query, schema: { type: string }, description: "Restrict hits to one category id" }
+        - { name: language, in: query, schema: { type: string }, description: "ISO 639-1/2 code (fa, ps, en, ar, ...)" }
         - { name: cursor, in: query, schema: { type: string } }
         - { name: limit, in: query, schema: { type: integer, default: 30, maximum: 100 } }
       responses:
@@ -190,7 +216,7 @@ paths:
         readers and other news rooms can mirror the public card list without the
         private JSON contract.
       parameters:
-        - { name: language, in: query, schema: { type: string, enum: [fa, ps, en, mixed, unknown] } }
+        - { name: language, in: query, schema: { type: string }, description: "ISO 639-1/2 code (fa, ps, en, ar, ...) plus mixed/unknown" }
         - { name: category, in: query, schema: { type: string } }
         - { name: province, in: query, schema: { type: string } }
         - { name: breaking, in: query, schema: { type: boolean } }

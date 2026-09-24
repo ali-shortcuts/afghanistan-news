@@ -18,4 +18,8 @@
     <string name="offline_banner">آفلاین — وروستی خوندي شوی نسخه ښودل کیږي</string>
     <string name="attribution_note">دا لنډیز د خپرونکي رسمي فید څخه اخیستل شوی؛ بشپړ متن د اصلي خپرونکي سره دی.</string>
     <string name="no_login_note">د خبرونو لوستلو لپاره د کارن حساب ته اړتیا نشته.</string>
+    <string name="shortcut_search">پلټنه</string>
+    <string name="shortcut_search_long">په خبرونو کې پلټنه</string>
+    <string name="shortcut_saved">خوندي شوي</string>
+    <string name="shortcut_saved_long">خوندي شوي خبرونه</string>
 </resources>

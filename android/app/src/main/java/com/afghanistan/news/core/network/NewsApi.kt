@@ -47,9 +47,17 @@ interface NewsApi {
     @GET("v1/articles/{id}")
     suspend fun article(@Path("id") id: String): Response<ArticleDto>
 
+    @GET("v1/articles/{id}/related")
+    suspend fun related(
+        @Path("id") id: String,
+        @Query("limit") limit: Int = 8,
+    ): Response<ArticlePageDto>
+
     @GET("v1/search")
     suspend fun search(
         @Query("q") query: String,
+        @Query("category") categoryId: String? = null,
+        @Query("language") language: String? = null,
         @Query("cursor") cursor: String? = null,
         @Query("limit") limit: Int = DEFAULT_PAGE_SIZE,
     ): Response<ArticlePageDto>

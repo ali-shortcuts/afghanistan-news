@@ -86,9 +86,10 @@ func TestRSSFeedFiltersAndBounds(t *testing.T) {
 
 // TestRSSFeedInvalidFilter asserts the structured error envelope is used on the
 // XML surface too, so broken integrations get a diagnosable response.
+// (Any 2-3 letter ISO code is valid since v1.3; "farsi" is not a code.)
 func TestRSSFeedInvalidFilter(t *testing.T) {
 	srv, _ := newTestServer(t)
-	rec := do(t, srv, "GET", "/v1/rss.xml?language=de", "")
+	rec := do(t, srv, "GET", "/v1/rss.xml?language=farsi", "")
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("status = %d, want 400", rec.Code)
 	}

@@ -47,6 +47,7 @@ sealed interface DeepLink {
     data class ArticleLink(val articleId: String) : DeepLink
     data class ProvinceLink(val provinceId: String) : DeepLink
     data class SearchLink(val query: String?) : DeepLink
+    data class SavedLink(val unused: Boolean = true) : DeepLink
 
     companion object {
         fun from(intent: Intent?): DeepLink? {
@@ -59,7 +60,9 @@ sealed interface DeepLink {
                 data.host == "article" -> path.firstOrNull()?.let { ArticleLink(it) }
                 path.firstOrNull() == "a" -> path.getOrNull(1)?.let { ArticleLink(it) }
                 path.firstOrNull() == "province" -> path.getOrNull(1)?.let { ProvinceLink(it) }
-                data.getQueryParameter("q") != null -> SearchLink(data.getQueryParameter("q"))
+                data.host == "search" || data.getQueryParameter("q") != null ->
+                    SearchLink(data.getQueryParameter("q"))
+                data.host == "saved" -> SavedLink()
                 else -> null
             }
         }

@@ -1,6 +1,9 @@
 package com.afghanistan.news.ui.article
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,7 +12,9 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -20,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -38,27 +44,34 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import coil3.compose.AsyncImage
 import com.afghanistan.news.core.common.AppDispatchers
+import com.afghanistan.news.core.common.RelativeTime
 import com.afghanistan.news.core.common.UiState
 import com.afghanistan.news.R
+import com.afghanistan.news.core.datastore.SettingsStore
 import com.afghanistan.news.core.model.Article
+import com.afghanistan.news.core.network.ApiResult
 import com.afghanistan.news.data.repository.NewsRepository
+import com.afghanistan.news.ui.components.ArticleCard
 import com.afghanistan.news.ui.components.Badge
 import com.afghanistan.news.ui.components.ErrorState
 import com.afghanistan.news.ui.components.LoadingState
+import com.afghanistan.news.ui.theme.AfNewsCategoryColors
 import com.afghanistan.news.ui.theme.AfNewsSpacing
+import com.afghanistan.news.ui.theme.LocalDataSaver
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
 class ArticleViewModel @Inject constructor(
     private val newsRepository: NewsRepository,
+    private val settings: SettingsStore,
     private val dispatchers: AppDispatchers,
 ) : ViewModel() {
 
@@ -71,16 +84,38 @@ class ArticleViewModel @Inject constructor(
     private val _showFullText = MutableStateFlow(false)
     val showFullText: StateFlow<Boolean> = _showFullText.asStateFlow()
 
+    private val _related = MutableStateFlow<UiState<List<Article>>>(UiState.Loading)
+    val related: StateFlow<UiState<List<Article>>> = _related.asStateFlow()
+
+    /** Reader-only type size; lists never jump when the user zooms one article. */
+    val readerScale: StateFlow<Float> = settings.readerScale
+        .stateIn(viewModelScope, SharingStarted.Eagerly, 1.0f)
+
     fun load(articleId: String) {
         viewModelScope.launch(dispatchers.io) {
             // Cache first: the reader must work offline right after a push (§5).
             newsRepository.cachedArticle(articleId)?.let { _state.value = UiState.Content(it) }
             when (val result = newsRepository.articleDetail(articleId)) {
-                is com.afghanistan.news.core.network.ApiResult.Success -> _state.value = UiState.Content(result.data)
-                is com.afghanistan.news.core.network.ApiResult.Failure ->
+                is ApiResult.Success -> _state.value = UiState.Content(result.data)
+                is ApiResult.Failure ->
                     if (_state.value !is UiState.Content) _state.value = UiState.Error(result.error.message)
             }
             _saved.value = newsRepository.observeIsBookmarked(articleId).first()
+        }
+        loadRelated(articleId)
+    }
+
+    /**
+     * Reading continuity (v1.3): cluster peers first, then same-category stories.
+     * A failure is silent on purpose — related items are a bonus, never a blocker.
+     */
+    private fun loadRelated(articleId: String) {
+        viewModelScope.launch(dispatchers.io) {
+            _related.value = when (val result = newsRepository.relatedArticles(articleId)) {
+                is ApiResult.Success ->
+                    if (result.data.isEmpty()) UiState.Empty("پیشنهادی نیست") else UiState.Content(result.data)
+                is ApiResult.Failure -> UiState.Empty("پیشنهادی نیست")
+            }
         }
     }
 
@@ -94,6 +129,14 @@ class ArticleViewModel @Inject constructor(
     fun toggleFullText() {
         _showFullText.value = !_showFullText.value
     }
+
+    fun growReader() = viewModelScope.launch {
+        settings.setReaderScale((readerScale.value + 0.125f).coerceIn(0.85f, 1.6f))
+    }
+
+    fun shrinkReader() = viewModelScope.launch {
+        settings.setReaderScale((readerScale.value - 0.125f).coerceIn(0.85f, 1.6f))
+    }
 }
 
 /**
@@ -101,6 +144,8 @@ class ArticleViewModel @Inject constructor(
  *  - the publisher is always credited and one tap opens the original in Chrome Custom Tabs,
  *  - the app never claims to be the publisher of full text,
  *  - saving the article also stores it for offline reading.
+ * v1.3 practical reader: relative timestamps, reading-time estimate, copy-link,
+ * reader-scoped text zoom (آ− / آ+) and a related-stories rail.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -108,12 +153,16 @@ fun ArticleScreen(
     articleId: String,
     onBack: () -> Unit,
     onOpenSource: (String) -> Unit,
+    onOpenArticle: (String) -> Unit = {},
     viewModel: ArticleViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
     val state by viewModel.state.collectAsStateWithLifecycle()
     val saved by viewModel.saved.collectAsStateWithLifecycle()
     val showFullText by viewModel.showFullText.collectAsStateWithLifecycle()
+    val related by viewModel.related.collectAsStateWithLifecycle()
+    val readerScale by viewModel.readerScale.collectAsStateWithLifecycle()
+    val dataSaver = LocalDataSaver.current
 
     androidx.compose.runtime.LaunchedEffect(articleId) { viewModel.load(articleId) }
 
@@ -125,6 +174,9 @@ fun ArticleScreen(
                     IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "بازگشت") }
                 },
                 actions = {
+                    // Reader-scoped zoom: applied immediately, persisted across visits.
+                    TextButton(onClick = viewModel::shrinkReader) { Text("آ−") }
+                    TextButton(onClick = viewModel::growReader) { Text("آ+") }
                     IconButton(onClick = { viewModel.toggleSave(articleId) }) {
                         Icon(
                             // Bundled vector drawables: the bookmark glyphs are not part of
@@ -150,7 +202,13 @@ fun ArticleScreen(
                         .verticalScroll(rememberScrollState())
                         .padding(AfNewsSpacing.md),
                 ) {
-                    Text(article.title, style = MaterialTheme.typography.headlineMedium)
+                    Text(
+                        article.title,
+                        style = MaterialTheme.typography.headlineMedium.copy(
+                            fontSize = MaterialTheme.typography.headlineMedium.fontSize * readerScale,
+                            lineHeight = MaterialTheme.typography.headlineMedium.lineHeight * readerScale,
+                        ),
+                    )
                     Row(
                         Modifier.fillMaxWidth().padding(top = AfNewsSpacing.sm),
                         horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm),
@@ -160,13 +218,31 @@ fun ArticleScreen(
                         Badge(article.source.transparencyLabel)
                         if (article.isBreaking) Badge("فوری", alert = true)
                     }
-                    Text(
-                        formatTimestamp(article),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = AfNewsSpacing.xs),
-                    )
-                    if (!article.imageUrl.isNullOrBlank()) {
+                    Row(
+                        Modifier.fillMaxWidth().padding(top = AfNewsSpacing.xs),
+                        horizontalArrangement = Arrangement.spacedBy(AfNewsSpacing.sm),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            RelativeTime.format(article.sortTimestamp),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        readingMinutesOf(article).takeIf { it > 0 }?.let { minutes ->
+                            Surface(
+                                shape = RoundedCornerShape(percent = 50),
+                                color = MaterialTheme.colorScheme.secondaryContainer,
+                            ) {
+                                Text(
+                                    "${RelativeTime.toPersianDigits(minutes.toString())} دقیقه مطالعه",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                    modifier = Modifier.padding(horizontal = AfNewsSpacing.sm, vertical = 2.dp),
+                                )
+                            }
+                        }
+                    }
+                    if (!article.imageUrl.isNullOrBlank() && !dataSaver) {
                         AsyncImage(
                             model = article.imageUrl,
                             contentDescription = null,
@@ -178,7 +254,14 @@ fun ArticleScreen(
                         )
                     }
                     article.summary?.takeIf { it.isNotBlank() }?.let {
-                        Text(it, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(top = AfNewsSpacing.md))
+                        Text(
+                            it,
+                            style = MaterialTheme.typography.bodyLarge.copy(
+                                fontSize = MaterialTheme.typography.bodyLarge.fontSize * readerScale,
+                                lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * readerScale,
+                            ),
+                            modifier = Modifier.padding(top = AfNewsSpacing.md),
+                        )
                     }
                     Row(
                         Modifier.fillMaxWidth().padding(top = AfNewsSpacing.md),
@@ -198,6 +281,14 @@ fun ArticleScreen(
                             Text("اشتراک‌گذاری", modifier = Modifier.padding(start = AfNewsSpacing.sm))
                         }
                     }
+                    // One-tap copy: the practical answer to "بفرست برایم" inside chat apps.
+                    TextButton(onClick = {
+                        val clipboard = context.getSystemService(ClipboardManager::class.java)
+                        clipboard.setPrimaryClip(ClipData.newPlainText("link", article.originalUrl))
+                        Toast.makeText(context, "لینک خبر کپی شد", Toast.LENGTH_SHORT).show()
+                    }) {
+                        Text("⧉ کپی لینک خبر", style = MaterialTheme.typography.labelMedium)
+                    }
                     if (!article.feedContent.isNullOrBlank()) {
                         TextButton(onClick = viewModel::toggleFullText) {
                             Text(if (showFullText) "پنهان کردن متن فید" else "نمایش متن ارسالی از فید")
@@ -205,7 +296,10 @@ fun ArticleScreen(
                         if (showFullText) {
                             Text(
                                 stripHtml(article.feedContent),
-                                style = MaterialTheme.typography.bodyMedium,
+                                style = MaterialTheme.typography.bodyMedium.copy(
+                                    fontSize = MaterialTheme.typography.bodyMedium.fontSize * readerScale,
+                                    lineHeight = MaterialTheme.typography.bodyMedium.lineHeight * readerScale,
+                                ),
                                 modifier = Modifier.padding(top = AfNewsSpacing.sm),
                             )
                         }
@@ -216,11 +310,12 @@ fun ArticleScreen(
                         MetaRow("دسته", article.category?.localized("fa") ?: "—")
                         MetaRow("ولایت", article.province?.name ?: "—")
                         MetaRow("زبان", article.language ?: "—")
-                        MetaRow("پوشش خبری", article.cluster?.let { "${it.coverageCount} منبع" } ?: "تک‌منبع")
+                        MetaRow("پوشش خبری", article.cluster?.let { "${RelativeTime.toPersianDigits(it.coverageCount.toString())} منبع" } ?: "تک‌منبع")
                     }
                     TextButton(onClick = { article.source.id.takeIf { it.isNotBlank() }?.let(onOpenSource) }) {
                         Text("مشاهدهٔ همهٔ خبرهای این منبع")
                     }
+                    RelatedRail(related, onOpenArticle = onOpenArticle)
                     Text(
                         "این خلاصه از فید رسمی ناشر دریافت شده است؛ متن کامل نزد ناشر اصلی است.",
                         style = MaterialTheme.typography.bodySmall,
@@ -233,6 +328,43 @@ fun ArticleScreen(
     }
 }
 
+/** Related stories (v1.3): colorful accent header plus the newest same-topic reports. */
+@Composable
+private fun RelatedRail(
+    related: UiState<List<Article>>,
+    onOpenArticle: (String) -> Unit,
+) {
+    val articles = (related as? UiState.Content)?.data.orEmpty().take(4)
+    if (articles.isEmpty()) return
+    val accent = AfNewsCategoryColors.of(articles.first().category?.id)
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(top = AfNewsSpacing.lg),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Surface(
+            shape = RoundedCornerShape(2.dp),
+            color = accent,
+            modifier = Modifier.padding(end = AfNewsSpacing.sm).size(width = 10.dp, height = 10.dp),
+        ) {}
+        Text(
+            "ادامهٔ مطالعه — خبرهای مرتبط",
+            style = MaterialTheme.typography.titleMedium,
+            color = accent,
+        )
+    }
+    articles.forEach { relatedArticle ->
+        ArticleCard(relatedArticle, compact = true, onClick = { onOpenArticle(relatedArticle.id) })
+    }
+}
+
+/** Practical reading-length estimate: characters/5 ≈ words, ~180 wpm. */
+private fun readingMinutesOf(article: Article): Int =
+    RelativeTime.readingMinutes(
+        ((article.summary?.length ?: 0) + (article.feedContent?.length ?: 0)) / 5,
+    )
+
 @Composable
 private fun MetaRow(label: String, value: String) {
     Row(
@@ -242,12 +374,6 @@ private fun MetaRow(label: String, value: String) {
         Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Text(value, style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(start = AfNewsSpacing.md))
     }
-}
-
-private fun formatTimestamp(article: Article): String {
-    val instant = article.sortTimestamp
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault())
-    return formatter.format(instant)
 }
 
 /** Feed HTML is sanitised server-side; the client only strips residual tags for display. */

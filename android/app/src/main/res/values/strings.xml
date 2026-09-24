@@ -18,4 +18,8 @@
     <string name="offline_banner">آفلاین — نمایش آخرین نسخهٔ ذخیره‌شده</string>
     <string name="attribution_note">این خلاصه از فید رسمی ناشر دریافت شده است؛ متن کامل نزد ناشر اصلی است.</string>
     <string name="no_login_note">برای مطالعهٔ اخبار نیازی به حساب کاربری نیست.</string>
+    <string name="shortcut_search">جستجو</string>
+    <string name="shortcut_search_long">جستجو در اخبار</string>
+    <string name="shortcut_saved">ذخیره‌شده‌ها</string>
+    <string name="shortcut_saved_long">خبرهای ذخیره‌شده</string>
 </resources>

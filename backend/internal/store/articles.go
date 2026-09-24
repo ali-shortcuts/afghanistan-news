@@ -227,6 +227,20 @@ func (s *Store) ArticleByID(ctx context.Context, id string) (*model.Article, err
 	return scanArticle(row)
 }
 
+// PrimaryCategory returns the article's highest-confidence category. Used by the
+// related-articles surface to keep readers inside one topic when the story has no
+// cluster; an article without any category yields sql.ErrNoRows.
+func (s *Store) PrimaryCategory(ctx context.Context, articleID string) (string, error) {
+	var cat string
+	err := s.queryRow(ctx,
+		`SELECT category_id FROM article_categories WHERE article_id = $1
+                 ORDER BY confidence DESC, category_id ASC LIMIT 1`, articleID).Scan(&cat)
+	if err != nil {
+		return "", err
+	}
+	return cat, nil
+}
+
 // ArticleCardByID returns a hydrated card for an article.
 func (s *Store) ArticleCardByID(ctx context.Context, id string, lang string) (*model.ArticleCard, error) {
 	art, err := s.ArticleByID(ctx, id)
